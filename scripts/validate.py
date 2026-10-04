@@ -35,6 +35,13 @@ for name, meta in tables.items():
 
 detail = tables['Order Details']
 assert [c['name'] for c in sorted(detail['columns'], key=lambda c: c['primaryKeyOrder']) if c['primaryKey']] == ['OrderID', 'ProductID']
+concepts = {concept['id']: concept for concept in json.loads((ROOT / 'model/northwind.meaning.yaml').read_text())['concepts']}
+core_pin = '982916d73f0a35ff2558b0062f58aa3ac4f24d97'
+assert concepts['order']['extends'] == f'meaning://github.com/meaninggraph/core/order?ref={core_pin}'
+assert concepts['order-line']['of'] == 'order'
+assert concepts['order-line']['extends'] == f'meaning://github.com/meaninggraph/core/order-line?ref={core_pin}'
+assert manifest['semantics']['tableConcepts']['Orders'] == ['order']
+assert manifest['semantics']['tableConcepts']['Order Details'] == ['order-line', 'commercial-line-item']
 assert any(fk['table'] == 'Employees' and fk['column'] == 'ReportsTo' for fk in tables['Employees']['foreignKeys'])
 assert any(c['type'] == 'BLOB' for c in tables['Categories']['columns'])
 assert tables['CustomerCustomerDemo']['rowCount'] == tables['CustomerDemographics']['rowCount'] == 0

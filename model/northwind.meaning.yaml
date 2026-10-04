@@ -15,7 +15,7 @@
       "labels": {
         "en": "customer"
       },
-      "extends": "meaning://github.com/meaninggraph/core/customer?ref=cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7",
+      "extends": "meaning://github.com/meaninggraph/core/customer?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
       "bindings": [
         {
           "model": "modelspec:///northwind.Customers",
@@ -30,7 +30,7 @@
       "labels": {
         "en": "employee"
       },
-      "extends": "meaning://github.com/meaninggraph/core/employee?ref=cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7",
+      "extends": "meaning://github.com/meaninggraph/core/employee?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
       "bindings": [
         {
           "model": "modelspec:///northwind.Employees",
@@ -41,11 +41,11 @@
     {
       "id": "order",
       "kind": "entity",
-      "description": "A customer's purchase order recorded by Northwind.",
+      "description": "A customer's order requesting Northwind to supply products.",
       "labels": {
         "en": "sales order"
       },
-      "extends": "meaning://github.com/meaninggraph/core/invoice?ref=cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7",
+      "extends": "meaning://github.com/meaninggraph/core/order?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
       "bindings": [
         {
           "model": "modelspec:///northwind.Orders",
@@ -56,11 +56,12 @@
     {
       "id": "order-line",
       "kind": "entity",
-      "description": "A product and quantity included on an order.",
+      "of": "order",
+      "description": "A product and quantity requested on a Northwind order.",
       "labels": {
         "en": "sales order line"
       },
-      "extends": "meaning://github.com/meaninggraph/core/invoice-line?ref=cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7",
+      "extends": "meaning://github.com/meaninggraph/core/order-line?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
       "bindings": [
         {
           "model": "modelspec:///northwind.OrderDetails",
@@ -75,7 +76,7 @@
       "labels": {
         "en": "shipping country"
       },
-      "values-of": "meaning://github.com/meaninggraph/core/country?ref=cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7",
+      "values-of": "meaning://github.com/meaninggraph/core/country?ref=982916d73f0a35ff2558b0062f58aa3ac4f24d97",
       "bindings": [
         {
           "model": "modelspec:///northwind.Orders",

@@ -40,7 +40,8 @@
         "order"
       ],
       "Order Details": [
-        "order-line"
+        "order-line",
+        "commercial-line-item"
       ]
     }
   },

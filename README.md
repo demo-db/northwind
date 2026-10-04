@@ -8,6 +8,8 @@ Source: [`jpwhite3/northwind-SQLite3`](https://github.com/jpwhite3/northwind-SQL
 
 The fixture preserves 13 tables, 17 views, two empty demonstration tables, the native `Order Details` name, composite keys, `Employees.ReportsTo`, nullable foreign keys, dates, numeric values, and BLOB data. The foreign keys are upstream declarations; this does not claim SQLite enforces them on every connection. SQLite BLOB bytes remain authoritative; per-table JSON encodes them as base64 and does not claim to decode or interpret them. ModelSpec has no SQLite BLOB primitive, so its `document` type is a descriptive approximation only. ModelSpec's published-name rule does not allow spaces, so its entity is `OrderDetails`; `metadata/contract.json` records that modelEntity mapping and `ovdb.yaml` maps the native recordset name to the model entity with `recordset_entities`. The MeaningGraph order-line concept binds to the valid ModelSpec identifier.
 
+Northwind `Orders` and `Order Details` are modeled as order concepts, distinct from invoices. The order-line concept also declares the shared `commercial-line-item` ancestor in `manifest.json` for cross-database similarity; the native SQLite table remains named `Order Details`.
+
 Run with Python 3.10+ and the standard library:
 
 ```sh
