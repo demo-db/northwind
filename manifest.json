@@ -1,0 +1,75 @@
+{
+  "contractVersion": 1,
+  "id": "northwind",
+  "name": "Northwind",
+  "description": "Microsoft's classic small-business sample database, converted to SQLite with its tables, views, identifiers, binary fields, and relationships preserved.",
+  "domain": "Small business",
+  "siteHost": "northwind.demodb.dev",
+  "aliases": [],
+  "source": {
+    "repository": "https://github.com/jpwhite3/northwind-SQLite3",
+    "revision": "4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+    "path": "src/create.sql + src/update.sql",
+    "license": "MIT",
+    "licenseFile": "data-source/LICENSE.md",
+    "notes": "Upstream describes this as the Microsoft Access 2000 Northwind sample converted to SQLite. This repository reproducibly rebuilds the classic seed by executing the pinned create.sql and update.sql in order. The upstream 24.7 MB dist/northwind.db is excluded because it incorporates random rows added by populate.py (16,282 orders and 609,283 order details); the chosen classic seed contains 830 orders and 2,155 order details. Empty CustomerDemographics and CustomerCustomerDemo tables and all 17 upstream views are retained. Upstream SQLite foreign-key declarations are introspected; these are not a claim that SQLite enforces them for every connection.",
+    "recipe": [
+      {
+        "path": "data-source/create.sql.gz",
+        "sha256": "33ea0c0c604fd327b3153d6fd4fa96fe4aeea2084521adf678050a872b7ccad4",
+        "sourceSha256": "5854b536dea3fe8c586223bf7b47a793727dd44c34fc32537a68a97fec8e2f4b"
+      },
+      {
+        "path": "data-source/update.sql.gz",
+        "sha256": "73bf43adde56ed3fbe6afcee6c45ae0b60f9806868d910c4b2ee72e415c01bd6",
+        "sourceSha256": "59df0f3c88b1878946b712cc6e8a7f37c971c802ff2ed611c59feb72acb39ea6"
+      }
+    ],
+    "databaseSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20"
+  },
+  "dataFile": "data-source/source.sqlite",
+  "semantics": {
+    "tableConcepts": {
+      "Customers": [
+        "customer"
+      ],
+      "Employees": [
+        "employee"
+      ],
+      "Orders": [
+        "order"
+      ],
+      "Order Details": [
+        "order-line"
+      ]
+    }
+  },
+  "capabilities": {
+    "exports": [
+      "sqlite",
+      "csv",
+      "json",
+      "sql"
+    ],
+    "ovdb": {
+      "available": false,
+      "reason": "The OpenVaultDB Cloud service currently registers Chinook only."
+    },
+    "datatug": {
+      "available": true,
+      "mode": "static-json"
+    }
+  },
+  "queries": [
+    {
+      "title": "Orders by country",
+      "description": "Count orders by their shipping country.",
+      "sql": "SELECT ShipCountry, COUNT(*) AS Orders FROM Orders GROUP BY ShipCountry ORDER BY Orders DESC LIMIT 10;"
+    },
+    {
+      "title": "Products by supplier",
+      "description": "List products and their supplier names.",
+      "sql": "SELECT Products.ProductName, Suppliers.CompanyName FROM Products JOIN Suppliers USING (SupplierID) ORDER BY Suppliers.CompanyName, Products.ProductName LIMIT 20;"
+    }
+  ]
+}

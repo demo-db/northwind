@@ -1,0 +1,4 @@
+*.sqlite binary
+*.sqlite3 binary
+*.gz binary
+artifacts/** -diff

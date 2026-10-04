@@ -1,0 +1,48 @@
+# OpenVaultDB publisher manifest for the Northwind sample database.
+format: ovdb-manifest/draft-1
+id: northwind
+title: Northwind small-business sample database
+description: >-
+  The classic Northwind sample database for customers, orders, products,
+  suppliers, shippers, territories and employees. The pinned SQLite build is
+  read-only; the native schema includes 13 tables and 17 views.
+homepage: https://northwind.demodb.dev/
+url: https://northwind.demodb.dev/ovdb/dbs/northwind
+deployment:
+  url: https://cloud.openvaultdb.com/ovdb/dbs/northwind
+  engine: sqlite
+  discovery: https://northwind.demodb.dev/.well-known/openvaultdb
+  recordset_page: https://cloud.openvaultdb.com/ovdb/dbs/northwind/collections/{name}
+model:
+  address: modelspec://github.com/demo-db/northwind/northwind
+  modelspec: model/northwind.modelspec.json
+  hcl: model/northwind.modelspec.hcl
+meaning:
+  file: model/northwind.meaning.yaml
+  graph:
+    id: northwind
+    address: meaning://github.com/demo-db/northwind
+publisher:
+  name: DemoDB
+  url: https://github.com/demo-db
+  repository: https://github.com/demo-db/northwind
+licences:
+  data: MIT
+  model: MIT
+  meaning: CC0-1.0
+recordsets:
+  - Categories
+  - CustomerCustomerDemo
+  - CustomerDemographics
+  - Customers
+  - EmployeeTerritories
+  - Employees
+  - Order Details
+  - Orders
+  - Products
+  - Regions
+  - Shippers
+  - Suppliers
+  - Territories
+recordset_entities:
+  Order Details: OrderDetails
