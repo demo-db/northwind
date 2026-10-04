@@ -1,0 +1,22 @@
+{
+  "algorithm": "sha256",
+  "note": "Paths are relative to /data/. This file lists every other published data file with its SHA-256 and size in bytes.",
+  "source": {
+    "repository": "https://github.com/demo-db/northwind",
+    "directory": "model"
+  },
+  "files": {
+    "northwind.meaning.yaml": {
+      "sha256": "899a6f78fe59b868322e765d44759fcd418f5989fd2e5f7d6ba4815dacf87f31",
+      "bytes": 2457
+    },
+    "northwind.modelspec.hcl": {
+      "sha256": "729838187142c71c3f5ccfb37f50641df2c9af4d9940b403794eebc8fd8df6b0",
+      "bytes": 5891
+    },
+    "northwind.modelspec.json": {
+      "sha256": "a6d1c33ad1b52a2486bc5f8cdd9ba5216d9e6d59404c4b8f32799fcec9e1151f",
+      "bytes": 7731
+    }
+  }
+}
