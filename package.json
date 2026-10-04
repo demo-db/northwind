@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "python3 scripts/generate.py && node scripts/generate-model.mjs",
     "rebuild:source": "python3 scripts/rebuild-source.py",
-    "validate": "python3 scripts/validate.py",
+    "validate": "python3 scripts/validate.py && node scripts/check-directory-opt-in.mjs",
     "tools:install": "node scripts/install-tools.mjs --dir .tools/bin",
     "lint:model": "node scripts/run-tool.mjs modelspec lint --profile publish model",
     "check:model-twin": "node scripts/run-tool.mjs modelspec export --check model/northwind.modelspec.hcl model/northwind.modelspec.json",
