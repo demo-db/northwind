@@ -13,11 +13,13 @@ test('both semantic tools have immutable release and per-platform archive pins',
   }
 });
 
-test('the publisher README opts into the OVDB Directory with an explicit manifest path', () => {
-  assert.equal(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb.yaml]\n---\n'), null);
+test('the publisher README opts into the OVDB Directory with both explicit manifest paths', () => {
+  assert.equal(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb.yaml, ./ovdb-database.json]\n---\n'), null);
   assert.match(directoryOptInProblem('# no frontmatter\n'), /must start with YAML frontmatter/);
-  assert.match(directoryOptInProblem('---\novdb: 2\npublish: [./ovdb.yaml]\n---\n'), /ovdb must be 1/);
-  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./*.yaml]\n---\n'), /explicit path list/);
+  assert.match(directoryOptInProblem('---\novdb: 2\npublish: [./ovdb.yaml, ./ovdb-database.json]\n---\n'), /ovdb must be 1/);
+  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./*.yaml, ./ovdb-database.json]\n---\n'), /explicit path list/);
   assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb.yaml\n---\n'), /frontmatter is not valid YAML/);
-  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./other.yaml]\n---\n'), /must list exactly \[\.\/ovdb.yaml\]/);
+  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb.yaml]\n---\n'), /must list exactly/);
+  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb-database.json, ./ovdb.yaml]\n---\n'), /must list exactly/);
+  assert.match(directoryOptInProblem('---\novdb: 1\npublish: [./ovdb.yaml, 1]\n---\n'), /explicit path list/);
 });

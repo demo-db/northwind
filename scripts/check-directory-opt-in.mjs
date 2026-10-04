@@ -15,22 +15,30 @@ export function directoryOptInProblem(markdown) {
   }
   if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) return 'frontmatter must be a YAML mapping';
   if (metadata.ovdb !== 1) return 'ovdb must be 1';
-  if (!Array.isArray(metadata.publish) || metadata.publish.some((entry) => typeof entry === 'string' && /[*?\[\]]/.test(entry))) {
+  if (!Array.isArray(metadata.publish) || metadata.publish.some((entry) => typeof entry !== 'string' || /[*?\[\]]/.test(entry))) {
     return 'publish entries must be an explicit path list, not a glob';
   }
-  if (metadata.publish.length !== 1 || metadata.publish[0] !== './ovdb.yaml') return 'publish must list exactly [./ovdb.yaml]';
+  if (metadata.publish.length !== 2 || metadata.publish[0] !== './ovdb.yaml' || metadata.publish[1] !== './ovdb-database.json') {
+    return 'publish must list exactly [./ovdb.yaml, ./ovdb-database.json]';
+  }
   return null;
 }
 
 const invoked = process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invoked) {
   const root = dirname(dirname(fileURLToPath(import.meta.url)));
-  const manifest = resolve(root, 'ovdb.yaml');
+  const manifests = ['ovdb.yaml', 'ovdb-database.json'].map((name) => resolve(root, name));
   let problem;
-  try {
-    if (!lstatSync(manifest).isFile()) problem = 'ovdb.yaml must be a regular file';
-  } catch {
-    problem = 'ovdb.yaml is missing';
+  for (const manifest of manifests) {
+    try {
+      if (!lstatSync(manifest).isFile()) {
+        problem = `${manifest.split('/').at(-1)} must be a regular file`;
+        break;
+      }
+    } catch {
+      problem = `${manifest.split('/').at(-1)} is missing`;
+      break;
+    }
   }
   if (!problem) {
     try {
@@ -43,6 +51,6 @@ if (invoked) {
     console.error(`OVDB.md ${problem}`);
     process.exitCode = 1;
   } else {
-    console.log('OVDB.md opts into the Directory and explicitly publishes ./ovdb.yaml');
+    console.log('OVDB.md opts into the Directory and explicitly publishes ./ovdb.yaml and ./ovdb-database.json');
   }
 }
