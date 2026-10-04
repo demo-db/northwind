@@ -7,8 +7,8 @@
   },
   "files": {
     "northwind.meaning.yaml": {
-      "sha256": "899a6f78fe59b868322e765d44759fcd418f5989fd2e5f7d6ba4815dacf87f31",
-      "bytes": 2457
+      "sha256": "520ae0a77d23698d0ae20aa46f6f41f903e542eef49125c00f2a6efd7c109f7e",
+      "bytes": 2493
     },
     "northwind.modelspec.hcl": {
       "sha256": "729838187142c71c3f5ccfb37f50641df2c9af4d9940b403794eebc8fd8df6b0",

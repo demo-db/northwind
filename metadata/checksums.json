@@ -114,20 +114,20 @@
       "bytes": 602112
     },
     "manifest.json": {
-      "sha256": "15265ba528a7e48d16cb2ed26a3511e004b615c7b05404241dbdd40562c24d39",
-      "bytes": 3134
+      "sha256": "ae75e02285aba697e969e887c3bd6c6fddf4b441fdd535564230bf1f0619c742",
+      "bytes": 3166
     },
     "metadata/contract.json": {
-      "sha256": "00db83710a31689f5d17f6157a4d372c7bc1dae0a32d99519a52f84fadf4025b",
-      "bytes": 419404
+      "sha256": "14985669d869c4081e6c595e09ebd8215aca18bb834e403ed3370052746a6447",
+      "bytes": 419438
     },
     "metadata/schema.json": {
       "sha256": "0aefd13a0193f8aec910a8237fd4c0ccc0f78bed56c8b1df42ad1c995618c561",
       "bytes": 403084
     },
     "model/northwind.meaning.yaml": {
-      "sha256": "899a6f78fe59b868322e765d44759fcd418f5989fd2e5f7d6ba4815dacf87f31",
-      "bytes": 2457
+      "sha256": "520ae0a77d23698d0ae20aa46f6f41f903e542eef49125c00f2a6efd7c109f7e",
+      "bytes": 2493
     },
     "model/northwind.modelspec.hcl": {
       "sha256": "729838187142c71c3f5ccfb37f50641df2c9af4d9940b403794eebc8fd8df6b0",

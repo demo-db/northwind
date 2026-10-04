@@ -95,7 +95,7 @@ for name, entity in entities.items():
     hcl.append('}')
 (ROOT / 'model/northwind.modelspec.hcl').write_text('\n'.join(hcl) + '\n')
 core = 'meaning://github.com/meaninggraph/core/'
-pin = 'cb97dbcd9e951b00e7d46cb2e0c4e120c24c8db7'
+pin = '982916d73f0a35ff2558b0062f58aa3ac4f24d97'
 meaning = {
     'format': 'meaning/draft-1',
     'id': 'northwind',
@@ -106,8 +106,8 @@ meaning = {
     'concepts': [
         {'id': 'customer', 'kind': 'entity', 'description': 'A business that places Northwind orders.', 'labels': {'en': 'customer'}, 'extends': f'{core}customer?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.Customers', 'role': 'entity'}]},
         {'id': 'employee', 'kind': 'entity', 'description': 'An employee who manages or processes orders.', 'labels': {'en': 'employee'}, 'extends': f'{core}employee?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.Employees', 'role': 'entity'}]},
-        {'id': 'order', 'kind': 'entity', 'description': "A customer's purchase order recorded by Northwind.", 'labels': {'en': 'sales order'}, 'extends': f'{core}invoice?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.Orders', 'role': 'entity'}]},
-        {'id': 'order-line', 'kind': 'entity', 'description': 'A product and quantity included on an order.', 'labels': {'en': 'sales order line'}, 'extends': f'{core}invoice-line?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.OrderDetails', 'role': 'entity'}]},
+        {'id': 'order', 'kind': 'entity', 'description': "A customer's order requesting Northwind to supply products.", 'labels': {'en': 'sales order'}, 'extends': f'{core}order?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.Orders', 'role': 'entity'}]},
+        {'id': 'order-line', 'kind': 'entity', 'of': 'order', 'description': 'A product and quantity requested on a Northwind order.', 'labels': {'en': 'sales order line'}, 'extends': f'{core}order-line?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.OrderDetails', 'role': 'entity'}]},
         {'id': 'shipping-country', 'kind': 'attribute', 'description': 'The country to which the order is shipped.', 'labels': {'en': 'shipping country'}, 'values-of': f'{core}country?ref={pin}', 'bindings': [{'model': 'modelspec:///northwind.Orders', 'property': 'ShipCountry', 'role': 'value'}]}
     ]
 }
