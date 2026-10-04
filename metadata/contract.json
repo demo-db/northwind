@@ -54,8 +54,12 @@
         "sql"
       ],
       "ovdb": {
-        "available": false,
-        "reason": "The OpenVaultDB Cloud service currently registers Chinook only."
+        "available": true,
+        "canonicalUrl": "https://northwind.demodb.dev/ovdb/dbs/northwind",
+        "connection": "https://cloud.openvaultdb.com/v1/databases/northwind",
+        "query": true,
+        "readOnly": true,
+        "deploymentVerified": false
       },
       "datatug": {
         "available": true,
