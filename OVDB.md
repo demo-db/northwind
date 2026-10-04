@@ -1,3 +1,8 @@
+---
+ovdb: 1
+publish: [./ovdb.yaml]
+---
+
 # OpenVaultDB publisher contract
 
 [`ovdb.yaml`](ovdb.yaml) publishes Northwind as a read-only SQLite database under its Northwind database identity. Its canonical URL is `https://northwind.demodb.dev/ovdb/dbs/northwind`; discovery is served from `https://northwind.demodb.dev/.well-known/openvaultdb` and points to the OpenVaultDB service deployment.
