@@ -38,6 +38,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -46,6 +47,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -54,6 +56,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -62,7 +65,14 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CategoryID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -131,6 +141,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -139,19 +150,34 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 2,
+          "primaryKeyPosition": 2,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerID",
+          "position": 1
+        },
+        {
+          "column": "CustomerTypeID",
+          "position": 2
         }
       ],
       "foreignKeys": [
         {
           "column": "CustomerTypeID",
           "table": "CustomerDemographics",
-          "referencedColumn": "CustomerTypeID"
+          "referencedColumn": "CustomerTypeID",
+          "constraint": 0,
+          "position": 0
         },
         {
           "column": "CustomerID",
           "table": "Customers",
-          "referencedColumn": "CustomerID"
+          "referencedColumn": "CustomerID",
+          "constraint": 1,
+          "position": 0
         }
       ],
       "rowCount": 0,
@@ -170,6 +196,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -178,7 +205,14 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerTypeID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -198,6 +232,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -206,6 +241,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -214,6 +250,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -222,6 +259,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -230,6 +268,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -238,6 +277,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -246,6 +286,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -254,6 +295,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -262,6 +304,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -270,6 +313,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -278,7 +322,14 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -455,6 +506,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -463,19 +515,34 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 2,
+          "primaryKeyPosition": 2,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "EmployeeID",
+          "position": 1
+        },
+        {
+          "column": "TerritoryID",
+          "position": 2
         }
       ],
       "foreignKeys": [
         {
           "column": "TerritoryID",
           "table": "Territories",
-          "referencedColumn": "TerritoryID"
+          "referencedColumn": "TerritoryID",
+          "constraint": 0,
+          "position": 0
         },
         {
           "column": "EmployeeID",
           "table": "Employees",
-          "referencedColumn": "EmployeeID"
+          "referencedColumn": "EmployeeID",
+          "constraint": 1,
+          "position": 0
         }
       ],
       "rowCount": 49,
@@ -543,6 +610,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -551,6 +619,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -559,6 +628,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -567,6 +637,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -575,6 +646,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -583,6 +655,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -591,6 +664,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -599,6 +673,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -607,6 +682,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -615,6 +691,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -623,6 +700,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -631,6 +709,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -639,6 +718,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -647,6 +727,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -655,6 +736,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -663,6 +745,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -671,6 +754,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -679,14 +763,23 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "EmployeeID",
+          "position": 1
         }
       ],
       "foreignKeys": [
         {
           "column": "ReportsTo",
           "table": "Employees",
-          "referencedColumn": "EmployeeID"
+          "referencedColumn": "EmployeeID",
+          "constraint": 0,
+          "position": 0
         }
       ],
       "rowCount": 9,
@@ -886,6 +979,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -894,6 +988,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 2,
+          "primaryKeyPosition": 2,
           "defaultValue": null
         },
         {
@@ -902,6 +997,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -910,6 +1006,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "1"
         },
         {
@@ -918,19 +1015,34 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "OrderID",
+          "position": 1
+        },
+        {
+          "column": "ProductID",
+          "position": 2
         }
       ],
       "foreignKeys": [
         {
           "column": "ProductID",
           "table": "Products",
-          "referencedColumn": "ProductID"
+          "referencedColumn": "ProductID",
+          "constraint": 0,
+          "position": 0
         },
         {
           "column": "OrderID",
           "table": "Orders",
-          "referencedColumn": "OrderID"
+          "referencedColumn": "OrderID",
+          "constraint": 1,
+          "position": 0
         }
       ],
       "rowCount": 2155,
@@ -1034,6 +1146,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1042,6 +1155,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1050,6 +1164,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1058,6 +1173,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1066,6 +1182,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1074,6 +1191,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1082,6 +1200,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1090,6 +1209,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -1098,6 +1218,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1106,6 +1227,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1114,6 +1236,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1122,6 +1245,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1130,6 +1254,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1138,24 +1263,37 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "OrderID",
+          "position": 1
         }
       ],
       "foreignKeys": [
         {
           "column": "ShipVia",
           "table": "Shippers",
-          "referencedColumn": "ShipperID"
+          "referencedColumn": "ShipperID",
+          "constraint": 0,
+          "position": 0
         },
         {
           "column": "CustomerID",
           "table": "Customers",
-          "referencedColumn": "CustomerID"
+          "referencedColumn": "CustomerID",
+          "constraint": 1,
+          "position": 0
         },
         {
           "column": "EmployeeID",
           "table": "Employees",
-          "referencedColumn": "EmployeeID"
+          "referencedColumn": "EmployeeID",
+          "constraint": 2,
+          "position": 0
         }
       ],
       "rowCount": 830,
@@ -1367,6 +1505,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1375,6 +1514,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1383,6 +1523,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1391,6 +1532,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1399,6 +1541,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1407,6 +1550,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -1415,6 +1559,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -1423,6 +1568,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -1431,6 +1577,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "0"
         },
         {
@@ -1439,19 +1586,30 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": "'0'"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "ProductID",
+          "position": 1
         }
       ],
       "foreignKeys": [
         {
           "column": "SupplierID",
           "table": "Suppliers",
-          "referencedColumn": "SupplierID"
+          "referencedColumn": "SupplierID",
+          "constraint": 0,
+          "position": 0
         },
         {
           "column": "CategoryID",
           "table": "Categories",
-          "referencedColumn": "CategoryID"
+          "referencedColumn": "CategoryID",
+          "constraint": 1,
+          "position": 0
         }
       ],
       "rowCount": 77,
@@ -1615,6 +1773,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1623,7 +1782,14 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "RegionID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -1660,6 +1826,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1668,6 +1835,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1676,7 +1844,14 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "ShipperID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -1712,6 +1887,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1720,6 +1896,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1728,6 +1905,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1736,6 +1914,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1744,6 +1923,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1752,6 +1932,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1760,6 +1941,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1768,6 +1950,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1776,6 +1959,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1784,6 +1968,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1792,6 +1977,7 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -1800,7 +1986,14 @@
           "nullable": true,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "SupplierID",
+          "position": 1
         }
       ],
       "foreignKeys": [],
@@ -1989,6 +2182,7 @@
           "nullable": false,
           "primaryKey": true,
           "primaryKeyOrder": 1,
+          "primaryKeyPosition": 1,
           "defaultValue": null
         },
         {
@@ -1997,6 +2191,7 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2005,14 +2200,23 @@
           "nullable": false,
           "primaryKey": false,
           "primaryKeyOrder": 0,
+          "primaryKeyPosition": null,
           "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "TerritoryID",
+          "position": 1
         }
       ],
       "foreignKeys": [
         {
           "column": "RegionID",
           "table": "Regions",
-          "referencedColumn": "RegionID"
+          "referencedColumn": "RegionID",
+          "constraint": 0,
+          "position": 0
         }
       ],
       "rowCount": 53,
@@ -2091,6 +2295,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2098,6 +2303,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2105,6 +2311,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2112,6 +2319,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2119,6 +2327,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2126,6 +2335,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2133,6 +2343,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2140,6 +2351,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2147,6 +2359,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2154,6 +2367,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2161,9 +2375,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 69,
       "viewSql": "CREATE VIEW [Alphabetical list of products] \r\nAS\r\nSELECT Products.*, \r\n       Categories.CategoryName\r\nFROM Categories \r\n   INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE (((Products.Discontinued)=0))",
@@ -2337,6 +2553,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2344,9 +2561,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 0,
       "viewSql": "CREATE VIEW [Category Sales for 1997] AS\r\nSELECT     [Product Sales for 1997].CategoryName, \r\n       Sum([Product Sales for 1997].ProductSales) AS CategorySales\r\nFROM [Product Sales for 1997]\r\nGROUP BY [Product Sales for 1997].CategoryName",
@@ -2363,6 +2582,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2370,9 +2590,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 69,
       "viewSql": "CREATE VIEW [Current Product List] \r\nAS\r\nSELECT ProductID,\r\n       ProductName \r\nFROM Products \r\nWHERE Discontinued=0",
@@ -2438,6 +2660,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2445,6 +2668,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2452,6 +2676,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2459,9 +2684,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 122,
       "viewSql": "CREATE VIEW [Customer and Suppliers by City] \r\nAS\r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Customers' AS Relationship \r\nFROM Customers\r\nUNION \r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Suppliers'\r\nFROM Suppliers \r\nORDER BY City, CompanyName",
@@ -2551,6 +2778,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2558,6 +2786,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2565,6 +2794,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2572,6 +2802,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2579,6 +2810,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2586,6 +2818,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2593,6 +2826,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2600,6 +2834,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2607,6 +2842,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2614,6 +2850,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2621,6 +2858,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2628,6 +2866,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2635,6 +2874,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2642,6 +2882,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2649,6 +2890,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2656,6 +2898,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2663,6 +2906,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2670,6 +2914,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2677,6 +2922,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2684,6 +2930,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2691,6 +2938,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2698,6 +2946,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2705,6 +2954,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2712,6 +2962,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2719,6 +2970,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -2726,9 +2978,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 2155,
       "viewSql": "CREATE VIEW [Invoices] \r\nAS\r\nSELECT Orders.ShipName,\r\n       Orders.ShipAddress,\r\n       Orders.ShipCity,\r\n       Orders.ShipRegion, \r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Orders.CustomerID,\r\n       Customers.CompanyName AS CustomerName, \r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode,\r\n       Customers.Country,\r\n       (Employees.FirstName + ' ' + Employees.LastName) AS Salesperson, \r\n       Orders.OrderID,\r\n       Orders.OrderDate,\r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Shippers.CompanyName As ShipperName,\r\n       [Order Details].ProductID,\r\n       Products.ProductName, \r\n       [Order Details].UnitPrice,\r\n       [Order Details].Quantity,\r\n       [Order Details].Discount, \r\n       ((([Order Details].UnitPrice*Quantity*(1-Discount))/100)*100) AS ExtendedPrice,\r\n       Orders.Freight \r\nFROM Customers \r\n  JOIN Orders ON Customers.CustomerID = Orders.CustomerID  \r\n    JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID    \r\n     JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID     \r\n      JOIN Products ON Products.ProductID = [Order Details].ProductID      \r\n       JOIN Shippers ON Shippers.ShipperID = Orders.ShipVia",
@@ -3082,6 +3336,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3089,6 +3344,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3096,6 +3352,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3103,6 +3360,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3110,6 +3368,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3117,6 +3376,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3124,9 +3384,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 2155,
       "viewSql": "CREATE VIEW [Order Details Extended] AS\r\nSELECT [Order Details].OrderID, \r\n       [Order Details].ProductID, \r\n       Products.ProductName, \r\n\t   [Order Details].UnitPrice, \r\n       [Order Details].Quantity, \r\n       [Order Details].Discount, \r\n      ([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100 AS ExtendedPrice\r\nFROM Products \r\n     JOIN [Order Details] ON Products.ProductID = [Order Details].ProductID",
@@ -3252,6 +3514,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3259,9 +3522,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 830,
       "viewSql": "CREATE VIEW [Order Subtotals] AS\r\nSELECT [Order Details].OrderID, \r\nSum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS Subtotal\r\nFROM [Order Details]\r\nGROUP BY [Order Details].OrderID",
@@ -3327,6 +3592,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3334,6 +3600,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3341,6 +3608,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3348,6 +3616,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3355,6 +3624,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3362,6 +3632,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3369,6 +3640,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3376,6 +3648,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3383,6 +3656,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3390,6 +3664,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3397,6 +3672,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3404,6 +3680,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3411,6 +3688,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3418,6 +3696,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3425,6 +3704,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3432,6 +3712,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3439,6 +3720,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3446,6 +3728,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3453,6 +3736,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3460,9 +3744,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 830,
       "viewSql": "CREATE VIEW [Orders Qry] AS\r\nSELECT Orders.OrderID,\r\n       Orders.CustomerID,\r\n       Orders.EmployeeID, \r\n       Orders.OrderDate, \r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Orders.ShipVia, \r\n       Orders.Freight,\r\n       Orders.ShipName, \r\n       Orders.ShipAddress, \r\n       Orders.ShipCity,\r\n       Orders.ShipRegion,\r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Customers.CompanyName,\r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode, \r\n       Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID",
@@ -3744,6 +4030,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3751,6 +4038,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3758,9 +4046,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 0,
       "viewSql": "CREATE VIEW [Product Sales for 1997] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Sum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS ProductSales\r\nFROM Categories\r\n JOIN    Products On Categories.CategoryID = Products.CategoryID\r\n    JOIN  [Order Details] on Products.ProductID = [Order Details].ProductID     \r\n     JOIN  [Orders] on Orders.OrderID = [Order Details].OrderID \r\nWHERE Orders.ShippedDate Between DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryName, Products.ProductName",
@@ -3777,6 +4067,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3784,6 +4075,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3791,6 +4083,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3798,6 +4091,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3805,6 +4099,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3812,6 +4107,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3819,6 +4115,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3826,6 +4123,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3833,6 +4131,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3840,6 +4139,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3847,6 +4147,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3854,6 +4155,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3861,6 +4163,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -3868,9 +4171,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 77,
       "viewSql": "CREATE VIEW [ProductDetails_V] as\nselect \np.*, \nc.CategoryName, c.Description as [CategoryDescription],\ns.CompanyName as [SupplierName], s.Region as [SupplierRegion]\nfrom [Products] p\njoin [Categories] c on p.CategoryId = c.CategoryId\njoin [Suppliers] s on s.SupplierId = p.SupplierId",
@@ -4080,6 +4385,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4087,9 +4393,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 25,
       "viewSql": "CREATE VIEW [Products Above Average Price] AS\r\nSELECT Products.ProductName, \r\n       Products.UnitPrice\r\nFROM Products\r\nWHERE Products.UnitPrice>(SELECT AVG(UnitPrice) From Products)",
@@ -4155,6 +4463,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4162,6 +4471,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4169,6 +4479,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4176,6 +4487,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4183,9 +4495,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 69,
       "viewSql": "CREATE VIEW [Products by Category] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Products.QuantityPerUnit, \r\n       Products.UnitsInStock, \r\n       Products.Discontinued\r\nFROM Categories \r\n     INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE Products.Discontinued <> 1",
@@ -4287,6 +4601,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4294,6 +4609,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4301,6 +4617,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4308,9 +4625,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 0,
       "viewSql": "CREATE VIEW [Quarterly Orders] AS\r\nSELECT DISTINCT Customers.CustomerID, \r\n                Customers.CompanyName, \r\n                Customers.City, \r\n                Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')",
@@ -4327,6 +4646,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4334,6 +4654,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4341,6 +4662,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4348,9 +4670,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 0,
       "viewSql": "CREATE VIEW [Sales Totals by Amount] AS\r\nSELECT [Order Subtotals].Subtotal AS SaleAmount, \r\n                  Orders.OrderID, \r\n               Customers.CompanyName, \r\n                  Orders.ShippedDate\r\nFROM Customers \r\n JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\n    JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID \r\nWHERE ([Order Subtotals].Subtotal >2500) \r\nAND (Orders.ShippedDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31'))",
@@ -4367,6 +4691,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4374,6 +4699,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4381,6 +4707,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4388,9 +4715,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 0,
       "viewSql": "CREATE VIEW [Sales by Category] AS\r\nSELECT Categories.CategoryID, \r\n       Categories.CategoryName, \r\n         Products.ProductName, \r\n\tSum([Order Details Extended].ExtendedPrice) AS ProductSales\r\nFROM  Categories \r\n    JOIN Products \r\n      ON Categories.CategoryID = Products.CategoryID\r\n       JOIN [Order Details Extended] \r\n         ON Products.ProductID = [Order Details Extended].ProductID                \r\n           JOIN Orders \r\n             ON Orders.OrderID = [Order Details Extended].OrderID \r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryID, Categories.CategoryName, Products.ProductName",
@@ -4407,6 +4736,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4414,6 +4744,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4421,9 +4752,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 809,
       "viewSql": "CREATE VIEW [Summary of Sales by Quarter] AS\r\nSELECT Orders.ShippedDate, \r\n       Orders.OrderID, \r\n       [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL",
@@ -4501,6 +4834,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4508,6 +4842,7 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         },
         {
@@ -4515,9 +4850,11 @@
           "type": "TEXT",
           "nullable": true,
           "primaryKey": false,
+          "primaryKeyPosition": null,
           "defaultValue": null
         }
       ],
+      "primaryKey": [],
       "foreignKeys": [],
       "rowCount": 809,
       "viewSql": "CREATE VIEW [Summary of Sales by Year] AS\r\nSELECT      Orders.ShippedDate, \r\n            Orders.OrderID, \r\n [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL",

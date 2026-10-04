@@ -10,7 +10,7 @@ The fixture preserves 13 tables, 17 views, two empty demonstration tables, the n
 
 Northwind `Orders` and `Order Details` are modeled as order concepts, distinct from invoices. The order-line concept also declares the shared `commercial-line-item` ancestor in `manifest.json` for cross-database similarity; the native SQLite table remains named `Order Details`.
 
-Run with Python 3.10+ and the standard library:
+Run with Python 3.10+, Node.js 22+, pnpm, and the standard Python library:
 
 ```sh
 python3 scripts/generate.py
@@ -23,6 +23,6 @@ Generation recreates the SQLite file, schema, complete SQLite/SQL downloads, tab
 
 ## Contract and integrations
 
-`metadata/contract.json` is the website input. Registry pins are maintained in `demo-db/websites`; local builds may use `DEMODB_CONTRACTS_DIR` to point to provider checkouts. `ovdb.yaml` is the explicit publisher manifest for the OpenVaultDB Directory. It describes the configured read-only Northwind deployment; `deploymentVerified` remains false until the hosted database has passed its live checks. Its `recordset_entities` map preserves native recordset `Order Details` while pointing to the valid ModelSpec entity `OrderDetails`; all other recordsets use their native names. DataTug can read the generated per-table JSON exports. The database and model are MIT; the meaning file is CC0-1.0 and reuses the pinned `meaninggraph/core` concepts.
+`metadata/contract.json` is the website schema and export input. Registry pins are maintained in `demo-db/websites`; local builds may use `DEMODB_CONTRACTS_DIR` to point to provider checkouts. The public OVDB database identity is `https://demodb.dev/northwind/`, with provider-local id `northwind`, shared server `https://demodb.dev/ovdb`, and API `https://demodb.dev/ovdb/v1/databases/northwind`. `ovdb-database.json` is generated from the validated provider manifest and SQLite schema, uses the shared draft-1 schema pinned under `schemas/`, and lists served tables without sample rows. The website serves those same bytes at both `/northwind/ovdb-database.json` and `/ovdb/db/northwind/ovdb-database.json`. `ovdb.yaml` remains the backward-compatible `ovdb-manifest/draft-1` publisher input with its local id and format unchanged. It describes the read-only Northwind deployment at `https://cloud.openvaultdb.com/ovdb/dbs/northwind`, discovered at `https://demodb.dev/.well-known/openvaultdb`; `deploymentVerified` remains false until live checks pass. Its `recordset_entities` map preserves native recordset `Order Details` while pointing to the valid ModelSpec entity `OrderDetails`; all other recordsets use their native names. DataTug can read the generated per-table JSON exports. The database and model are MIT; the meaning file is CC0-1.0 and reuses the pinned `meaninggraph/core` concepts.
 
 To add another sample database, implement this provider contract, regenerate and verify exports, then pin its commit and generated contract hash in the website registry. Shared Astro pages and resolver do not need a database-specific branch.

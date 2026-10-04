@@ -23,8 +23,9 @@ for obj in objects:
     name, kind = obj['name'], obj['type']
     cols = db.execute(f'PRAGMA table_info({q(name)})').fetchall() if kind == 'table' else db.execute(f'SELECT * FROM {q(name)} LIMIT 0').description
     if kind == 'table':
-        columns = [{'name': c['name'], 'type': c['type'] or 'TEXT', 'nullable': not bool(c['notnull']) and not bool(c['pk']), 'primaryKey': bool(c['pk']), 'primaryKeyOrder': c['pk'], 'defaultValue': c['dflt_value']} for c in cols]
-        fks = [{'column': f['from'], 'table': f['table'], 'referencedColumn': f['to']} for f in db.execute(f'PRAGMA foreign_key_list({q(name)})')]
+        columns = [{'name': c['name'], 'type': c['type'] or 'TEXT', 'nullable': not bool(c['notnull']) and not bool(c['pk']), 'primaryKey': bool(c['pk']), 'primaryKeyOrder': c['pk'], 'primaryKeyPosition': c['pk'] or None, 'defaultValue': c['dflt_value']} for c in cols]
+        primary_key = [{'column': c['name'], 'position': c['pk']} for c in cols if c['pk']]
+        fks = [{'column': f['from'], 'table': f['table'], 'referencedColumn': f['to'], 'constraint': f['id'], 'position': f['seq']} for f in db.execute(f'PRAGMA foreign_key_list({q(name)})')]
         count = db.execute(f'SELECT count(*) FROM {q(name)}').fetchone()[0]
         sample = db.execute(f'SELECT * FROM {q(name)} LIMIT 12').fetchall()
         csv_path = data_dir / f'{name}.csv'
@@ -39,11 +40,12 @@ for obj in objects:
         json_path.write_text(json.dumps(json_rows, ensure_ascii=False, indent=2) + '\n')
         exports.extend([{'table': name, 'format': 'csv', 'path': f'artifacts/data/{name}.csv', 'bytes': csv_path.stat().st_size}, {'table': name, 'format': 'json', 'path': f'artifacts/data/{name}.json', 'bytes': json_path.stat().st_size}])
     else:
-        columns = [{'name': c[0], 'type': c[1] or 'TEXT', 'nullable': True, 'primaryKey': False, 'defaultValue': None} for c in cols]
+        columns = [{'name': c[0], 'type': c[1] or 'TEXT', 'nullable': True, 'primaryKey': False, 'primaryKeyPosition': None, 'defaultValue': None} for c in cols]
+        primary_key = []
         fks, count, sample = [], db.execute(f'SELECT count(*) FROM {q(name)}').fetchone()[0], db.execute(f'SELECT * FROM {q(name)} LIMIT 12').fetchall()
     def safe(row):
         return {key: (base64.b64encode(value).decode() if isinstance(value, bytes) else value) for key, value in dict(row).items()}
-    tables.append({'name': name, 'modelEntity': 'OrderDetails' if name == 'Order Details' else name, 'kind': kind, 'description': '', 'columns': columns, 'foreignKeys': fks, 'rowCount': count, 'viewSql': obj['sql'] if kind == 'view' else None, 'rows': [safe(r) for r in sample]})
+    tables.append({'name': name, 'modelEntity': 'OrderDetails' if name == 'Order Details' else name, 'kind': kind, 'description': '', 'columns': columns, 'primaryKey': primary_key, 'foreignKeys': fks, 'rowCount': count, 'viewSql': obj['sql'] if kind == 'view' else None, 'rows': [safe(r) for r in sample]})
 
 sqlite_copy = out / f'{manifest["id"]}.sqlite'
 sqlite_copy.write_bytes(db_path.read_bytes())
@@ -113,7 +115,7 @@ meaning = {
 }
 (ROOT / 'model/northwind.meaning.yaml').write_text(json.dumps(meaning, indent=2, ensure_ascii=False) + '\n')
 checksums = {}
-for path in sorted(p for p in [ROOT / 'manifest.json', ROOT / 'metadata/contract.json', ROOT / 'metadata/schema.json', *out.rglob('*'), *(ROOT / 'model').rglob('*')] if p.is_file()):
+for path in sorted(p for p in [ROOT / 'manifest.json', ROOT / 'metadata/contract.json', ROOT / 'metadata/schema.json', *(ROOT / 'schemas').rglob('*'), *out.rglob('*'), *(ROOT / 'model').rglob('*')] if p.is_file()):
     if path.name == 'checksums.json': continue
     checksums[path.relative_to(ROOT).as_posix()] = {'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size}
 (ROOT / 'metadata/checksums.json').write_text(json.dumps({'contractVersion': 1, 'files': checksums}, indent=2) + '\n')

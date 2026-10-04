@@ -24,8 +24,8 @@ for name, meta in tables.items():
     assert count == meta['rowCount'], f'{name}: row count differs ({count} != {meta["rowCount"]})'
     if meta['kind'] != 'table': continue
     pk = [(c['name'], c['pk']) for c in columns if c['pk']]
-    assert pk == [(c['name'], c['primaryKeyOrder']) for c in meta['columns'] if c['primaryKey']], f'{name}: primary key order differs'
-    fks = [{'column': r['from'], 'table': r['table'], 'referencedColumn': r['to']} for r in db.execute(f'PRAGMA foreign_key_list({quoted})')]
+    assert pk == [(c['name'], c['primaryKeyPosition']) for c in meta['columns'] if c['primaryKey']], f'{name}: primary key order differs'
+    fks = [{'column': r['from'], 'table': r['table'], 'referencedColumn': r['to'], 'constraint': r['id'], 'position': r['seq']} for r in db.execute(f'PRAGMA foreign_key_list({quoted})')]
     assert fks == meta['foreignKeys'], f'{name}: foreign keys differ'
     csv_file = ROOT / 'artifacts/data' / f'{name}.csv'
     with csv_file.open(newline='', encoding='utf-8') as f:
@@ -56,6 +56,25 @@ for rel, data in json.loads((ROOT / 'metadata/checksums.json').read_text())['fil
     path = ROOT / rel
     assert path.stat().st_size == data['bytes'], f'{rel}: byte size changed'
     assert hashlib.sha256(path.read_bytes()).hexdigest() == data['sha256'], f'{rel}: checksum changed'
+public = json.loads((ROOT / 'ovdb-database.json').read_text())
+assert public['format'] == 'ovdb-database/draft-1'
+assert public['id'] == 'https://demodb.dev/northwind/'
+assert public['id'] == manifest['capabilities']['ovdb']['canonicalUrl']
+assert public['localId'] == 'northwind' and public['serverId'] == 'https://demodb.dev/ovdb'
+assert public['serverDbBaseUrl'] == 'https://demodb.dev/ovdb/db/northwind/'
+assert public['apiUrl'] == 'https://demodb.dev/ovdb/v1/databases/northwind'
+assert public['capabilities'] == {'read': True, 'query': True, 'write': False}
+assert {r['name'] for r in public['recordsets']} == {name for kind, name in objects if kind == 'table'}
+assert all(r['kind'] == 'table' and 'rows' not in r and 'viewSql' not in r for r in public['recordsets'])
+detail_public = next(r for r in public['recordsets'] if r['name'] == 'Order Details')
+assert detail_public['modelEntity'] == 'OrderDetails'
+for recordset in public['recordsets']:
+    meta = tables[recordset['name']]
+    assert recordset['columns'] == [{key: column[key] for key in ('name', 'type', 'nullable', 'primaryKey', 'primaryKeyPosition', 'defaultValue')} for column in meta['columns']]
+    assert recordset['primaryKey'] == meta['primaryKey']
+    assert recordset['foreignKeys'] == meta['foreignKeys']
+contract_checksums = json.loads((ROOT / 'metadata/checksums.json').read_text())['files']
+assert contract_checksums['schemas/ovdb-database-draft-1.schema.json']['sha256'] == '2424ef00acd462ab5a8abc546fe2d1fffbbb5397e312332aedc77b3e73109488'
 dump = ROOT / 'artifacts/northwind.sql'
 probe = sqlite3.connect(':memory:')
 probe.executescript(dump.read_text())

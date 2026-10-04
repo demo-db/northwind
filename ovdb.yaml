@@ -7,11 +7,11 @@ description: >-
   suppliers, shippers, territories and employees. The pinned SQLite build is
   read-only; the native schema includes 13 tables and 17 views.
 homepage: https://northwind.demodb.dev/
-url: https://northwind.demodb.dev/ovdb/dbs/northwind
+url: https://demodb.dev/northwind/
 deployment:
   url: https://cloud.openvaultdb.com/ovdb/dbs/northwind
   engine: sqlite
-  discovery: https://northwind.demodb.dev/.well-known/openvaultdb
+  discovery: https://demodb.dev/.well-known/openvaultdb
   recordset_page: https://cloud.openvaultdb.com/ovdb/dbs/northwind/collections/{name}
 model:
   address: modelspec://github.com/demo-db/northwind/northwind

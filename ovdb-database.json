@@ -1,0 +1,1072 @@
+{
+  "format": "ovdb-database/draft-1",
+  "id": "https://demodb.dev/northwind/",
+  "localId": "northwind",
+  "serverId": "https://demodb.dev/ovdb",
+  "serverDbBaseUrl": "https://demodb.dev/ovdb/db/northwind/",
+  "title": "Northwind small-business sample database",
+  "description": "The classic Northwind sample database for customers, orders, products, suppliers, shippers, territories and employees. The pinned SQLite build is read-only; the native schema includes 13 tables and 17 views.",
+  "homepage": "https://northwind.demodb.dev/",
+  "apiUrl": "https://demodb.dev/ovdb/v1/databases/northwind",
+  "capabilities": {
+    "read": true,
+    "query": true,
+    "write": false
+  },
+  "deployment": {
+    "engine": "sqlite",
+    "url": "https://cloud.openvaultdb.com/ovdb/dbs/northwind",
+    "discovery": "https://demodb.dev/.well-known/openvaultdb"
+  },
+  "model": {
+    "id": "modelspec://github.com/demo-db/northwind/northwind",
+    "url": "https://northwind.demodb.dev/model/northwind.modelspec.json",
+    "hclUrl": "https://northwind.demodb.dev/model/northwind.modelspec.hcl"
+  },
+  "meaning": {
+    "id": "meaning://github.com/demo-db/northwind",
+    "url": "https://northwind.demodb.dev/model/northwind.meaning.yaml"
+  },
+  "publisher": {
+    "name": "DemoDB",
+    "url": "https://github.com/demo-db",
+    "repository": "https://github.com/demo-db/northwind"
+  },
+  "provenance": {
+    "repository": "https://github.com/jpwhite3/northwind-SQLite3",
+    "revision": "4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+    "path": "src/create.sql + src/update.sql",
+    "sha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+    "license": "MIT",
+    "notes": "Upstream describes this as the Microsoft Access 2000 Northwind sample converted to SQLite. This repository reproducibly rebuilds the classic seed by executing the pinned create.sql and update.sql in order. The upstream 24.7 MB dist/northwind.db is excluded because it incorporates random rows added by populate.py (16,282 orders and 609,283 order details); the chosen classic seed contains 830 orders and 2,155 order details. Empty CustomerDemographics and CustomerCustomerDemo tables and all 17 upstream views are retained. Upstream SQLite foreign-key declarations are introspected; these are not a claim that SQLite enforces them for every connection. The sha256 identifies the generated fixture at data-source/source.sqlite; recipe inputs are listed by the provider manifest."
+  },
+  "licences": {
+    "data": "MIT",
+    "model": "MIT",
+    "meaning": "CC0-1.0"
+  },
+  "recordsets": [
+    {
+      "name": "Categories",
+      "kind": "table",
+      "description": "",
+      "rowCount": 8,
+      "columns": [
+        {
+          "name": "CategoryID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CategoryName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Description",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Picture",
+          "type": "BLOB",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CategoryID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "Categories"
+    },
+    {
+      "name": "CustomerCustomerDemo",
+      "kind": "table",
+      "description": "",
+      "rowCount": 0,
+      "columns": [
+        {
+          "name": "CustomerID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CustomerTypeID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 2,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerID",
+          "position": 1
+        },
+        {
+          "column": "CustomerTypeID",
+          "position": 2
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "CustomerTypeID",
+          "table": "CustomerDemographics",
+          "referencedColumn": "CustomerTypeID",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "CustomerID",
+          "table": "Customers",
+          "referencedColumn": "CustomerID",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "CustomerCustomerDemo"
+    },
+    {
+      "name": "CustomerDemographics",
+      "kind": "table",
+      "description": "",
+      "rowCount": 0,
+      "columns": [
+        {
+          "name": "CustomerTypeID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CustomerDesc",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerTypeID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "CustomerDemographics"
+    },
+    {
+      "name": "Customers",
+      "kind": "table",
+      "description": "",
+      "rowCount": 93,
+      "columns": [
+        {
+          "name": "CustomerID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CompanyName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ContactName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ContactTitle",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Address",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "City",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Region",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "PostalCode",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Country",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Phone",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Fax",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "CustomerID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "Customers"
+    },
+    {
+      "name": "EmployeeTerritories",
+      "kind": "table",
+      "description": "",
+      "rowCount": 49,
+      "columns": [
+        {
+          "name": "EmployeeID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "TerritoryID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 2,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "EmployeeID",
+          "position": 1
+        },
+        {
+          "column": "TerritoryID",
+          "position": 2
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "TerritoryID",
+          "table": "Territories",
+          "referencedColumn": "TerritoryID",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "EmployeeID",
+          "table": "Employees",
+          "referencedColumn": "EmployeeID",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "EmployeeTerritories"
+    },
+    {
+      "name": "Employees",
+      "kind": "table",
+      "description": "",
+      "rowCount": 9,
+      "columns": [
+        {
+          "name": "EmployeeID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "LastName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "FirstName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Title",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "TitleOfCourtesy",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "BirthDate",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "HireDate",
+          "type": "DATE",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Address",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "City",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Region",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "PostalCode",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Country",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "HomePhone",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Extension",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Photo",
+          "type": "BLOB",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Notes",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ReportsTo",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "PhotoPath",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "EmployeeID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "ReportsTo",
+          "table": "Employees",
+          "referencedColumn": "EmployeeID",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "Employees"
+    },
+    {
+      "name": "Order Details",
+      "kind": "table",
+      "description": "",
+      "rowCount": 2155,
+      "columns": [
+        {
+          "name": "OrderID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "ProductID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 2,
+          "defaultValue": null
+        },
+        {
+          "name": "UnitPrice",
+          "type": "NUMERIC",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "Quantity",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "1"
+        },
+        {
+          "name": "Discount",
+          "type": "REAL",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "OrderID",
+          "position": 1
+        },
+        {
+          "column": "ProductID",
+          "position": 2
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "ProductID",
+          "table": "Products",
+          "referencedColumn": "ProductID",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "OrderID",
+          "table": "Orders",
+          "referencedColumn": "OrderID",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "OrderDetails"
+    },
+    {
+      "name": "Orders",
+      "kind": "table",
+      "description": "",
+      "rowCount": 830,
+      "columns": [
+        {
+          "name": "OrderID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CustomerID",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "EmployeeID",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "OrderDate",
+          "type": "DATETIME",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "RequiredDate",
+          "type": "DATETIME",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShippedDate",
+          "type": "DATETIME",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipVia",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Freight",
+          "type": "NUMERIC",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "ShipName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipAddress",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipCity",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipRegion",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipPostalCode",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ShipCountry",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "OrderID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "ShipVia",
+          "table": "Shippers",
+          "referencedColumn": "ShipperID",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "CustomerID",
+          "table": "Customers",
+          "referencedColumn": "CustomerID",
+          "constraint": 1,
+          "position": 0
+        },
+        {
+          "column": "EmployeeID",
+          "table": "Employees",
+          "referencedColumn": "EmployeeID",
+          "constraint": 2,
+          "position": 0
+        }
+      ],
+      "modelEntity": "Orders"
+    },
+    {
+      "name": "Products",
+      "kind": "table",
+      "description": "",
+      "rowCount": 77,
+      "columns": [
+        {
+          "name": "ProductID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "ProductName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "SupplierID",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "CategoryID",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "QuantityPerUnit",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "UnitPrice",
+          "type": "NUMERIC",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "UnitsInStock",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "UnitsOnOrder",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "ReorderLevel",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "0"
+        },
+        {
+          "name": "Discontinued",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": "'0'"
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "ProductID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "SupplierID",
+          "table": "Suppliers",
+          "referencedColumn": "SupplierID",
+          "constraint": 0,
+          "position": 0
+        },
+        {
+          "column": "CategoryID",
+          "table": "Categories",
+          "referencedColumn": "CategoryID",
+          "constraint": 1,
+          "position": 0
+        }
+      ],
+      "modelEntity": "Products"
+    },
+    {
+      "name": "Regions",
+      "kind": "table",
+      "description": "",
+      "rowCount": 4,
+      "columns": [
+        {
+          "name": "RegionID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "RegionDescription",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "RegionID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "Regions"
+    },
+    {
+      "name": "Shippers",
+      "kind": "table",
+      "description": "",
+      "rowCount": 3,
+      "columns": [
+        {
+          "name": "ShipperID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CompanyName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Phone",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "ShipperID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "Shippers"
+    },
+    {
+      "name": "Suppliers",
+      "kind": "table",
+      "description": "",
+      "rowCount": 29,
+      "columns": [
+        {
+          "name": "SupplierID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "CompanyName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ContactName",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "ContactTitle",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Address",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "City",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Region",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "PostalCode",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Country",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Phone",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "Fax",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "HomePage",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "SupplierID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [],
+      "modelEntity": "Suppliers"
+    },
+    {
+      "name": "Territories",
+      "kind": "table",
+      "description": "",
+      "rowCount": 53,
+      "columns": [
+        {
+          "name": "TerritoryID",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": true,
+          "primaryKeyPosition": 1,
+          "defaultValue": null
+        },
+        {
+          "name": "TerritoryDescription",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        },
+        {
+          "name": "RegionID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "primaryKeyPosition": null,
+          "defaultValue": null
+        }
+      ],
+      "primaryKey": [
+        {
+          "column": "TerritoryID",
+          "position": 1
+        }
+      ],
+      "foreignKeys": [
+        {
+          "column": "RegionID",
+          "table": "Regions",
+          "referencedColumn": "RegionID",
+          "constraint": 0,
+          "position": 0
+        }
+      ],
+      "modelEntity": "Territories"
+    }
+  ]
+}

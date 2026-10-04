@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate": "python3 scripts/generate.py && node scripts/generate-model.mjs",
+    "generate": "python3 scripts/generate.py && node scripts/generate-model.mjs && node scripts/generate-public-manifest.mjs",
     "rebuild:source": "python3 scripts/rebuild-source.py",
-    "validate": "python3 scripts/validate.py && node scripts/check-directory-opt-in.mjs",
+    "validate": "python3 scripts/validate.py && node scripts/generate-public-manifest.mjs --check && node scripts/check-directory-opt-in.mjs",
     "tools:install": "node scripts/install-tools.mjs --dir .tools/bin",
     "lint:model": "node scripts/run-tool.mjs modelspec lint --profile publish model",
     "check:model-twin": "node scripts/run-tool.mjs modelspec export --check model/northwind.modelspec.hcl model/northwind.modelspec.json",
@@ -14,5 +14,5 @@
     "check:schema": "node scripts/check-schema.mjs",
     "test:tools": "node --test scripts/test-tools.mjs"
   },
-  "dependencies": { "yaml": "2.8.1" }
+  "dependencies": { "ajv": "8.20.0", "yaml": "2.8.1" }
 }

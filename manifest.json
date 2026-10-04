@@ -54,8 +54,10 @@
     ],
     "ovdb": {
       "available": true,
-      "canonicalUrl": "https://northwind.demodb.dev/ovdb/dbs/northwind",
-      "connection": "https://cloud.openvaultdb.com/v1/databases/northwind",
+      "canonicalUrl": "https://demodb.dev/northwind/",
+      "serverId": "https://demodb.dev/ovdb",
+      "serverDbBaseUrl": "https://demodb.dev/ovdb/db/northwind/",
+      "connection": "https://demodb.dev/ovdb/v1/databases/northwind",
       "query": true,
       "readOnly": true,
       "deploymentVerified": false
