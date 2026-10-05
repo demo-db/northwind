@@ -26,3 +26,26 @@ Generation recreates the SQLite file, schema, complete SQLite/SQL downloads, tab
 `metadata/contract.json` is the website schema and export input. Registry pins are maintained in `demo-db/websites`; local builds may use `DEMODB_CONTRACTS_DIR` to point to provider checkouts. The public OVDB database identity is `https://demodb.dev/northwind/`, with provider-local id `northwind`, shared server `https://demodb.dev/ovdb`, and API `https://demodb.dev/ovdb/v1/databases/northwind`. `ovdb-database.json` is generated from the validated provider manifest and SQLite schema, uses the shared draft-1 schema pinned under `schemas/`, and lists served tables without sample rows. The website serves those same bytes at both `/northwind/ovdb-database.json` and `/ovdb/db/northwind/ovdb-database.json`. `ovdb.yaml` remains the backward-compatible `ovdb-manifest/draft-1` publisher input with its local id and format unchanged. It describes the read-only Northwind deployment at `https://cloud.openvaultdb.com/ovdb/dbs/northwind`, discovered at `https://demodb.dev/.well-known/openvaultdb`; `deploymentVerified` remains false until live checks pass. Its `recordset_entities` map preserves native recordset `Order Details` while pointing to the valid ModelSpec entity `OrderDetails`; all other recordsets use their native names. DataTug can read the generated per-table JSON exports. The database and model are MIT; the meaning file is CC0-1.0 and reuses the pinned `meaninggraph/core` concepts.
 
 To add another sample database, implement this provider contract, regenerate and verify exports, then pin its commit and generated contract hash in the website registry. Shared Astro pages and resolver do not need a database-specific branch.
+
+## Hosting imports
+
+`data-source/source.sqlite` remains the canonical seed. Generate deterministic imports and the row-count/checksum manifest with Python's standard library:
+
+```sh
+python3 scripts/hosting_imports.py
+pnpm generate
+python3 scripts/verify-hosting-imports.py
+```
+
+The offline verifier reimports `artifacts/hosting-imports/d1.sql` into a temporary SQLite database and compares canonical per-table checksums, primary keys, foreign-key declarations, all view row counts, and SQLite's `foreign_key_check` with the pinned seed. Every D1 SQL statement is capped at 100,000 UTF-8 bytes; the generated manifest records the largest statement. D1 SQL keeps the SQLite table and view definitions. Apply it to a fresh D1 database already bound by the owning Worker with `npx wrangler d1 execute <database-binding> --remote --file=artifacts/hosting-imports/d1.sql`. A failed partial import must be reset by the resource owner before retrying; the import never issues `DROP` or `CREATE IF NOT EXISTS` against existing objects.
+
+For PostgreSQL, generated SQL creates only the `northwind` schema and includes a source-hash provenance comment and `_import_manifest` row. It runs in one transaction and refuses to replace an existing schema unless `--replace` is passed and both provenance records match this exact import version and seed hash. The normal local runner accepts a connection string through `DATABASE_URL`, keeps it out of command output, and requires `psql`:
+
+```sh
+python3 scripts/import-postgres.py
+python3 scripts/verify-hosting-imports.py --postgres
+```
+
+The PostgreSQL verifier checks every canonical table checksum, row count, primary-key column order and backing index, foreign-key columns and targets, all 17 view column names/order and complete row values, plus representative queries. Floating-point view results allow a relative tolerance of `1e-12` and an absolute tolerance of `1e-9` because SQLite and PostgreSQL may aggregate floating values in a different order; table checksums remain exact. It uses only `psql`; no Python database package is needed. `DATABASE_URL` is parsed into libpq environment variables, so the credential string is not placed in command arguments or printed. Never place connection strings in repository files.
+
+PostgreSQL preserves the source's quoted names, composite keys, NULL values, BLOB bytes (`bytea`), and date/datetime strings. SQLite `DATE` and `DATETIME` columns are stored as PostgreSQL `TEXT` so their original text is not normalized. SQLite `NUMERIC` maps to PostgreSQL `NUMERIC`; declared `REAL` maps to `DOUBLE PRECISION`. As in the pinned source, view arithmetic promotes numeric amounts to floating point where they meet the `REAL` discount. The source `Invoices` expression adds text names with SQLite `+`; SQLite therefore returns `0` for `Salesperson`. The PostgreSQL view deliberately returns the same `0`, rather than changing published seed behavior to a name concatenation. These generated objects reproduce the pinned SQL contract; they do not make claims about exact decimal-money arithmetic.
