@@ -33,6 +33,7 @@ To add another sample database, implement this provider contract, regenerate and
 
 ```sh
 python3 scripts/hosting_imports.py
+pnpm generate
 python3 scripts/verify-hosting-imports.py
 ```
 
