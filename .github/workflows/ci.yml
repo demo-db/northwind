@@ -35,3 +35,35 @@ jobs:
       - run: pnpm test:tools
       - name: Generated files are committed
         run: git diff --exit-code -- data-source/source.sqlite metadata model artifacts
+
+  postgres-import:
+    name: Verify PostgreSQL import
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: northwind
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d northwind"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/northwind?sslmode=disable
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      - name: Generate pinned import SQL
+        run: python3 scripts/hosting_imports.py
+      - name: Import into disposable PostgreSQL service
+        run: python3 scripts/import-postgres.py
+      - name: Verify tables, keys, indexes, and complete view results
+        run: python3 scripts/verify-hosting-imports.py --postgres

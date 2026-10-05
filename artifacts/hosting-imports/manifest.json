@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "source": "data-source/source.sqlite",
+  "sourceBytes": 602112,
+  "sourceSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+  "objects": {
+    "tables": 13,
+    "views": 17
+  },
+  "tables": {
+    "Categories": {
+      "rows": 8,
+      "sha256": "8e79fcf758d76469e0d62cc85333291c9bbaf965951a9c5583db997f6cf759d9"
+    },
+    "CustomerCustomerDemo": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CustomerDemographics": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Customers": {
+      "rows": 93,
+      "sha256": "8fdfe1221c9558b285424f06db63a91a6ed3892232fded7c631d669cbab70f96"
+    },
+    "EmployeeTerritories": {
+      "rows": 49,
+      "sha256": "08ca4580e3e9c72e65cb85922bc082a43d6c4c8135a87316a764914c09cfbf58"
+    },
+    "Employees": {
+      "rows": 9,
+      "sha256": "989f557056dafdceab75b1d655ed10994956b89d76a213623f6cfe6a94afbfb3"
+    },
+    "Order Details": {
+      "rows": 2155,
+      "sha256": "ced6e71f1030f503bf20ed2b53b8fae9f9d18cb8c874ad4cfe5f740a36ccd12e"
+    },
+    "Orders": {
+      "rows": 830,
+      "sha256": "8c35e5cf83673ba9cc782fb0c3e2a6b9875b011a841e147db5b7393ef4afa636"
+    },
+    "Products": {
+      "rows": 77,
+      "sha256": "fc9bce949d12ab2747b1162264a6ef1ebd3650d51957c493685ec60feb6924c7"
+    },
+    "Regions": {
+      "rows": 4,
+      "sha256": "a5cb1e91f661780ad05bfdc9c0ee5719e814876b3fc11d07aebbc04617ad730f"
+    },
+    "Shippers": {
+      "rows": 3,
+      "sha256": "98207c22bbd9be2c6a600287b40bd34404065a0aa9fee163a9a734968105084d"
+    },
+    "Suppliers": {
+      "rows": 29,
+      "sha256": "02dc17d4976de3b2fc51587ca0568faef003636f409abe2cd33adde066c67919"
+    },
+    "Territories": {
+      "rows": 53,
+      "sha256": "bb8ca2e9a2b1b0b841db4a4c394c686d412d72ecb0058138e5c16b0b68871b5c"
+    }
+  },
+  "views": {
+    "Alphabetical list of products": 69,
+    "Category Sales for 1997": 0,
+    "Current Product List": 69,
+    "Customer and Suppliers by City": 122,
+    "Invoices": 2155,
+    "Order Details Extended": 2155,
+    "Order Subtotals": 830,
+    "Orders Qry": 830,
+    "Product Sales for 1997": 0,
+    "ProductDetails_V": 77,
+    "Products Above Average Price": 25,
+    "Products by Category": 69,
+    "Quarterly Orders": 0,
+    "Sales Totals by Amount": 0,
+    "Sales by Category": 0,
+    "Summary of Sales by Quarter": 809,
+    "Summary of Sales by Year": 809
+  },
+  "d1": {
+    "file": "d1.sql",
+    "maxStatementBytes": 99917,
+    "maxAllowedStatementBytes": 100000,
+    "insertStatements": 15
+  }
+}

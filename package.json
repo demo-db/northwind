@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "generate": "python3 scripts/generate.py && node scripts/generate-model.mjs && node scripts/generate-public-manifest.mjs",
+    "hosting:imports": "python3 scripts/hosting_imports.py",
+    "hosting:verify": "python3 scripts/verify-hosting-imports.py",
+    "hosting:verify:postgres": "python3 scripts/verify-hosting-imports.py --postgres",
+    "hosting:import:postgres": "python3 scripts/import-postgres.py",
     "rebuild:source": "python3 scripts/rebuild-source.py",
     "validate": "python3 scripts/validate.py && node scripts/generate-public-manifest.mjs --check && node scripts/check-directory-opt-in.mjs",
     "tools:install": "node scripts/install-tools.mjs --dir .tools/bin",
