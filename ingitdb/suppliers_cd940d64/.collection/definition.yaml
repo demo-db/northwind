@@ -2,28 +2,31 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["SupplierID"]
 columns:
   "SupplierID":
-    type: any
+    type: int
+    required: true
   "CompanyName":
-    type: any
+    type: string
+    required: true
   "ContactName":
-    type: any
+    type: string
   "ContactTitle":
-    type: any
+    type: string
   "Address":
-    type: any
+    type: string
   "City":
-    type: any
+    type: string
   "Region":
-    type: any
+    type: string
   "PostalCode":
-    type: any
+    type: string
   "Country":
-    type: any
+    type: string
   "Phone":
-    type: any
+    type: string
   "Fax":
-    type: any
+    type: string
   "HomePage":
-    type: any
+    type: string
