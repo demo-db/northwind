@@ -49,3 +49,14 @@ python3 scripts/verify-hosting-imports.py --postgres
 The PostgreSQL verifier checks every canonical table checksum, row count, primary-key column order and backing index, foreign-key columns and targets, all 17 view column names/order and complete row values, plus representative queries. Floating-point view results allow a relative tolerance of `1e-12` and an absolute tolerance of `1e-9` because SQLite and PostgreSQL may aggregate floating values in a different order; table checksums remain exact. It uses only `psql`; no Python database package is needed. `DATABASE_URL` is parsed into libpq environment variables, so the credential string is not placed in command arguments or printed. Never place connection strings in repository files.
 
 PostgreSQL preserves the source's quoted names, composite keys, NULL values, BLOB bytes (`bytea`), and date/datetime strings. SQLite `DATE` and `DATETIME` columns are stored as PostgreSQL `TEXT` so their original text is not normalized. SQLite `NUMERIC` maps to PostgreSQL `NUMERIC`; declared `REAL` maps to `DOUBLE PRECISION`. As in the pinned source, view arithmetic promotes numeric amounts to floating point where they meet the `REAL` discount. The source `Invoices` expression adds text names with SQLite `+`; SQLite therefore returns `0` for `Salesperson`. The PostgreSQL view deliberately returns the same `0`, rather than changing published seed behavior to a name concatenation. These generated objects reproduce the pinned SQL contract; they do not make claims about exact decimal-money arithmetic.
+
+## Native inGitDB snapshot
+
+The `ingitdb/` directory contains 3,310 source table rows across 13 collections. It is a Git-backed, queryable snapshot prepared from the pinned SQLite fixture. Verify and query it with the installed inGitDB CLI:
+
+```sh
+ingitdb validate --path ingitdb
+ingitdb select --path ingitdb --from categories_b8b1d894 --limit 1 --format json
+```
+
+[`ingitdb/export-manifest.json`](ingitdb/export-manifest.json) maps each native table to its collection, row count, original primary and foreign keys, column types, transport encodings, and SHA-256 of its record file. The source fixture SHA-256 is `279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20`. These bytes were exported against provider commit `e74726515c3833620b54b7a50d1d273276dd23c1`; the source fixture hash also matches this repository's pinned fixture. Record keys encode native primary keys where present; keyless tables use stable ordinal IDs, which are not native keys. Native key relationships are descriptive metadata, not enforced in this snapshot. Exact decimal values travel as strings and binary values as base64 where marked in column metadata. Source view definitions are retained as metadata only; they are not materialized in inGitDB. Source rights and original notices remain in [`data-source/`](data-source/) and [`LICENSE`](LICENSE).

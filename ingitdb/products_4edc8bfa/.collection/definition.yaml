@@ -1,0 +1,25 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "ProductID":
+    type: any
+  "ProductName":
+    type: any
+  "SupplierID":
+    type: any
+  "CategoryID":
+    type: any
+  "QuantityPerUnit":
+    type: any
+  "UnitPrice":
+    type: any
+  "UnitsInStock":
+    type: any
+  "UnitsOnOrder":
+    type: any
+  "ReorderLevel":
+    type: any
+  "Discontinued":
+    type: any

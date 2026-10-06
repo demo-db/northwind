@@ -1,0 +1,1003 @@
+{
+  "format": "demodb-ingitdb-export/v1",
+  "datasetId": "northwind",
+  "source": {
+    "repository": "https://github.com/jpwhite3/northwind-SQLite3",
+    "revision": "4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+    "providerRepository": "https://github.com/demo-db/northwind",
+    "providerCommit": "e74726515c3833620b54b7a50d1d273276dd23c1",
+    "providerContractSha256": "88a7e21b1ed16b27c3195c8ee10dc60ebef60fba6c70df6f9325d8e4adaaea22",
+    "fixtureSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+    "fixtureBytes": 602112
+  },
+  "rowCount": 3310,
+  "tables": [
+    {
+      "nativeName": "Categories",
+      "collection": "categories_b8b1d894",
+      "rows": 8,
+      "primaryKey": [
+        "CategoryID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "CategoryID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CategoryName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Description",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Picture",
+          "declaredType": "BLOB",
+          "encoding": "base64"
+        }
+      ],
+      "records": {
+        "path": "categories_b8b1d894/records.json",
+        "sha256": "e8b2c249d2085e336982766eb4cd9c609d82105f2f4dfbda4f1f422c8266f8dc"
+      }
+    },
+    {
+      "nativeName": "CustomerCustomerDemo",
+      "collection": "customercustomerdemo_0460d195",
+      "rows": 0,
+      "primaryKey": [
+        "CustomerID",
+        "CustomerTypeID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "CustomerDemographics",
+          "from": "CustomerTypeID",
+          "to": "CustomerTypeID"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "Customers",
+          "from": "CustomerID",
+          "to": "CustomerID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "CustomerID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CustomerTypeID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "customercustomerdemo_0460d195/records.json",
+        "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+      }
+    },
+    {
+      "nativeName": "CustomerDemographics",
+      "collection": "customerdemographics_acaa4d64",
+      "rows": 0,
+      "primaryKey": [
+        "CustomerTypeID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "CustomerTypeID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CustomerDesc",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "customerdemographics_acaa4d64/records.json",
+        "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+      }
+    },
+    {
+      "nativeName": "Customers",
+      "collection": "customers_aabe76f1",
+      "rows": 93,
+      "primaryKey": [
+        "CustomerID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "CustomerID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CompanyName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ContactName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ContactTitle",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Address",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "City",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Region",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "PostalCode",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Country",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Phone",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Fax",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "customers_aabe76f1/records.json",
+        "sha256": "b5be011b8f81ad22d704694a7fe4e4fec6363f143c0752cfa53e5a424586ca9d"
+      }
+    },
+    {
+      "nativeName": "EmployeeTerritories",
+      "collection": "employeeterritories_c1ff8959",
+      "rows": 49,
+      "primaryKey": [
+        "EmployeeID",
+        "TerritoryID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Territories",
+          "from": "TerritoryID",
+          "to": "TerritoryID"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "Employees",
+          "from": "EmployeeID",
+          "to": "EmployeeID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "EmployeeID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "TerritoryID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "employeeterritories_c1ff8959/records.json",
+        "sha256": "0239b841ec62544a61bff4b0e3ea721955809e88cd13858e229c285b1ed9af33"
+      }
+    },
+    {
+      "nativeName": "Employees",
+      "collection": "employees_c9827031",
+      "rows": 9,
+      "primaryKey": [
+        "EmployeeID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Employees",
+          "from": "ReportsTo",
+          "to": "EmployeeID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "EmployeeID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "LastName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "FirstName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Title",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "TitleOfCourtesy",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "BirthDate",
+          "declaredType": "DATE",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "HireDate",
+          "declaredType": "DATE",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Address",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "City",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Region",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "PostalCode",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Country",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "HomePhone",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Extension",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Photo",
+          "declaredType": "BLOB",
+          "encoding": "base64"
+        },
+        {
+          "nativeName": "Notes",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ReportsTo",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "PhotoPath",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "employees_c9827031/records.json",
+        "sha256": "416ec42ef7336268dd7444affbe9b96b819f8e5abb68d8ab9cf0f4a43df5faad"
+      }
+    },
+    {
+      "nativeName": "Order Details",
+      "collection": "order_details_fe3ac0d4",
+      "rows": 2155,
+      "primaryKey": [
+        "OrderID",
+        "ProductID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Products",
+          "from": "ProductID",
+          "to": "ProductID"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "Orders",
+          "from": "OrderID",
+          "to": "OrderID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "OrderID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ProductID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "UnitPrice",
+          "declaredType": "NUMERIC",
+          "encoding": "sqlite-typed-json"
+        },
+        {
+          "nativeName": "Quantity",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Discount",
+          "declaredType": "REAL",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "order_details_fe3ac0d4/records.json",
+        "sha256": "542e10073616a17d488c4e15798cfd0e91816f17c3170df3a01df1c2defff5bf"
+      }
+    },
+    {
+      "nativeName": "Orders",
+      "collection": "orders_b7e8acdd",
+      "rows": 830,
+      "primaryKey": [
+        "OrderID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Shippers",
+          "from": "ShipVia",
+          "to": "ShipperID"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "Customers",
+          "from": "CustomerID",
+          "to": "CustomerID"
+        },
+        {
+          "id": 2,
+          "sequence": 0,
+          "table": "Employees",
+          "from": "EmployeeID",
+          "to": "EmployeeID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "OrderID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CustomerID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "EmployeeID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "OrderDate",
+          "declaredType": "DATETIME",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "RequiredDate",
+          "declaredType": "DATETIME",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShippedDate",
+          "declaredType": "DATETIME",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipVia",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Freight",
+          "declaredType": "NUMERIC",
+          "encoding": "sqlite-typed-json"
+        },
+        {
+          "nativeName": "ShipName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipAddress",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipCity",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipRegion",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipPostalCode",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ShipCountry",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "orders_b7e8acdd/records.json",
+        "sha256": "b541122f20d9c107350ac2f547155c9126e6c3885d9a84c97b5459b6fcc66860"
+      }
+    },
+    {
+      "nativeName": "Products",
+      "collection": "products_4edc8bfa",
+      "rows": 77,
+      "primaryKey": [
+        "ProductID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Suppliers",
+          "from": "SupplierID",
+          "to": "SupplierID"
+        },
+        {
+          "id": 1,
+          "sequence": 0,
+          "table": "Categories",
+          "from": "CategoryID",
+          "to": "CategoryID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "ProductID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ProductName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "SupplierID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CategoryID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "QuantityPerUnit",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "UnitPrice",
+          "declaredType": "NUMERIC",
+          "encoding": "sqlite-typed-json"
+        },
+        {
+          "nativeName": "UnitsInStock",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "UnitsOnOrder",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ReorderLevel",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Discontinued",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "products_4edc8bfa/records.json",
+        "sha256": "a27d2f6f5628b74558e281294c40aa733a67d29c26ff1a1de0e569eaf25f0cd4"
+      }
+    },
+    {
+      "nativeName": "Regions",
+      "collection": "regions_610c65d8",
+      "rows": 4,
+      "primaryKey": [
+        "RegionID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "RegionID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "RegionDescription",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "regions_610c65d8/records.json",
+        "sha256": "0b5e32666f966066ea0f89379029aa13ec775f4933897be925b66a5cca42d74c"
+      }
+    },
+    {
+      "nativeName": "Shippers",
+      "collection": "shippers_bd72dbc1",
+      "rows": 3,
+      "primaryKey": [
+        "ShipperID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "ShipperID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CompanyName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Phone",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "shippers_bd72dbc1/records.json",
+        "sha256": "ce2829b460a77a74227364968cde357ef35c0934b0befd7456354ef249fc1e1a"
+      }
+    },
+    {
+      "nativeName": "Suppliers",
+      "collection": "suppliers_cd940d64",
+      "rows": 29,
+      "primaryKey": [
+        "SupplierID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [],
+      "columns": [
+        {
+          "nativeName": "SupplierID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "CompanyName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ContactName",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "ContactTitle",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Address",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "City",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Region",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "PostalCode",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Country",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Phone",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "Fax",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "HomePage",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "suppliers_cd940d64/records.json",
+        "sha256": "1426a3b3e31e0636fc711f655e3ff5212f1f693145d07d441694859ce57fd3f7"
+      }
+    },
+    {
+      "nativeName": "Territories",
+      "collection": "territories_ceadd2af",
+      "rows": 53,
+      "primaryKey": [
+        "TerritoryID"
+      ],
+      "transportId": "encoded-native-primary-key",
+      "foreignKeys": [
+        {
+          "id": 0,
+          "sequence": 0,
+          "table": "Regions",
+          "from": "RegionID",
+          "to": "RegionID"
+        }
+      ],
+      "columns": [
+        {
+          "nativeName": "TerritoryID",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "TerritoryDescription",
+          "declaredType": "TEXT",
+          "encoding": "native-json"
+        },
+        {
+          "nativeName": "RegionID",
+          "declaredType": "INTEGER",
+          "encoding": "native-json"
+        }
+      ],
+      "records": {
+        "path": "territories_ceadd2af/records.json",
+        "sha256": "8fcb7e7763fa8998ed2222648a9f7b31fb32f60d2f1cfb919827d75163e59ee2"
+      }
+    }
+  ],
+  "views": [
+    {
+      "name": "Alphabetical list of products",
+      "status": "source-definition-only",
+      "columns": [
+        "ProductID",
+        "ProductName",
+        "SupplierID",
+        "CategoryID",
+        "QuantityPerUnit",
+        "UnitPrice",
+        "UnitsInStock",
+        "UnitsOnOrder",
+        "ReorderLevel",
+        "Discontinued",
+        "CategoryName"
+      ],
+      "sourceSql": "CREATE VIEW [Alphabetical list of products] \r\nAS\r\nSELECT Products.*, \r\n       Categories.CategoryName\r\nFROM Categories \r\n   INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE (((Products.Discontinued)=0))"
+    },
+    {
+      "name": "Category Sales for 1997",
+      "status": "source-definition-only",
+      "columns": [
+        "CategoryName",
+        "CategorySales"
+      ],
+      "sourceSql": "CREATE VIEW [Category Sales for 1997] AS\r\nSELECT     [Product Sales for 1997].CategoryName, \r\n       Sum([Product Sales for 1997].ProductSales) AS CategorySales\r\nFROM [Product Sales for 1997]\r\nGROUP BY [Product Sales for 1997].CategoryName"
+    },
+    {
+      "name": "Current Product List",
+      "status": "source-definition-only",
+      "columns": [
+        "ProductID",
+        "ProductName"
+      ],
+      "sourceSql": "CREATE VIEW [Current Product List] \r\nAS\r\nSELECT ProductID,\r\n       ProductName \r\nFROM Products \r\nWHERE Discontinued=0"
+    },
+    {
+      "name": "Customer and Suppliers by City",
+      "status": "source-definition-only",
+      "columns": [
+        "City",
+        "CompanyName",
+        "ContactName",
+        "Relationship"
+      ],
+      "sourceSql": "CREATE VIEW [Customer and Suppliers by City] \r\nAS\r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Customers' AS Relationship \r\nFROM Customers\r\nUNION \r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Suppliers'\r\nFROM Suppliers \r\nORDER BY City, CompanyName"
+    },
+    {
+      "name": "Invoices",
+      "status": "source-definition-only",
+      "columns": [
+        "ShipName",
+        "ShipAddress",
+        "ShipCity",
+        "ShipRegion",
+        "ShipPostalCode",
+        "ShipCountry",
+        "CustomerID",
+        "CustomerName",
+        "Address",
+        "City",
+        "Region",
+        "PostalCode",
+        "Country",
+        "Salesperson",
+        "OrderID",
+        "OrderDate",
+        "RequiredDate",
+        "ShippedDate",
+        "ShipperName",
+        "ProductID",
+        "ProductName",
+        "UnitPrice",
+        "Quantity",
+        "Discount",
+        "ExtendedPrice",
+        "Freight"
+      ],
+      "sourceSql": "CREATE VIEW [Invoices] \r\nAS\r\nSELECT Orders.ShipName,\r\n       Orders.ShipAddress,\r\n       Orders.ShipCity,\r\n       Orders.ShipRegion, \r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Orders.CustomerID,\r\n       Customers.CompanyName AS CustomerName, \r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode,\r\n       Customers.Country,\r\n       (Employees.FirstName + ' ' + Employees.LastName) AS Salesperson, \r\n       Orders.OrderID,\r\n       Orders.OrderDate,\r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Shippers.CompanyName As ShipperName,\r\n       [Order Details].ProductID,\r\n       Products.ProductName, \r\n       [Order Details].UnitPrice,\r\n       [Order Details].Quantity,\r\n       [Order Details].Discount, \r\n       ((([Order Details].UnitPrice*Quantity*(1-Discount))/100)*100) AS ExtendedPrice,\r\n       Orders.Freight \r\nFROM Customers \r\n  JOIN Orders ON Customers.CustomerID = Orders.CustomerID  \r\n    JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID    \r\n     JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID     \r\n      JOIN Products ON Products.ProductID = [Order Details].ProductID      \r\n       JOIN Shippers ON Shippers.ShipperID = Orders.ShipVia"
+    },
+    {
+      "name": "Order Details Extended",
+      "status": "source-definition-only",
+      "columns": [
+        "OrderID",
+        "ProductID",
+        "ProductName",
+        "UnitPrice",
+        "Quantity",
+        "Discount",
+        "ExtendedPrice"
+      ],
+      "sourceSql": "CREATE VIEW [Order Details Extended] AS\r\nSELECT [Order Details].OrderID, \r\n       [Order Details].ProductID, \r\n       Products.ProductName, \r\n\t   [Order Details].UnitPrice, \r\n       [Order Details].Quantity, \r\n       [Order Details].Discount, \r\n      ([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100 AS ExtendedPrice\r\nFROM Products \r\n     JOIN [Order Details] ON Products.ProductID = [Order Details].ProductID"
+    },
+    {
+      "name": "Order Subtotals",
+      "status": "source-definition-only",
+      "columns": [
+        "OrderID",
+        "Subtotal"
+      ],
+      "sourceSql": "CREATE VIEW [Order Subtotals] AS\r\nSELECT [Order Details].OrderID, \r\nSum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS Subtotal\r\nFROM [Order Details]\r\nGROUP BY [Order Details].OrderID"
+    },
+    {
+      "name": "Orders Qry",
+      "status": "source-definition-only",
+      "columns": [
+        "OrderID",
+        "CustomerID",
+        "EmployeeID",
+        "OrderDate",
+        "RequiredDate",
+        "ShippedDate",
+        "ShipVia",
+        "Freight",
+        "ShipName",
+        "ShipAddress",
+        "ShipCity",
+        "ShipRegion",
+        "ShipPostalCode",
+        "ShipCountry",
+        "CompanyName",
+        "Address",
+        "City",
+        "Region",
+        "PostalCode",
+        "Country"
+      ],
+      "sourceSql": "CREATE VIEW [Orders Qry] AS\r\nSELECT Orders.OrderID,\r\n       Orders.CustomerID,\r\n       Orders.EmployeeID, \r\n       Orders.OrderDate, \r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Orders.ShipVia, \r\n       Orders.Freight,\r\n       Orders.ShipName, \r\n       Orders.ShipAddress, \r\n       Orders.ShipCity,\r\n       Orders.ShipRegion,\r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Customers.CompanyName,\r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode, \r\n       Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID"
+    },
+    {
+      "name": "Product Sales for 1997",
+      "status": "source-definition-only",
+      "columns": [
+        "CategoryName",
+        "ProductName",
+        "ProductSales"
+      ],
+      "sourceSql": "CREATE VIEW [Product Sales for 1997] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Sum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS ProductSales\r\nFROM Categories\r\n JOIN    Products On Categories.CategoryID = Products.CategoryID\r\n    JOIN  [Order Details] on Products.ProductID = [Order Details].ProductID     \r\n     JOIN  [Orders] on Orders.OrderID = [Order Details].OrderID \r\nWHERE Orders.ShippedDate Between DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryName, Products.ProductName"
+    },
+    {
+      "name": "ProductDetails_V",
+      "status": "source-definition-only",
+      "columns": [
+        "ProductID",
+        "ProductName",
+        "SupplierID",
+        "CategoryID",
+        "QuantityPerUnit",
+        "UnitPrice",
+        "UnitsInStock",
+        "UnitsOnOrder",
+        "ReorderLevel",
+        "Discontinued",
+        "CategoryName",
+        "CategoryDescription",
+        "SupplierName",
+        "SupplierRegion"
+      ],
+      "sourceSql": "CREATE VIEW [ProductDetails_V] as\nselect \np.*, \nc.CategoryName, c.Description as [CategoryDescription],\ns.CompanyName as [SupplierName], s.Region as [SupplierRegion]\nfrom [Products] p\njoin [Categories] c on p.CategoryId = c.CategoryId\njoin [Suppliers] s on s.SupplierId = p.SupplierId"
+    },
+    {
+      "name": "Products Above Average Price",
+      "status": "source-definition-only",
+      "columns": [
+        "ProductName",
+        "UnitPrice"
+      ],
+      "sourceSql": "CREATE VIEW [Products Above Average Price] AS\r\nSELECT Products.ProductName, \r\n       Products.UnitPrice\r\nFROM Products\r\nWHERE Products.UnitPrice>(SELECT AVG(UnitPrice) From Products)"
+    },
+    {
+      "name": "Products by Category",
+      "status": "source-definition-only",
+      "columns": [
+        "CategoryName",
+        "ProductName",
+        "QuantityPerUnit",
+        "UnitsInStock",
+        "Discontinued"
+      ],
+      "sourceSql": "CREATE VIEW [Products by Category] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Products.QuantityPerUnit, \r\n       Products.UnitsInStock, \r\n       Products.Discontinued\r\nFROM Categories \r\n     INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE Products.Discontinued <> 1"
+    },
+    {
+      "name": "Quarterly Orders",
+      "status": "source-definition-only",
+      "columns": [
+        "CustomerID",
+        "CompanyName",
+        "City",
+        "Country"
+      ],
+      "sourceSql": "CREATE VIEW [Quarterly Orders] AS\r\nSELECT DISTINCT Customers.CustomerID, \r\n                Customers.CompanyName, \r\n                Customers.City, \r\n                Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')"
+    },
+    {
+      "name": "Sales Totals by Amount",
+      "status": "source-definition-only",
+      "columns": [
+        "SaleAmount",
+        "OrderID",
+        "CompanyName",
+        "ShippedDate"
+      ],
+      "sourceSql": "CREATE VIEW [Sales Totals by Amount] AS\r\nSELECT [Order Subtotals].Subtotal AS SaleAmount, \r\n                  Orders.OrderID, \r\n               Customers.CompanyName, \r\n                  Orders.ShippedDate\r\nFROM Customers \r\n JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\n    JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID \r\nWHERE ([Order Subtotals].Subtotal >2500) \r\nAND (Orders.ShippedDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31'))"
+    },
+    {
+      "name": "Sales by Category",
+      "status": "source-definition-only",
+      "columns": [
+        "CategoryID",
+        "CategoryName",
+        "ProductName",
+        "ProductSales"
+      ],
+      "sourceSql": "CREATE VIEW [Sales by Category] AS\r\nSELECT Categories.CategoryID, \r\n       Categories.CategoryName, \r\n         Products.ProductName, \r\n\tSum([Order Details Extended].ExtendedPrice) AS ProductSales\r\nFROM  Categories \r\n    JOIN Products \r\n      ON Categories.CategoryID = Products.CategoryID\r\n       JOIN [Order Details Extended] \r\n         ON Products.ProductID = [Order Details Extended].ProductID                \r\n           JOIN Orders \r\n             ON Orders.OrderID = [Order Details Extended].OrderID \r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryID, Categories.CategoryName, Products.ProductName"
+    },
+    {
+      "name": "Summary of Sales by Quarter",
+      "status": "source-definition-only",
+      "columns": [
+        "ShippedDate",
+        "OrderID",
+        "Subtotal"
+      ],
+      "sourceSql": "CREATE VIEW [Summary of Sales by Quarter] AS\r\nSELECT Orders.ShippedDate, \r\n       Orders.OrderID, \r\n       [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL"
+    },
+    {
+      "name": "Summary of Sales by Year",
+      "status": "source-definition-only",
+      "columns": [
+        "ShippedDate",
+        "OrderID",
+        "Subtotal"
+      ],
+      "sourceSql": "CREATE VIEW [Summary of Sales by Year] AS\r\nSELECT      Orders.ShippedDate, \r\n            Orders.OrderID, \r\n [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL"
+    }
+  ],
+  "status": "prepared-not-hosted"
+}

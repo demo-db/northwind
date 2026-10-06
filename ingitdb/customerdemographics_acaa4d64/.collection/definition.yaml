@@ -1,0 +1,9 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "CustomerTypeID":
+    type: any
+  "CustomerDesc":
+    type: any

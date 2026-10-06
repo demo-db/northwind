@@ -1,0 +1,11 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "ShipperID":
+    type: any
+  "CompanyName":
+    type: any
+  "Phone":
+    type: any
