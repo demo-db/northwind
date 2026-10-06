@@ -1,0 +1,48 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    CustomerID:
+        type: string
+        required: true
+    CustomerTypeID:
+        type: string
+        required: true
+columns_order:
+    - CustomerID
+    - CustomerTypeID
+primary_key:
+    - CustomerID
+    - CustomerTypeID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [CustomerCustomerDemo](\r\n   [CustomerID]TEXT NOT NULL,\r\n   [CustomerTypeID]TEXT NOT NULL,\r\n   PRIMARY KEY (\"CustomerID\",\"CustomerTypeID\"),\r\n   FOREIGN KEY ([CustomerID]) REFERENCES [Customers] ([CustomerID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n\tFOREIGN KEY ([CustomerTypeID]) REFERENCES [CustomerDemographics] ([CustomerTypeID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"CustomerID","declaredType":"TEXT","notNull":true,"primaryKeyPosition":1},{"name":"CustomerTypeID","declaredType":"TEXT","notNull":true,"primaryKeyPosition":2}],"indexes":[{"name":"sqlite_autoindex_CustomerCustomerDemo_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"CustomerID","key":true,"collation":"BINARY"},{"position":1,"name":"CustomerTypeID","key":true,"collation":"BINARY"},{"position":2,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: CustomerID
+          type: string
+          nullable: false
+        - name: CustomerTypeID
+          type: string
+          nullable: false
+    foreign_keys:
+        - name: CustomerCustomerDemo_fk_0
+          fields:
+            - CustomerTypeID
+          referenced_collection: CustomerDemographics
+          referenced_fields:
+            - CustomerTypeID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: CustomerCustomerDemo_fk_1
+          fields:
+            - CustomerID
+          referenced_collection: Customers
+          referenced_fields:
+            - CustomerID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

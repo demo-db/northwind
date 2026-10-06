@@ -1,0 +1,35 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    ShipperID:
+        type: int
+        required: true
+    CompanyName:
+        type: string
+        required: true
+    Phone:
+        type: string
+columns_order:
+    - ShipperID
+    - CompanyName
+    - Phone
+primary_key:
+    - ShipperID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Shippers](\r\n   [ShipperID]INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\r\n   [CompanyName]TEXT NOT NULL,\r\n   [Phone]TEXT\r\n)","columns":[{"name":"ShipperID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"CompanyName","declaredType":"TEXT","notNull":true},{"name":"Phone","declaredType":"TEXT","notNull":false}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: ShipperID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: CompanyName
+          type: string
+          nullable: false
+        - name: Phone
+          type: string
+          nullable: true

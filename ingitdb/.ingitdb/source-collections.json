@@ -1,0 +1,18 @@
+{
+  "format": "datatug-source-collections/v1",
+  "collections": {
+    "Categories": "Categories",
+    "CustomerCustomerDemo": "CustomerCustomerDemo",
+    "CustomerDemographics": "CustomerDemographics",
+    "Customers": "Customers",
+    "EmployeeTerritories": "EmployeeTerritories",
+    "Employees": "Employees",
+    "Orders": "Orders",
+    "Products": "Products",
+    "Regions": "Regions",
+    "Shippers": "Shippers",
+    "Suppliers": "Suppliers",
+    "Territories": "Territories",
+    "dt_4f726465722044657461696c73": "Order Details"
+  }
+}

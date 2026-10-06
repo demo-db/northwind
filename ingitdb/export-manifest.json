@@ -1,5 +1,10 @@
 {
-  "format": "demodb-ingitdb-export/v1",
+  "format": "demodb-storage-export/v2",
+  "generator": "datatug-dalgo-to-ingitdb",
+  "recordFormat": "json",
+  "generatorVersion": "0.61.1",
+  "generatorCommit": "e983dd2732b31c8d59cf80c5367ec07c4d9d5f48",
+  "generatorSha256": "567fa6b0f278bb64c659322b8a2a6cd53f8aeca65a20a2ec5e48e191bba44bbf",
   "datasetId": "northwind",
   "source": {
     "repository": "https://github.com/jpwhite3/northwind-SQLite3",
@@ -14,7 +19,7 @@
   "tables": [
     {
       "nativeName": "Categories",
-      "collection": "categories_b8b1d894",
+      "collection": "Categories",
       "rows": 8,
       "primaryKey": [
         "CategoryID"
@@ -28,6 +33,8 @@
         {
           "nativeName": "CategoryID",
           "declaredType": "INTEGER",
+          "bigqueryName": "categoryid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": true,
@@ -39,6 +46,8 @@
         {
           "nativeName": "CategoryName",
           "declaredType": "TEXT",
+          "bigqueryName": "categoryname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -50,6 +59,8 @@
         {
           "nativeName": "Description",
           "declaredType": "TEXT",
+          "bigqueryName": "description",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -61,6 +72,8 @@
         {
           "nativeName": "Picture",
           "declaredType": "BLOB",
+          "bigqueryName": "picture",
+          "bigqueryType": "BYTES",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -71,13 +84,27 @@
         }
       ],
       "records": {
-        "path": "categories_b8b1d894/records.json",
-        "sha256": "e8b2c249d2085e336982766eb4cd9c609d82105f2f4dfbda4f1f422c8266f8dc"
+        "path": "Categories/records.json",
+        "sha256": "1287cd8cf29f2f28d1c3e586760d77e2559792ceb1d9b3f18e3951bb7d615472"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Categories/records.json",
+          "sha256": "1287cd8cf29f2f28d1c3e586760d77e2559792ceb1d9b3f18e3951bb7d615472"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Categories/rows.ndjson",
+          "sha256": "a83dbbcacab3bb2a4dceba1a0ea1745cf5b47248bf8709e54ad9b29784d91dd5"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Categories/schema.json",
+          "sha256": "eed897adac851862a10486e4bb33ac3c87ae2ab140ed5198bf2cc7dd2f6eb303"
+        }
       }
     },
     {
       "nativeName": "CustomerCustomerDemo",
-      "collection": "customercustomerdemo_0460d195",
+      "collection": "CustomerCustomerDemo",
       "rows": 0,
       "primaryKey": [
         "CustomerID",
@@ -158,34 +185,52 @@
         {
           "nativeName": "CustomerID",
           "declaredType": "TEXT",
+          "bigqueryName": "customerid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "CustomerTypeID",
           "declaredType": "TEXT",
+          "bigqueryName": "customertypeid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 2,
           "sourceDeclaredNullable": false,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": true,
           "encoding": "native-json"
         }
       ],
       "records": {
-        "path": "customercustomerdemo_0460d195/records.json",
+        "path": "CustomerCustomerDemo/records.json",
         "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/CustomerCustomerDemo/records.json",
+          "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/CustomerCustomerDemo/rows.ndjson",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/CustomerCustomerDemo/schema.json",
+          "sha256": "47dae7099bc7cf7976352c187a9b3424bc43e9ff2f38e32adb3db746488d7e80"
+        }
       }
     },
     {
       "nativeName": "CustomerDemographics",
-      "collection": "customerdemographics_acaa4d64",
+      "collection": "CustomerDemographics",
       "rows": 0,
       "primaryKey": [
         "CustomerTypeID"
@@ -213,34 +258,52 @@
         {
           "nativeName": "CustomerTypeID",
           "declaredType": "TEXT",
+          "bigqueryName": "customertypeid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": true,
           "encoding": "native-json"
         },
         {
           "nativeName": "CustomerDesc",
           "declaredType": "TEXT",
+          "bigqueryName": "customerdesc",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": false,
           "encoding": "native-json"
         }
       ],
       "records": {
-        "path": "customerdemographics_acaa4d64/records.json",
+        "path": "CustomerDemographics/records.json",
         "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/CustomerDemographics/records.json",
+          "sha256": "8e1d794b49e35ea828279c6a8c95282bbb9a0787cf5c9385256c2cc9d17baeb7"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/CustomerDemographics/rows.ndjson",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/CustomerDemographics/schema.json",
+          "sha256": "62a378e941ac6257bafbeb8cdadc71cff1318edf6791a8a16df3e7f2dc8f4d34"
+        }
       }
     },
     {
       "nativeName": "Customers",
-      "collection": "customers_aabe76f1",
+      "collection": "Customers",
       "rows": 93,
       "primaryKey": [
         "CustomerID"
@@ -268,6 +331,8 @@
         {
           "nativeName": "CustomerID",
           "declaredType": "TEXT",
+          "bigqueryName": "customerid",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": true,
@@ -279,6 +344,8 @@
         {
           "nativeName": "CompanyName",
           "declaredType": "TEXT",
+          "bigqueryName": "companyname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -290,6 +357,8 @@
         {
           "nativeName": "ContactName",
           "declaredType": "TEXT",
+          "bigqueryName": "contactname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -301,6 +370,8 @@
         {
           "nativeName": "ContactTitle",
           "declaredType": "TEXT",
+          "bigqueryName": "contacttitle",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -312,6 +383,8 @@
         {
           "nativeName": "Address",
           "declaredType": "TEXT",
+          "bigqueryName": "address",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -323,6 +396,8 @@
         {
           "nativeName": "City",
           "declaredType": "TEXT",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -334,6 +409,8 @@
         {
           "nativeName": "Region",
           "declaredType": "TEXT",
+          "bigqueryName": "region",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -345,6 +422,8 @@
         {
           "nativeName": "PostalCode",
           "declaredType": "TEXT",
+          "bigqueryName": "postalcode",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -356,6 +435,8 @@
         {
           "nativeName": "Country",
           "declaredType": "TEXT",
+          "bigqueryName": "country",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -367,6 +448,8 @@
         {
           "nativeName": "Phone",
           "declaredType": "TEXT",
+          "bigqueryName": "phone",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -378,6 +461,8 @@
         {
           "nativeName": "Fax",
           "declaredType": "TEXT",
+          "bigqueryName": "fax",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -388,13 +473,27 @@
         }
       ],
       "records": {
-        "path": "customers_aabe76f1/records.json",
-        "sha256": "b5be011b8f81ad22d704694a7fe4e4fec6363f143c0752cfa53e5a424586ca9d"
+        "path": "Customers/records.json",
+        "sha256": "78bb1577e5bbd71ae085608b387699dc5ffd9717e885ce94e1ee7751f1324062"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Customers/records.json",
+          "sha256": "78bb1577e5bbd71ae085608b387699dc5ffd9717e885ce94e1ee7751f1324062"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Customers/rows.ndjson",
+          "sha256": "bb24faf8628742679b96ab1a8873f4c65ccfa0f948e32b281cb276d45a5ac039"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Customers/schema.json",
+          "sha256": "7b09bd76e36777a8bc6189eb32ef2d20f1543b00b9e18466961975cd449bfa59"
+        }
       }
     },
     {
       "nativeName": "EmployeeTerritories",
-      "collection": "employeeterritories_c1ff8959",
+      "collection": "EmployeeTerritories",
       "rows": 49,
       "primaryKey": [
         "EmployeeID",
@@ -475,6 +574,8 @@
         {
           "nativeName": "EmployeeID",
           "declaredType": "INTEGER",
+          "bigqueryName": "employeeid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -486,6 +587,8 @@
         {
           "nativeName": "TerritoryID",
           "declaredType": "TEXT",
+          "bigqueryName": "territoryid",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 2,
           "sourceDeclaredNullable": false,
@@ -496,13 +599,27 @@
         }
       ],
       "records": {
-        "path": "employeeterritories_c1ff8959/records.json",
-        "sha256": "0239b841ec62544a61bff4b0e3ea721955809e88cd13858e229c285b1ed9af33"
+        "path": "EmployeeTerritories/records.json",
+        "sha256": "3e05ab624a67214415ec67349ec0f9dd0cd52cc1c290c939e221a4691dd323a5"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/EmployeeTerritories/records.json",
+          "sha256": "3e05ab624a67214415ec67349ec0f9dd0cd52cc1c290c939e221a4691dd323a5"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/EmployeeTerritories/rows.ndjson",
+          "sha256": "22a0a745819d82d7115a1725a65b004bbb4b12b9d7f762ad45167d35e51902cd"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/EmployeeTerritories/schema.json",
+          "sha256": "d204ffb191642968ac5b13ebbe2695229a440e039d7a4b92e0a7f62676921b23"
+        }
       }
     },
     {
       "nativeName": "Employees",
-      "collection": "employees_c9827031",
+      "collection": "Employees",
       "rows": 9,
       "primaryKey": [
         "EmployeeID"
@@ -542,6 +659,8 @@
         {
           "nativeName": "EmployeeID",
           "declaredType": "INTEGER",
+          "bigqueryName": "employeeid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": true,
@@ -553,6 +672,8 @@
         {
           "nativeName": "LastName",
           "declaredType": "TEXT",
+          "bigqueryName": "lastname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -564,6 +685,8 @@
         {
           "nativeName": "FirstName",
           "declaredType": "TEXT",
+          "bigqueryName": "firstname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -575,6 +698,8 @@
         {
           "nativeName": "Title",
           "declaredType": "TEXT",
+          "bigqueryName": "title",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -586,6 +711,8 @@
         {
           "nativeName": "TitleOfCourtesy",
           "declaredType": "TEXT",
+          "bigqueryName": "titleofcourtesy",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -597,28 +724,34 @@
         {
           "nativeName": "BirthDate",
           "declaredType": "DATE",
+          "bigqueryName": "birthdate",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "string",
+          "ingitdbType": "datetime",
           "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "HireDate",
           "declaredType": "DATE",
+          "bigqueryName": "hiredate",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "string",
+          "ingitdbType": "datetime",
           "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "Address",
           "declaredType": "TEXT",
+          "bigqueryName": "address",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -630,6 +763,8 @@
         {
           "nativeName": "City",
           "declaredType": "TEXT",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -641,6 +776,8 @@
         {
           "nativeName": "Region",
           "declaredType": "TEXT",
+          "bigqueryName": "region",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -652,6 +789,8 @@
         {
           "nativeName": "PostalCode",
           "declaredType": "TEXT",
+          "bigqueryName": "postalcode",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -663,6 +802,8 @@
         {
           "nativeName": "Country",
           "declaredType": "TEXT",
+          "bigqueryName": "country",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -674,6 +815,8 @@
         {
           "nativeName": "HomePhone",
           "declaredType": "TEXT",
+          "bigqueryName": "homephone",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -685,6 +828,8 @@
         {
           "nativeName": "Extension",
           "declaredType": "TEXT",
+          "bigqueryName": "extension",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -696,6 +841,8 @@
         {
           "nativeName": "Photo",
           "declaredType": "BLOB",
+          "bigqueryName": "photo",
+          "bigqueryType": "BYTES",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -707,6 +854,8 @@
         {
           "nativeName": "Notes",
           "declaredType": "TEXT",
+          "bigqueryName": "notes",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -718,6 +867,8 @@
         {
           "nativeName": "ReportsTo",
           "declaredType": "INTEGER",
+          "bigqueryName": "reportsto",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -729,6 +880,8 @@
         {
           "nativeName": "PhotoPath",
           "declaredType": "TEXT",
+          "bigqueryName": "photopath",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -739,13 +892,27 @@
         }
       ],
       "records": {
-        "path": "employees_c9827031/records.json",
-        "sha256": "416ec42ef7336268dd7444affbe9b96b819f8e5abb68d8ab9cf0f4a43df5faad"
+        "path": "Employees/records.json",
+        "sha256": "3a119c3e1a0731e5d8146fc24905c67d20796e1b7cf92b9205e834a55dcdaf78"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Employees/records.json",
+          "sha256": "3a119c3e1a0731e5d8146fc24905c67d20796e1b7cf92b9205e834a55dcdaf78"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Employees/rows.ndjson",
+          "sha256": "65b6694be5732b6eb3320ffd6ed72fb282ebe7dd0354c11a4c043611c8f8a910"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Employees/schema.json",
+          "sha256": "540d44de344d752a9799e09771878558946837d6790017bcefede139ab3aaa4c"
+        }
       }
     },
     {
       "nativeName": "Order Details",
-      "collection": "order_details_fe3ac0d4",
+      "collection": "dt_4f726465722044657461696c73",
       "rows": 2155,
       "primaryKey": [
         "OrderID",
@@ -826,6 +993,8 @@
         {
           "nativeName": "OrderID",
           "declaredType": "INTEGER",
+          "bigqueryName": "orderid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -837,6 +1006,8 @@
         {
           "nativeName": "ProductID",
           "declaredType": "INTEGER",
+          "bigqueryName": "productid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 2,
           "sourceDeclaredNullable": false,
@@ -848,17 +1019,21 @@
         {
           "nativeName": "UnitPrice",
           "declaredType": "NUMERIC",
+          "bigqueryName": "unitprice",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
           "defaultValue": "0",
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": true,
-          "encoding": "sqlite-typed-json"
+          "encoding": "decimal-string"
         },
         {
           "nativeName": "Quantity",
           "declaredType": "INTEGER",
+          "bigqueryName": "quantity",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -870,6 +1045,8 @@
         {
           "nativeName": "Discount",
           "declaredType": "REAL",
+          "bigqueryName": "discount",
+          "bigqueryType": "FLOAT",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -880,13 +1057,27 @@
         }
       ],
       "records": {
-        "path": "order_details_fe3ac0d4/records.json",
-        "sha256": "542e10073616a17d488c4e15798cfd0e91816f17c3170df3a01df1c2defff5bf"
+        "path": "dt_4f726465722044657461696c73/records.json",
+        "sha256": "af00e888680010d5cb5a95445fc0354be399e99646afd44e81cf242a10f62fdb"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/dt_4f726465722044657461696c73/records.json",
+          "sha256": "af00e888680010d5cb5a95445fc0354be399e99646afd44e81cf242a10f62fdb"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Order Details/rows.ndjson",
+          "sha256": "886521451bb16dce18016cb2c4cbd9737ffa019b45878d0accebc0c63faa754c"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Order Details/schema.json",
+          "sha256": "069636da0895b28be576d3540f70749b8a99d59dfac50013ce416ccbf7d234bf"
+        }
       }
     },
     {
       "nativeName": "Orders",
-      "collection": "orders_b7e8acdd",
+      "collection": "Orders",
       "rows": 830,
       "primaryKey": [
         "OrderID"
@@ -974,6 +1165,8 @@
         {
           "nativeName": "OrderID",
           "declaredType": "INTEGER",
+          "bigqueryName": "orderid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -985,6 +1178,8 @@
         {
           "nativeName": "CustomerID",
           "declaredType": "TEXT",
+          "bigqueryName": "customerid",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -996,6 +1191,8 @@
         {
           "nativeName": "EmployeeID",
           "declaredType": "INTEGER",
+          "bigqueryName": "employeeid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1007,39 +1204,47 @@
         {
           "nativeName": "OrderDate",
           "declaredType": "DATETIME",
+          "bigqueryName": "orderdate",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "string",
+          "ingitdbType": "datetime",
           "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "RequiredDate",
           "declaredType": "DATETIME",
+          "bigqueryName": "requireddate",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "string",
+          "ingitdbType": "datetime",
           "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "ShippedDate",
           "declaredType": "DATETIME",
+          "bigqueryName": "shippeddate",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": null,
-          "ingitdbType": "string",
+          "ingitdbType": "datetime",
           "exportRequired": false,
           "encoding": "native-json"
         },
         {
           "nativeName": "ShipVia",
           "declaredType": "INTEGER",
+          "bigqueryName": "shipvia",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1051,17 +1256,21 @@
         {
           "nativeName": "Freight",
           "declaredType": "NUMERIC",
+          "bigqueryName": "freight",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": "0",
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": false,
-          "encoding": "sqlite-typed-json"
+          "encoding": "decimal-string"
         },
         {
           "nativeName": "ShipName",
           "declaredType": "TEXT",
+          "bigqueryName": "shipname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1073,6 +1282,8 @@
         {
           "nativeName": "ShipAddress",
           "declaredType": "TEXT",
+          "bigqueryName": "shipaddress",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1084,6 +1295,8 @@
         {
           "nativeName": "ShipCity",
           "declaredType": "TEXT",
+          "bigqueryName": "shipcity",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1095,6 +1308,8 @@
         {
           "nativeName": "ShipRegion",
           "declaredType": "TEXT",
+          "bigqueryName": "shipregion",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1106,6 +1321,8 @@
         {
           "nativeName": "ShipPostalCode",
           "declaredType": "TEXT",
+          "bigqueryName": "shippostalcode",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1117,6 +1334,8 @@
         {
           "nativeName": "ShipCountry",
           "declaredType": "TEXT",
+          "bigqueryName": "shipcountry",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1127,13 +1346,27 @@
         }
       ],
       "records": {
-        "path": "orders_b7e8acdd/records.json",
-        "sha256": "b541122f20d9c107350ac2f547155c9126e6c3885d9a84c97b5459b6fcc66860"
+        "path": "Orders/records.json",
+        "sha256": "cbac8bc93eae212d2eda237c5ba38c9e15ed4e77bcdbcd39d4175807c12d220d"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Orders/records.json",
+          "sha256": "cbac8bc93eae212d2eda237c5ba38c9e15ed4e77bcdbcd39d4175807c12d220d"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Orders/rows.ndjson",
+          "sha256": "19257dce1bfc2b02aeb60c1d94f4af2a656a5d6bd60135bbbb38eb5964a59b2f"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Orders/schema.json",
+          "sha256": "28b8b52b7fbb04fc9492301db7b09d27635498759a7bd25d3ab74ba2c82209d1"
+        }
       }
     },
     {
       "nativeName": "Products",
-      "collection": "products_4edc8bfa",
+      "collection": "Products",
       "rows": 77,
       "primaryKey": [
         "ProductID"
@@ -1197,6 +1430,8 @@
         {
           "nativeName": "ProductID",
           "declaredType": "INTEGER",
+          "bigqueryName": "productid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1208,6 +1443,8 @@
         {
           "nativeName": "ProductName",
           "declaredType": "TEXT",
+          "bigqueryName": "productname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1219,6 +1456,8 @@
         {
           "nativeName": "SupplierID",
           "declaredType": "INTEGER",
+          "bigqueryName": "supplierid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1230,6 +1469,8 @@
         {
           "nativeName": "CategoryID",
           "declaredType": "INTEGER",
+          "bigqueryName": "categoryid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1241,6 +1482,8 @@
         {
           "nativeName": "QuantityPerUnit",
           "declaredType": "TEXT",
+          "bigqueryName": "quantityperunit",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1252,17 +1495,21 @@
         {
           "nativeName": "UnitPrice",
           "declaredType": "NUMERIC",
+          "bigqueryName": "unitprice",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
           "defaultValue": "0",
-          "ingitdbType": "any",
+          "ingitdbType": "string",
           "exportRequired": false,
-          "encoding": "sqlite-typed-json"
+          "encoding": "decimal-string"
         },
         {
           "nativeName": "UnitsInStock",
           "declaredType": "INTEGER",
+          "bigqueryName": "unitsinstock",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1274,6 +1521,8 @@
         {
           "nativeName": "UnitsOnOrder",
           "declaredType": "INTEGER",
+          "bigqueryName": "unitsonorder",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1285,6 +1534,8 @@
         {
           "nativeName": "ReorderLevel",
           "declaredType": "INTEGER",
+          "bigqueryName": "reorderlevel",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1296,6 +1547,8 @@
         {
           "nativeName": "Discontinued",
           "declaredType": "TEXT",
+          "bigqueryName": "discontinued",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1306,13 +1559,27 @@
         }
       ],
       "records": {
-        "path": "products_4edc8bfa/records.json",
-        "sha256": "a27d2f6f5628b74558e281294c40aa733a67d29c26ff1a1de0e569eaf25f0cd4"
+        "path": "Products/records.json",
+        "sha256": "b1930a05777853f47af5a8561d24a24f6c526ba8c79387a91ea2ee0edbbabc1f"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Products/records.json",
+          "sha256": "b1930a05777853f47af5a8561d24a24f6c526ba8c79387a91ea2ee0edbbabc1f"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Products/rows.ndjson",
+          "sha256": "f1a4b6814dc3a2207c09916fe41e9627b940c65fee116116f1d8c16d79b0808c"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Products/schema.json",
+          "sha256": "6ef16409481339d6a0e19e0705c6507456362806aff894b1aa124e6870cbbb8e"
+        }
       }
     },
     {
       "nativeName": "Regions",
-      "collection": "regions_610c65d8",
+      "collection": "Regions",
       "rows": 4,
       "primaryKey": [
         "RegionID"
@@ -1326,6 +1593,8 @@
         {
           "nativeName": "RegionID",
           "declaredType": "INTEGER",
+          "bigqueryName": "regionid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1337,6 +1606,8 @@
         {
           "nativeName": "RegionDescription",
           "declaredType": "TEXT",
+          "bigqueryName": "regiondescription",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1347,13 +1618,27 @@
         }
       ],
       "records": {
-        "path": "regions_610c65d8/records.json",
-        "sha256": "0b5e32666f966066ea0f89379029aa13ec775f4933897be925b66a5cca42d74c"
+        "path": "Regions/records.json",
+        "sha256": "a7f74cadc81a06f46d61f6d966eb035206a3cce556c142d62e48c9e6dcc20ac8"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Regions/records.json",
+          "sha256": "a7f74cadc81a06f46d61f6d966eb035206a3cce556c142d62e48c9e6dcc20ac8"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Regions/rows.ndjson",
+          "sha256": "b0c7de1aa6ca7cfcc4b787cf7fa8925457bb6dedc1b032ae850a0e4842d38b6d"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Regions/schema.json",
+          "sha256": "ec538ed23478353f091fcd93137e5de20be812ad0c22f0a83cc417eec8cf7682"
+        }
       }
     },
     {
       "nativeName": "Shippers",
-      "collection": "shippers_bd72dbc1",
+      "collection": "Shippers",
       "rows": 3,
       "primaryKey": [
         "ShipperID"
@@ -1367,6 +1652,8 @@
         {
           "nativeName": "ShipperID",
           "declaredType": "INTEGER",
+          "bigqueryName": "shipperid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1378,6 +1665,8 @@
         {
           "nativeName": "CompanyName",
           "declaredType": "TEXT",
+          "bigqueryName": "companyname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1389,6 +1678,8 @@
         {
           "nativeName": "Phone",
           "declaredType": "TEXT",
+          "bigqueryName": "phone",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1399,13 +1690,27 @@
         }
       ],
       "records": {
-        "path": "shippers_bd72dbc1/records.json",
-        "sha256": "ce2829b460a77a74227364968cde357ef35c0934b0befd7456354ef249fc1e1a"
+        "path": "Shippers/records.json",
+        "sha256": "da85f9354f2b14a7f0ebd992827e4582b1f8332964632d115f71b33a48daf24f"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Shippers/records.json",
+          "sha256": "da85f9354f2b14a7f0ebd992827e4582b1f8332964632d115f71b33a48daf24f"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Shippers/rows.ndjson",
+          "sha256": "fdbb8b6b162073e166490239f332084d7ae8683312e67d46f2ba8c4c678b8492"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Shippers/schema.json",
+          "sha256": "c7efaa1e6ef6afb34af883d15adc4a60807f99f1138f379952d7950165c9151b"
+        }
       }
     },
     {
       "nativeName": "Suppliers",
-      "collection": "suppliers_cd940d64",
+      "collection": "Suppliers",
       "rows": 29,
       "primaryKey": [
         "SupplierID"
@@ -1419,6 +1724,8 @@
         {
           "nativeName": "SupplierID",
           "declaredType": "INTEGER",
+          "bigqueryName": "supplierid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1430,6 +1737,8 @@
         {
           "nativeName": "CompanyName",
           "declaredType": "TEXT",
+          "bigqueryName": "companyname",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1441,6 +1750,8 @@
         {
           "nativeName": "ContactName",
           "declaredType": "TEXT",
+          "bigqueryName": "contactname",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1452,6 +1763,8 @@
         {
           "nativeName": "ContactTitle",
           "declaredType": "TEXT",
+          "bigqueryName": "contacttitle",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1463,6 +1776,8 @@
         {
           "nativeName": "Address",
           "declaredType": "TEXT",
+          "bigqueryName": "address",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1474,6 +1789,8 @@
         {
           "nativeName": "City",
           "declaredType": "TEXT",
+          "bigqueryName": "city",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1485,6 +1802,8 @@
         {
           "nativeName": "Region",
           "declaredType": "TEXT",
+          "bigqueryName": "region",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1496,6 +1815,8 @@
         {
           "nativeName": "PostalCode",
           "declaredType": "TEXT",
+          "bigqueryName": "postalcode",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1507,6 +1828,8 @@
         {
           "nativeName": "Country",
           "declaredType": "TEXT",
+          "bigqueryName": "country",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1518,6 +1841,8 @@
         {
           "nativeName": "Phone",
           "declaredType": "TEXT",
+          "bigqueryName": "phone",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1529,6 +1854,8 @@
         {
           "nativeName": "Fax",
           "declaredType": "TEXT",
+          "bigqueryName": "fax",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1540,6 +1867,8 @@
         {
           "nativeName": "HomePage",
           "declaredType": "TEXT",
+          "bigqueryName": "homepage",
+          "bigqueryType": "STRING",
           "sourceNotNull": false,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": true,
@@ -1550,13 +1879,27 @@
         }
       ],
       "records": {
-        "path": "suppliers_cd940d64/records.json",
-        "sha256": "1426a3b3e31e0636fc711f655e3ff5212f1f693145d07d441694859ce57fd3f7"
+        "path": "Suppliers/records.json",
+        "sha256": "03cde1a5dcc509bc0a13ab33df99f742e2be1f1f5da02582e0f566e06df1ad1c"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Suppliers/records.json",
+          "sha256": "03cde1a5dcc509bc0a13ab33df99f742e2be1f1f5da02582e0f566e06df1ad1c"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Suppliers/rows.ndjson",
+          "sha256": "b511f868ca4d6240c38d341864a3d713ce3f016b34dcc4cf4e8e8f4d8fe871a2"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Suppliers/schema.json",
+          "sha256": "855b1596bc11d6496e378981cfcc4c0b9ff99650b6354cb18405bc9e8d1169fa"
+        }
       }
     },
     {
       "nativeName": "Territories",
-      "collection": "territories_ceadd2af",
+      "collection": "Territories",
       "rows": 53,
       "primaryKey": [
         "TerritoryID"
@@ -1610,6 +1953,8 @@
         {
           "nativeName": "TerritoryID",
           "declaredType": "TEXT",
+          "bigqueryName": "territoryid",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 1,
           "sourceDeclaredNullable": false,
@@ -1621,6 +1966,8 @@
         {
           "nativeName": "TerritoryDescription",
           "declaredType": "TEXT",
+          "bigqueryName": "territorydescription",
+          "bigqueryType": "STRING",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1632,6 +1979,8 @@
         {
           "nativeName": "RegionID",
           "declaredType": "INTEGER",
+          "bigqueryName": "regionid",
+          "bigqueryType": "INTEGER",
           "sourceNotNull": true,
           "primaryKeyPosition": 0,
           "sourceDeclaredNullable": false,
@@ -1642,11 +1991,29 @@
         }
       ],
       "records": {
-        "path": "territories_ceadd2af/records.json",
-        "sha256": "8fcb7e7763fa8998ed2222648a9f7b31fb32f60d2f1cfb919827d75163e59ee2"
+        "path": "Territories/records.json",
+        "sha256": "a949c3abf45b925f3df92b53a604b40a0f00c4ad109c3bc29cc4fa320334e388"
+      },
+      "files": {
+        "ingitdb": {
+          "path": "ingitdb/Territories/records.json",
+          "sha256": "a949c3abf45b925f3df92b53a604b40a0f00c4ad109c3bc29cc4fa320334e388"
+        },
+        "bigqueryRows": {
+          "path": "bigquery/Territories/rows.ndjson",
+          "sha256": "f08f542a756204b1b2527e18cc8efcd95ea52568aa0dc849082f2639c61e04de"
+        },
+        "bigquerySchema": {
+          "path": "bigquery/Territories/schema.json",
+          "sha256": "68aafcb8f419a35cb0db72f6c39241dd514b5bfb909a08756e7156ebcf431367"
+        }
       }
     }
   ],
+  "sourceCollections": {
+    "path": "ingitdb/.ingitdb/source-collections.json",
+    "sha256": "1e5f83d1456e16c0abd1d7e505c02e7b8cccf45cb24fb32d2a422d146400d889"
+  },
   "views": [
     {
       "name": "Alphabetical list of products",
@@ -1884,5 +2251,19 @@
       "sourceSql": "CREATE VIEW [Summary of Sales by Year] AS\r\nSELECT      Orders.ShippedDate, \r\n            Orders.OrderID, \r\n [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL"
     }
   ],
-  "status": "prepared-not-hosted"
+  "status": "prepared-not-hosted",
+  "nativeParity": {
+    "format": "demodb-datatug-parity/v1",
+    "sourceSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+    "tables": 13,
+    "rows": 3310,
+    "dataChecked": true,
+    "metadataAndDataMatch": true,
+    "sourceOrphans": 0,
+    "errorCount": 0,
+    "report": {
+      "path": "ingitdb/native-parity-report.json",
+      "sha256": "8ce63777cc54c027e0c320befd2495e89923b65f5f139dbf9fb6407e2bc667bc"
+    }
+  }
 }

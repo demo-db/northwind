@@ -1,0 +1,135 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    EmployeeID:
+        type: int
+        required: true
+    LastName:
+        type: string
+    FirstName:
+        type: string
+    Title:
+        type: string
+    TitleOfCourtesy:
+        type: string
+    BirthDate:
+        type: datetime
+    HireDate:
+        type: datetime
+    Address:
+        type: string
+    City:
+        type: string
+    Region:
+        type: string
+    PostalCode:
+        type: string
+    Country:
+        type: string
+    HomePhone:
+        type: string
+    Extension:
+        type: string
+    Photo:
+        type: string
+    Notes:
+        type: string
+    ReportsTo:
+        type: int
+    PhotoPath:
+        type: string
+columns_order:
+    - EmployeeID
+    - LastName
+    - FirstName
+    - Title
+    - TitleOfCourtesy
+    - BirthDate
+    - HireDate
+    - Address
+    - City
+    - Region
+    - PostalCode
+    - Country
+    - HomePhone
+    - Extension
+    - Photo
+    - Notes
+    - ReportsTo
+    - PhotoPath
+primary_key:
+    - EmployeeID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Employees]\r\n(      [EmployeeID] INTEGER PRIMARY KEY AUTOINCREMENT,\r\n       [LastName] TEXT,\r\n       [FirstName] TEXT,\r\n       [Title] TEXT,\r\n       [TitleOfCourtesy] TEXT,\r\n       [BirthDate] DATE,\r\n       [HireDate] DATE,\r\n       [Address] TEXT,\r\n       [City] TEXT,\r\n       [Region] TEXT,\r\n       [PostalCode] TEXT,\r\n       [Country] TEXT,\r\n       [HomePhone] TEXT,\r\n       [Extension] TEXT,\r\n       [Photo] BLOB,\r\n       [Notes] TEXT,\r\n       [ReportsTo] INTEGER,\r\n       [PhotoPath] TEXT,\r\n\t   FOREIGN KEY ([ReportsTo]) REFERENCES [Employees] ([EmployeeID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"EmployeeID","declaredType":"INTEGER","notNull":false,"primaryKeyPosition":1},{"name":"LastName","declaredType":"TEXT","notNull":false},{"name":"FirstName","declaredType":"TEXT","notNull":false},{"name":"Title","declaredType":"TEXT","notNull":false},{"name":"TitleOfCourtesy","declaredType":"TEXT","notNull":false},{"name":"BirthDate","declaredType":"DATE","notNull":false},{"name":"HireDate","declaredType":"DATE","notNull":false},{"name":"Address","declaredType":"TEXT","notNull":false},{"name":"City","declaredType":"TEXT","notNull":false},{"name":"Region","declaredType":"TEXT","notNull":false},{"name":"PostalCode","declaredType":"TEXT","notNull":false},{"name":"Country","declaredType":"TEXT","notNull":false},{"name":"HomePhone","declaredType":"TEXT","notNull":false},{"name":"Extension","declaredType":"TEXT","notNull":false},{"name":"Photo","declaredType":"BLOB","notNull":false},{"name":"Notes","declaredType":"TEXT","notNull":false},{"name":"ReportsTo","declaredType":"INTEGER","notNull":false},{"name":"PhotoPath","declaredType":"TEXT","notNull":false}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: EmployeeID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: LastName
+          type: string
+          nullable: true
+        - name: FirstName
+          type: string
+          nullable: true
+        - name: Title
+          type: string
+          nullable: true
+        - name: TitleOfCourtesy
+          type: string
+          nullable: true
+        - name: BirthDate
+          type: time
+          nullable: true
+        - name: HireDate
+          type: time
+          nullable: true
+        - name: Address
+          type: string
+          nullable: true
+        - name: City
+          type: string
+          nullable: true
+        - name: Region
+          type: string
+          nullable: true
+        - name: PostalCode
+          type: string
+          nullable: true
+        - name: Country
+          type: string
+          nullable: true
+        - name: HomePhone
+          type: string
+          nullable: true
+        - name: Extension
+          type: string
+          nullable: true
+        - name: Photo
+          type: bytes
+          nullable: true
+          encoding: base64
+        - name: Notes
+          type: string
+          nullable: true
+        - name: ReportsTo
+          type: int
+          nullable: true
+        - name: PhotoPath
+          type: string
+          nullable: true
+    foreign_keys:
+        - name: Employees_fk_0
+          fields:
+            - ReportsTo
+          referenced_collection: Employees
+          referenced_fields:
+            - EmployeeID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

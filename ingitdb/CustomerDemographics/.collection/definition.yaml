@@ -1,0 +1,27 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    CustomerTypeID:
+        type: string
+        required: true
+    CustomerDesc:
+        type: string
+columns_order:
+    - CustomerTypeID
+    - CustomerDesc
+primary_key:
+    - CustomerTypeID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [CustomerDemographics](\r\n   [CustomerTypeID]TEXT NOT NULL,\r\n   [CustomerDesc]TEXT,\r\n    PRIMARY KEY (\"CustomerTypeID\")\r\n)","columns":[{"name":"CustomerTypeID","declaredType":"TEXT","notNull":true,"primaryKeyPosition":1},{"name":"CustomerDesc","declaredType":"TEXT","notNull":false}],"indexes":[{"name":"sqlite_autoindex_CustomerDemographics_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"CustomerTypeID","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: CustomerTypeID
+          type: string
+          nullable: false
+        - name: CustomerDesc
+          type: string
+          nullable: true

@@ -1,0 +1,131 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    OrderID:
+        type: int
+        required: true
+    CustomerID:
+        type: string
+    EmployeeID:
+        type: int
+    OrderDate:
+        type: datetime
+    RequiredDate:
+        type: datetime
+    ShippedDate:
+        type: datetime
+    ShipVia:
+        type: int
+    Freight:
+        type: string
+    ShipName:
+        type: string
+    ShipAddress:
+        type: string
+    ShipCity:
+        type: string
+    ShipRegion:
+        type: string
+    ShipPostalCode:
+        type: string
+    ShipCountry:
+        type: string
+columns_order:
+    - OrderID
+    - CustomerID
+    - EmployeeID
+    - OrderDate
+    - RequiredDate
+    - ShippedDate
+    - ShipVia
+    - Freight
+    - ShipName
+    - ShipAddress
+    - ShipCity
+    - ShipRegion
+    - ShipPostalCode
+    - ShipCountry
+primary_key:
+    - OrderID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Orders](\r\n   [OrderID]INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\r\n   [CustomerID]TEXT,\r\n   [EmployeeID]INTEGER,\r\n   [OrderDate]DATETIME,\r\n   [RequiredDate]DATETIME,\r\n   [ShippedDate]DATETIME,\r\n   [ShipVia]INTEGER,\r\n   [Freight]NUMERIC DEFAULT 0,\r\n   [ShipName]TEXT,\r\n   [ShipAddress]TEXT,\r\n   [ShipCity]TEXT,\r\n   [ShipRegion]TEXT,\r\n   [ShipPostalCode]TEXT,\r\n   [ShipCountry]TEXT,\r\n   FOREIGN KEY ([EmployeeID]) REFERENCES [Employees] ([EmployeeID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n\tFOREIGN KEY ([CustomerID]) REFERENCES [Customers] ([CustomerID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n\tFOREIGN KEY ([ShipVia]) REFERENCES [Shippers] ([ShipperID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"OrderID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"CustomerID","declaredType":"TEXT","notNull":false},{"name":"EmployeeID","declaredType":"INTEGER","notNull":false},{"name":"OrderDate","declaredType":"DATETIME","notNull":false},{"name":"RequiredDate","declaredType":"DATETIME","notNull":false},{"name":"ShippedDate","declaredType":"DATETIME","notNull":false},{"name":"ShipVia","declaredType":"INTEGER","notNull":false},{"name":"Freight","declaredType":"NUMERIC","notNull":false,"defaultSql":"0"},{"name":"ShipName","declaredType":"TEXT","notNull":false},{"name":"ShipAddress","declaredType":"TEXT","notNull":false},{"name":"ShipCity","declaredType":"TEXT","notNull":false},{"name":"ShipRegion","declaredType":"TEXT","notNull":false},{"name":"ShipPostalCode","declaredType":"TEXT","notNull":false},{"name":"ShipCountry","declaredType":"TEXT","notNull":false}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    storage_class_files:
+        - source-storage-0001.jsonl
+    fields:
+        - name: OrderID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: CustomerID
+          type: string
+          nullable: true
+        - name: EmployeeID
+          type: int
+          nullable: true
+        - name: OrderDate
+          type: time
+          nullable: true
+        - name: RequiredDate
+          type: time
+          nullable: true
+        - name: ShippedDate
+          type: time
+          nullable: true
+        - name: ShipVia
+          type: int
+          nullable: true
+        - name: Freight
+          type: decimal
+          nullable: true
+          encoding: decimal-string
+        - name: ShipName
+          type: string
+          nullable: true
+        - name: ShipAddress
+          type: string
+          nullable: true
+        - name: ShipCity
+          type: string
+          nullable: true
+        - name: ShipRegion
+          type: string
+          nullable: true
+        - name: ShipPostalCode
+          type: string
+          nullable: true
+        - name: ShipCountry
+          type: string
+          nullable: true
+    foreign_keys:
+        - name: Orders_fk_0
+          fields:
+            - ShipVia
+          referenced_collection: Shippers
+          referenced_fields:
+            - ShipperID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: Orders_fk_1
+          fields:
+            - CustomerID
+          referenced_collection: Customers
+          referenced_fields:
+            - CustomerID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: Orders_fk_2
+          fields:
+            - EmployeeID
+          referenced_collection: Employees
+          referenced_fields:
+            - EmployeeID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

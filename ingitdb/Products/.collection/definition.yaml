@@ -1,0 +1,100 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    ProductID:
+        type: int
+        required: true
+    ProductName:
+        type: string
+        required: true
+    SupplierID:
+        type: int
+    CategoryID:
+        type: int
+    QuantityPerUnit:
+        type: string
+    UnitPrice:
+        type: string
+    UnitsInStock:
+        type: int
+    UnitsOnOrder:
+        type: int
+    ReorderLevel:
+        type: int
+    Discontinued:
+        type: string
+        required: true
+columns_order:
+    - ProductID
+    - ProductName
+    - SupplierID
+    - CategoryID
+    - QuantityPerUnit
+    - UnitPrice
+    - UnitsInStock
+    - UnitsOnOrder
+    - ReorderLevel
+    - Discontinued
+primary_key:
+    - ProductID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Products](\r\n   [ProductID]INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\r\n   [ProductName]TEXT NOT NULL,\r\n   [SupplierID]INTEGER,\r\n   [CategoryID]INTEGER,\r\n   [QuantityPerUnit]TEXT,\r\n   [UnitPrice]NUMERIC DEFAULT 0,\r\n   [UnitsInStock]INTEGER DEFAULT 0,\r\n   [UnitsOnOrder]INTEGER DEFAULT 0,\r\n   [ReorderLevel]INTEGER DEFAULT 0,\r\n   [Discontinued]TEXT NOT NULL DEFAULT ''0'',\r\n    CHECK ([UnitPrice]\u003e=(0)),\r\n    CHECK ([ReorderLevel]\u003e=(0)),\r\n    CHECK ([UnitsInStock]\u003e=(0)),\r\n    CHECK ([UnitsOnOrder]\u003e=(0)),\r\n\tFOREIGN KEY ([CategoryID]) REFERENCES [Categories] ([CategoryID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n\tFOREIGN KEY ([SupplierID]) REFERENCES [Suppliers] ([SupplierID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"ProductID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"ProductName","declaredType":"TEXT","notNull":true},{"name":"SupplierID","declaredType":"INTEGER","notNull":false},{"name":"CategoryID","declaredType":"INTEGER","notNull":false},{"name":"QuantityPerUnit","declaredType":"TEXT","notNull":false},{"name":"UnitPrice","declaredType":"NUMERIC","notNull":false,"defaultSql":"0"},{"name":"UnitsInStock","declaredType":"INTEGER","notNull":false,"defaultSql":"0"},{"name":"UnitsOnOrder","declaredType":"INTEGER","notNull":false,"defaultSql":"0"},{"name":"ReorderLevel","declaredType":"INTEGER","notNull":false,"defaultSql":"0"},{"name":"Discontinued","declaredType":"TEXT","notNull":true,"defaultSql":"''0''"}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    storage_class_files:
+        - source-storage-0001.jsonl
+    fields:
+        - name: ProductID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: ProductName
+          type: string
+          nullable: false
+        - name: SupplierID
+          type: int
+          nullable: true
+        - name: CategoryID
+          type: int
+          nullable: true
+        - name: QuantityPerUnit
+          type: string
+          nullable: true
+        - name: UnitPrice
+          type: decimal
+          nullable: true
+          encoding: decimal-string
+        - name: UnitsInStock
+          type: int
+          nullable: true
+        - name: UnitsOnOrder
+          type: int
+          nullable: true
+        - name: ReorderLevel
+          type: int
+          nullable: true
+        - name: Discontinued
+          type: string
+          nullable: false
+    foreign_keys:
+        - name: Products_fk_0
+          fields:
+            - SupplierID
+          referenced_collection: Suppliers
+          referenced_fields:
+            - SupplierID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: Products_fk_1
+          fields:
+            - CategoryID
+          referenced_collection: Categories
+          referenced_fields:
+            - CategoryID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
