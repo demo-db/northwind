@@ -1,0 +1,89 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    SupplierID:
+        type: int
+        required: true
+    CompanyName:
+        type: string
+        required: true
+    ContactName:
+        type: string
+    ContactTitle:
+        type: string
+    Address:
+        type: string
+    City:
+        type: string
+    Region:
+        type: string
+    PostalCode:
+        type: string
+    Country:
+        type: string
+    Phone:
+        type: string
+    Fax:
+        type: string
+    HomePage:
+        type: string
+columns_order:
+    - SupplierID
+    - CompanyName
+    - ContactName
+    - ContactTitle
+    - Address
+    - City
+    - Region
+    - PostalCode
+    - Country
+    - Phone
+    - Fax
+    - HomePage
+primary_key:
+    - SupplierID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Suppliers](\r\n   [SupplierID]INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\r\n   [CompanyName]TEXT NOT NULL,\r\n   [ContactName]TEXT,\r\n   [ContactTitle]TEXT,\r\n   [Address]TEXT,\r\n   [City]TEXT,\r\n   [Region]TEXT,\r\n   [PostalCode]TEXT,\r\n   [Country]TEXT,\r\n   [Phone]TEXT,\r\n   [Fax]TEXT,\r\n   [HomePage]TEXT\r\n)","columns":[{"name":"SupplierID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"CompanyName","declaredType":"TEXT","notNull":true},{"name":"ContactName","declaredType":"TEXT","notNull":false},{"name":"ContactTitle","declaredType":"TEXT","notNull":false},{"name":"Address","declaredType":"TEXT","notNull":false},{"name":"City","declaredType":"TEXT","notNull":false},{"name":"Region","declaredType":"TEXT","notNull":false},{"name":"PostalCode","declaredType":"TEXT","notNull":false},{"name":"Country","declaredType":"TEXT","notNull":false},{"name":"Phone","declaredType":"TEXT","notNull":false},{"name":"Fax","declaredType":"TEXT","notNull":false},{"name":"HomePage","declaredType":"TEXT","notNull":false}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: SupplierID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: CompanyName
+          type: string
+          nullable: false
+        - name: ContactName
+          type: string
+          nullable: true
+        - name: ContactTitle
+          type: string
+          nullable: true
+        - name: Address
+          type: string
+          nullable: true
+        - name: City
+          type: string
+          nullable: true
+        - name: Region
+          type: string
+          nullable: true
+        - name: PostalCode
+          type: string
+          nullable: true
+        - name: Country
+          type: string
+          nullable: true
+        - name: Phone
+          type: string
+          nullable: true
+        - name: Fax
+          type: string
+          nullable: true
+        - name: HomePage
+          type: string
+          nullable: true

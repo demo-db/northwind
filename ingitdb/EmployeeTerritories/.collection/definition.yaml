@@ -1,0 +1,48 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    EmployeeID:
+        type: int
+        required: true
+    TerritoryID:
+        type: string
+        required: true
+columns_order:
+    - EmployeeID
+    - TerritoryID
+primary_key:
+    - EmployeeID
+    - TerritoryID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [EmployeeTerritories](\r\n   [EmployeeID]INTEGER NOT NULL,\r\n   [TerritoryID]TEXT NOT NULL,\r\n    PRIMARY KEY (\"EmployeeID\",\"TerritoryID\"),\r\n\tFOREIGN KEY ([EmployeeID]) REFERENCES [Employees] ([EmployeeID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION,\r\n\tFOREIGN KEY ([TerritoryID]) REFERENCES [Territories] ([TerritoryID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"EmployeeID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"TerritoryID","declaredType":"TEXT","notNull":true,"primaryKeyPosition":2}],"indexes":[{"name":"sqlite_autoindex_EmployeeTerritories_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"EmployeeID","key":true,"collation":"BINARY"},{"position":1,"name":"TerritoryID","key":true,"collation":"BINARY"},{"position":2,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: EmployeeID
+          type: int
+          nullable: false
+        - name: TerritoryID
+          type: string
+          nullable: false
+    foreign_keys:
+        - name: EmployeeTerritories_fk_0
+          fields:
+            - TerritoryID
+          referenced_collection: Territories
+          referenced_fields:
+            - TerritoryID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION
+        - name: EmployeeTerritories_fk_1
+          fields:
+            - EmployeeID
+          referenced_collection: Employees
+          referenced_fields:
+            - EmployeeID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

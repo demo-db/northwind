@@ -1,0 +1,167 @@
+- name: Alphabetical list of products
+  columns:
+    - ProductID
+    - ProductName
+    - SupplierID
+    - CategoryID
+    - QuantityPerUnit
+    - UnitPrice
+    - UnitsInStock
+    - UnitsOnOrder
+    - ReorderLevel
+    - Discontinued
+    - CategoryName
+  createsql: "CREATE VIEW [Alphabetical list of products] \r\nAS\r\nSELECT Products.*, \r\n       Categories.CategoryName\r\nFROM Categories \r\n   INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE (((Products.Discontinued)=0))"
+- name: Category Sales for 1997
+  columns:
+    - CategoryName
+    - CategorySales
+  createsql: "CREATE VIEW [Category Sales for 1997] AS\r\nSELECT     [Product Sales for 1997].CategoryName, \r\n       Sum([Product Sales for 1997].ProductSales) AS CategorySales\r\nFROM [Product Sales for 1997]\r\nGROUP BY [Product Sales for 1997].CategoryName"
+- name: Current Product List
+  columns:
+    - ProductID
+    - ProductName
+  createsql: "CREATE VIEW [Current Product List] \r\nAS\r\nSELECT ProductID,\r\n       ProductName \r\nFROM Products \r\nWHERE Discontinued=0"
+- name: Customer and Suppliers by City
+  columns:
+    - City
+    - CompanyName
+    - ContactName
+    - Relationship
+  createsql: "CREATE VIEW [Customer and Suppliers by City] \r\nAS\r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Customers' AS Relationship \r\nFROM Customers\r\nUNION \r\nSELECT City, \r\n       CompanyName, \r\n       ContactName, \r\n       'Suppliers'\r\nFROM Suppliers \r\nORDER BY City, CompanyName"
+- name: Invoices
+  columns:
+    - ShipName
+    - ShipAddress
+    - ShipCity
+    - ShipRegion
+    - ShipPostalCode
+    - ShipCountry
+    - CustomerID
+    - CustomerName
+    - Address
+    - City
+    - Region
+    - PostalCode
+    - Country
+    - Salesperson
+    - OrderID
+    - OrderDate
+    - RequiredDate
+    - ShippedDate
+    - ShipperName
+    - ProductID
+    - ProductName
+    - UnitPrice
+    - Quantity
+    - Discount
+    - ExtendedPrice
+    - Freight
+  createsql: "CREATE VIEW [Invoices] \r\nAS\r\nSELECT Orders.ShipName,\r\n       Orders.ShipAddress,\r\n       Orders.ShipCity,\r\n       Orders.ShipRegion, \r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Orders.CustomerID,\r\n       Customers.CompanyName AS CustomerName, \r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode,\r\n       Customers.Country,\r\n       (Employees.FirstName + ' ' + Employees.LastName) AS Salesperson, \r\n       Orders.OrderID,\r\n       Orders.OrderDate,\r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Shippers.CompanyName As ShipperName,\r\n       [Order Details].ProductID,\r\n       Products.ProductName, \r\n       [Order Details].UnitPrice,\r\n       [Order Details].Quantity,\r\n       [Order Details].Discount, \r\n       ((([Order Details].UnitPrice*Quantity*(1-Discount))/100)*100) AS ExtendedPrice,\r\n       Orders.Freight \r\nFROM Customers \r\n  JOIN Orders ON Customers.CustomerID = Orders.CustomerID  \r\n    JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID    \r\n     JOIN [Order Details] ON Orders.OrderID = [Order Details].OrderID     \r\n      JOIN Products ON Products.ProductID = [Order Details].ProductID      \r\n       JOIN Shippers ON Shippers.ShipperID = Orders.ShipVia"
+- name: Order Details Extended
+  columns:
+    - OrderID
+    - ProductID
+    - ProductName
+    - UnitPrice
+    - Quantity
+    - Discount
+    - ExtendedPrice
+  createsql: "CREATE VIEW [Order Details Extended] AS\r\nSELECT [Order Details].OrderID, \r\n       [Order Details].ProductID, \r\n       Products.ProductName, \r\n\t   [Order Details].UnitPrice, \r\n       [Order Details].Quantity, \r\n       [Order Details].Discount, \r\n      ([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100 AS ExtendedPrice\r\nFROM Products \r\n     JOIN [Order Details] ON Products.ProductID = [Order Details].ProductID"
+- name: Order Subtotals
+  columns:
+    - OrderID
+    - Subtotal
+  createsql: "CREATE VIEW [Order Subtotals] AS\r\nSELECT [Order Details].OrderID, \r\nSum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS Subtotal\r\nFROM [Order Details]\r\nGROUP BY [Order Details].OrderID"
+- name: Orders Qry
+  columns:
+    - OrderID
+    - CustomerID
+    - EmployeeID
+    - OrderDate
+    - RequiredDate
+    - ShippedDate
+    - ShipVia
+    - Freight
+    - ShipName
+    - ShipAddress
+    - ShipCity
+    - ShipRegion
+    - ShipPostalCode
+    - ShipCountry
+    - CompanyName
+    - Address
+    - City
+    - Region
+    - PostalCode
+    - Country
+  createsql: "CREATE VIEW [Orders Qry] AS\r\nSELECT Orders.OrderID,\r\n       Orders.CustomerID,\r\n       Orders.EmployeeID, \r\n       Orders.OrderDate, \r\n       Orders.RequiredDate,\r\n       Orders.ShippedDate, \r\n       Orders.ShipVia, \r\n       Orders.Freight,\r\n       Orders.ShipName, \r\n       Orders.ShipAddress, \r\n       Orders.ShipCity,\r\n       Orders.ShipRegion,\r\n       Orders.ShipPostalCode,\r\n       Orders.ShipCountry,\r\n       Customers.CompanyName,\r\n       Customers.Address,\r\n       Customers.City,\r\n       Customers.Region,\r\n       Customers.PostalCode, \r\n       Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID"
+- name: Product Sales for 1997
+  columns:
+    - CategoryName
+    - ProductName
+    - ProductSales
+  createsql: "CREATE VIEW [Product Sales for 1997] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Sum(([Order Details].UnitPrice*Quantity*(1-Discount)/100)*100) AS ProductSales\r\nFROM Categories\r\n JOIN    Products On Categories.CategoryID = Products.CategoryID\r\n    JOIN  [Order Details] on Products.ProductID = [Order Details].ProductID     \r\n     JOIN  [Orders] on Orders.OrderID = [Order Details].OrderID \r\nWHERE Orders.ShippedDate Between DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryName, Products.ProductName"
+- name: ProductDetails_V
+  columns:
+    - ProductID
+    - ProductName
+    - SupplierID
+    - CategoryID
+    - QuantityPerUnit
+    - UnitPrice
+    - UnitsInStock
+    - UnitsOnOrder
+    - ReorderLevel
+    - Discontinued
+    - CategoryName
+    - CategoryDescription
+    - SupplierName
+    - SupplierRegion
+  createsql: "CREATE VIEW [ProductDetails_V] as\nselect \np.*, \nc.CategoryName, c.Description as [CategoryDescription],\ns.CompanyName as [SupplierName], s.Region as [SupplierRegion]\nfrom [Products] p\njoin [Categories] c on p.CategoryId = c.CategoryId\njoin [Suppliers] s on s.SupplierId = p.SupplierId"
+- name: Products Above Average Price
+  columns:
+    - ProductName
+    - UnitPrice
+  createsql: "CREATE VIEW [Products Above Average Price] AS\r\nSELECT Products.ProductName, \r\n       Products.UnitPrice\r\nFROM Products\r\nWHERE Products.UnitPrice>(SELECT AVG(UnitPrice) From Products)"
+- name: Products by Category
+  columns:
+    - CategoryName
+    - ProductName
+    - QuantityPerUnit
+    - UnitsInStock
+    - Discontinued
+  createsql: "CREATE VIEW [Products by Category] AS\r\nSELECT Categories.CategoryName, \r\n       Products.ProductName, \r\n       Products.QuantityPerUnit, \r\n       Products.UnitsInStock, \r\n       Products.Discontinued\r\nFROM Categories \r\n     INNER JOIN Products ON Categories.CategoryID = Products.CategoryID\r\nWHERE Products.Discontinued <> 1"
+- name: Quarterly Orders
+  columns:
+    - CustomerID
+    - CompanyName
+    - City
+    - Country
+  createsql: "CREATE VIEW [Quarterly Orders] AS\r\nSELECT DISTINCT Customers.CustomerID, \r\n                Customers.CompanyName, \r\n                Customers.City, \r\n                Customers.Country\r\nFROM Customers \r\n     JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')"
+- name: Sales Totals by Amount
+  columns:
+    - SaleAmount
+    - OrderID
+    - CompanyName
+    - ShippedDate
+  createsql: "CREATE VIEW [Sales Totals by Amount] AS\r\nSELECT [Order Subtotals].Subtotal AS SaleAmount, \r\n                  Orders.OrderID, \r\n               Customers.CompanyName, \r\n                  Orders.ShippedDate\r\nFROM Customers \r\n JOIN Orders ON Customers.CustomerID = Orders.CustomerID\r\n    JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID \r\nWHERE ([Order Subtotals].Subtotal >2500) \r\nAND (Orders.ShippedDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31'))"
+- name: Sales by Category
+  columns:
+    - CategoryID
+    - CategoryName
+    - ProductName
+    - ProductSales
+  createsql: "CREATE VIEW [Sales by Category] AS\r\nSELECT Categories.CategoryID, \r\n       Categories.CategoryName, \r\n         Products.ProductName, \r\n\tSum([Order Details Extended].ExtendedPrice) AS ProductSales\r\nFROM  Categories \r\n    JOIN Products \r\n      ON Categories.CategoryID = Products.CategoryID\r\n       JOIN [Order Details Extended] \r\n         ON Products.ProductID = [Order Details Extended].ProductID                \r\n           JOIN Orders \r\n             ON Orders.OrderID = [Order Details Extended].OrderID \r\nWHERE Orders.OrderDate BETWEEN DATETIME('1997-01-01') And DATETIME('1997-12-31')\r\nGROUP BY Categories.CategoryID, Categories.CategoryName, Products.ProductName"
+- name: Summary of Sales by Quarter
+  columns:
+    - ShippedDate
+    - OrderID
+    - Subtotal
+  createsql: "CREATE VIEW [Summary of Sales by Quarter] AS\r\nSELECT Orders.ShippedDate, \r\n       Orders.OrderID, \r\n       [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL"
+- name: Summary of Sales by Year
+  columns:
+    - ShippedDate
+    - OrderID
+    - Subtotal
+  createsql: "CREATE VIEW [Summary of Sales by Year] AS\r\nSELECT      Orders.ShippedDate, \r\n            Orders.OrderID, \r\n [Order Subtotals].Subtotal\r\nFROM Orders \r\n     INNER JOIN [Order Subtotals] ON Orders.OrderID = [Order Subtotals].OrderID\r\nWHERE Orders.ShippedDate IS NOT NULL"

@@ -1,0 +1,41 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    CategoryID:
+        type: int
+        required: true
+    CategoryName:
+        type: string
+    Description:
+        type: string
+    Picture:
+        type: string
+columns_order:
+    - CategoryID
+    - CategoryName
+    - Description
+    - Picture
+primary_key:
+    - CategoryID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Categories]\r\n(      [CategoryID] INTEGER PRIMARY KEY AUTOINCREMENT,\r\n       [CategoryName] TEXT,\r\n       [Description] TEXT,\r\n       [Picture] BLOB\r\n)","columns":[{"name":"CategoryID","declaredType":"INTEGER","notNull":false,"primaryKeyPosition":1},{"name":"CategoryName","declaredType":"TEXT","notNull":false},{"name":"Description","declaredType":"TEXT","notNull":false},{"name":"Picture","declaredType":"BLOB","notNull":false}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: CategoryID
+          type: int
+          nullable: false
+          auto_increment: true
+        - name: CategoryName
+          type: string
+          nullable: true
+        - name: Description
+          type: string
+          nullable: true
+        - name: Picture
+          type: bytes
+          nullable: true
+          encoding: base64

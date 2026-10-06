@@ -1,0 +1,45 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    TerritoryID:
+        type: string
+        required: true
+    TerritoryDescription:
+        type: string
+        required: true
+    RegionID:
+        type: int
+        required: true
+columns_order:
+    - TerritoryID
+    - TerritoryDescription
+    - RegionID
+primary_key:
+    - TerritoryID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Territories](\r\n   [TerritoryID]TEXT NOT NULL,\r\n   [TerritoryDescription]TEXT NOT NULL,\r\n   [RegionID]INTEGER NOT NULL,\r\n    PRIMARY KEY (\"TerritoryID\"),\r\n\tFOREIGN KEY ([RegionID]) REFERENCES [Regions] ([RegionID]) \r\n\t\tON DELETE NO ACTION ON UPDATE NO ACTION\r\n)","columns":[{"name":"TerritoryID","declaredType":"TEXT","notNull":true,"primaryKeyPosition":1},{"name":"TerritoryDescription","declaredType":"TEXT","notNull":true},{"name":"RegionID","declaredType":"INTEGER","notNull":true}],"indexes":[{"name":"sqlite_autoindex_Territories_1","unique":true,"origin":"pk","columns":[{"position":0,"name":"TerritoryID","key":true,"collation":"BINARY"},{"position":1,"key":false,"collation":"BINARY"}]}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: TerritoryID
+          type: string
+          nullable: false
+        - name: TerritoryDescription
+          type: string
+          nullable: false
+        - name: RegionID
+          type: int
+          nullable: false
+    foreign_keys:
+        - name: Territories_fk_0
+          fields:
+            - RegionID
+          referenced_collection: Regions
+          referenced_fields:
+            - RegionID
+          source_enforcement: disabled
+          on_update: NO ACTION
+          on_delete: NO ACTION

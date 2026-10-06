@@ -1,0 +1,28 @@
+record_file:
+    name: records.json
+    format: json
+    type: map[$record_id]map[$field_name]any
+columns:
+    RegionID:
+        type: int
+        required: true
+    RegionDescription:
+        type: string
+        required: true
+columns_order:
+    - RegionID
+    - RegionDescription
+primary_key:
+    - RegionID
+source_schema:
+    key_mode: source-primary-key
+    source_definition_json: '{"dialect":"sqlite","createSql":"CREATE TABLE [Regions](\r\n   [RegionID]INTEGER NOT NULL PRIMARY KEY,\r\n   [RegionDescription]TEXT NOT NULL\r\n)","columns":[{"name":"RegionID","declaredType":"INTEGER","notNull":true,"primaryKeyPosition":1},{"name":"RegionDescription","declaredType":"TEXT","notNull":true}]}'
+    constraint_validation: provider-preflight-passed
+    relationship_comparison: provider-native
+    fields:
+        - name: RegionID
+          type: int
+          nullable: false
+        - name: RegionDescription
+          type: string
+          nullable: false
