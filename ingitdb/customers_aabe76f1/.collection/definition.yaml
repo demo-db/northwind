@@ -1,0 +1,27 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "CustomerID":
+    type: any
+  "CompanyName":
+    type: any
+  "ContactName":
+    type: any
+  "ContactTitle":
+    type: any
+  "Address":
+    type: any
+  "City":
+    type: any
+  "Region":
+    type: any
+  "PostalCode":
+    type: any
+  "Country":
+    type: any
+  "Phone":
+    type: any
+  "Fax":
+    type: any

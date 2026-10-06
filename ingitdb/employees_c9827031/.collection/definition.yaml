@@ -1,0 +1,41 @@
+record_file:
+  name: records.json
+  format: json
+  type: "map[$record_id]map[$field_name]any"
+columns:
+  "EmployeeID":
+    type: any
+  "LastName":
+    type: any
+  "FirstName":
+    type: any
+  "Title":
+    type: any
+  "TitleOfCourtesy":
+    type: any
+  "BirthDate":
+    type: any
+  "HireDate":
+    type: any
+  "Address":
+    type: any
+  "City":
+    type: any
+  "Region":
+    type: any
+  "PostalCode":
+    type: any
+  "Country":
+    type: any
+  "HomePhone":
+    type: any
+  "Extension":
+    type: any
+  "Photo":
+    type: any
+  "Notes":
+    type: any
+  "ReportsTo":
+    type: any
+  "PhotoPath":
+    type: any
