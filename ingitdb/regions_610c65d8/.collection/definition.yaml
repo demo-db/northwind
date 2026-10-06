@@ -2,8 +2,11 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["RegionID"]
 columns:
   "RegionID":
-    type: any
+    type: int
+    required: true
   "RegionDescription":
-    type: any
+    type: string
+    required: true

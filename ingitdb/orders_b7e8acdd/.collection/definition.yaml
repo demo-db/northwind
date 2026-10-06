@@ -2,32 +2,34 @@ record_file:
   name: records.json
   format: json
   type: "map[$record_id]map[$field_name]any"
+primary_key: ["OrderID"]
 columns:
   "OrderID":
-    type: any
+    type: int
+    required: true
   "CustomerID":
-    type: any
+    type: string
   "EmployeeID":
-    type: any
+    type: int
   "OrderDate":
-    type: any
+    type: string
   "RequiredDate":
-    type: any
+    type: string
   "ShippedDate":
-    type: any
+    type: string
   "ShipVia":
-    type: any
+    type: int
   "Freight":
     type: any
   "ShipName":
-    type: any
+    type: string
   "ShipAddress":
-    type: any
+    type: string
   "ShipCity":
-    type: any
+    type: string
   "ShipRegion":
-    type: any
+    type: string
   "ShipPostalCode":
-    type: any
+    type: string
   "ShipCountry":
-    type: any
+    type: string
