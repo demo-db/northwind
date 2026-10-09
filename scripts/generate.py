@@ -69,29 +69,29 @@ def model_type(sql_type):
     if 'BLOB' in t: return 'document'
     return 'string'
 
-entities = {}
+records = {}
 for table in tables:
     if table['kind'] != 'table': continue
     keys = [c['name'] for c in table['columns'] if c['primaryKey']]
     if not keys: keys = [c['name'] for c in table['columns'] if c['name'].lower().endswith('id')][:1]
     fks = {fk['column']: fk['table'] for fk in table['foreignKeys']}
-    props = {}
+    fields = {}
     for c in table['columns']:
         value = {'required': (not c['nullable']) or c['primaryKey']}
-        if c['name'] in fks: value['entity'] = fks[c['name']]
+        if c['name'] in fks: value['record'] = fks[c['name']]
         else: value['type'] = model_type(c['type'])
         if not value['required']: value.pop('required')
-        props[c['name']] = value
-    entity_name = table['modelEntity']
-    entities[entity_name] = {'key': keys, 'properties': props}
-model = {'modelspec': '1.0-draft', 'module': {'id': 'github.com/demo-db/northwind/northwind', 'name': 'northwind', 'version': '0.1.0'}, 'entities': entities}
+        fields[c['name']] = value
+    record_name = table['modelEntity']
+    records[record_name] = {'key': keys, 'fields': fields}
+model = {'modelspec': '1.0-draft-2', 'module': {'id': 'github.com/demo-db/northwind/northwind', 'name': 'northwind', 'version': '0.1.0'}, 'records': records}
 (ROOT / 'model').mkdir(exist_ok=True)
 (ROOT / 'model/northwind.modelspec.json').write_text(json.dumps(model, indent=2, ensure_ascii=False) + '\n')
 hcl = ['# Licence: MIT. Derived one-to-one from the pinned Northwind SQLite schema.', '# ModelSpec 1.0-draft; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published entity names must be identifiers).']
-for name, entity in entities.items():
-    hcl += ['', f'entity {json.dumps(name, ensure_ascii=False)} {{', f'  key = {json.dumps(entity["key"], ensure_ascii=False)}']
-    for prop, definition in entity['properties'].items():
-        hcl += ['', f'  property {json.dumps(prop, ensure_ascii=False)} {{']
+for name, record in records.items():
+    hcl += ['', f'record {json.dumps(name, ensure_ascii=False)} {{', f'  key = {json.dumps(record["key"], ensure_ascii=False)}']
+    for field, definition in record['fields'].items():
+        hcl += ['', f'  field {json.dumps(field, ensure_ascii=False)} {{']
         for key, value in definition.items(): hcl.append(f'    {key} = {json.dumps(value, ensure_ascii=False)}')
         hcl.append('  }')
     hcl.append('}')
