@@ -87,7 +87,7 @@ for table in tables:
 model = {'modelspec': '1.0-draft-2', 'module': {'id': 'github.com/demo-db/northwind/northwind', 'name': 'northwind', 'version': '0.1.0'}, 'records': records}
 (ROOT / 'model').mkdir(exist_ok=True)
 (ROOT / 'model/northwind.modelspec.json').write_text(json.dumps(model, indent=2, ensure_ascii=False) + '\n')
-hcl = ['# Licence: MIT. Derived one-to-one from the pinned Northwind SQLite schema.', '# ModelSpec 1.0-draft; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published entity names must be identifiers).']
+hcl = ['# Licence: MIT. Derived one-to-one from the pinned Northwind SQLite schema.', '# ModelSpec 1.0-draft-2; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published record type names must be identifiers).']
 for name, record in records.items():
     hcl += ['', f'record {json.dumps(name, ensure_ascii=False)} {{', f'  key = {json.dumps(record["key"], ensure_ascii=False)}']
     for field, definition in record['fields'].items():

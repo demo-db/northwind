@@ -142,8 +142,8 @@
       "bytes": 2493
     },
     "model/northwind.modelspec.hcl": {
-      "sha256": "bd8a45e672de8a0985018f8be293927d85fd33687e6048c1508185448a0fe51e",
-      "bytes": 5627
+      "sha256": "829b356c7c587d7e7ffa88256cf0dc2857a07ebc6ae0316e7111c720eb5ed604",
+      "bytes": 5634
     },
     "model/northwind.modelspec.json": {
       "sha256": "093adb9b0ce3b12ad35c85d38f5a439bdd92bd30db4a14114228fb323eb00b52",

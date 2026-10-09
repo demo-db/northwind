@@ -1,5 +1,5 @@
 # Licence: MIT. Derived one-to-one from the pinned Northwind SQLite schema.
-# ModelSpec 1.0-draft; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published entity names must be identifiers).
+# ModelSpec 1.0-draft-2; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published record type names must be identifiers).
 
 record "Categories" {
   key = ["CategoryID"]
