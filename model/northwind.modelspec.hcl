@@ -1,432 +1,432 @@
 # Licence: MIT. Derived one-to-one from the pinned Northwind SQLite schema.
-# ModelSpec 1.0-draft; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published entity names must be identifiers).
+# ModelSpec 1.0-draft-2; OrderDetails represents the native SQLite table "Order Details" (ModelSpec published record type names must be identifiers).
 
-entity "Categories" {
+record "Categories" {
   key = ["CategoryID"]
 
-  property "CategoryID" {
+  field "CategoryID" {
     required = true
     type = "int"
   }
 
-  property "CategoryName" {
+  field "CategoryName" {
     type = "string"
   }
 
-  property "Description" {
+  field "Description" {
     type = "string"
   }
 
-  property "Picture" {
+  field "Picture" {
     type = "document"
   }
 }
 
-entity "CustomerCustomerDemo" {
+record "CustomerCustomerDemo" {
   key = ["CustomerID", "CustomerTypeID"]
 
-  property "CustomerID" {
+  field "CustomerID" {
     required = true
-    entity = "Customers"
+    record = "Customers"
   }
 
-  property "CustomerTypeID" {
+  field "CustomerTypeID" {
     required = true
-    entity = "CustomerDemographics"
+    record = "CustomerDemographics"
   }
 }
 
-entity "CustomerDemographics" {
+record "CustomerDemographics" {
   key = ["CustomerTypeID"]
 
-  property "CustomerTypeID" {
+  field "CustomerTypeID" {
     required = true
     type = "string"
   }
 
-  property "CustomerDesc" {
+  field "CustomerDesc" {
     type = "string"
   }
 }
 
-entity "Customers" {
+record "Customers" {
   key = ["CustomerID"]
 
-  property "CustomerID" {
+  field "CustomerID" {
     required = true
     type = "string"
   }
 
-  property "CompanyName" {
+  field "CompanyName" {
     type = "string"
   }
 
-  property "ContactName" {
+  field "ContactName" {
     type = "string"
   }
 
-  property "ContactTitle" {
+  field "ContactTitle" {
     type = "string"
   }
 
-  property "Address" {
+  field "Address" {
     type = "string"
   }
 
-  property "City" {
+  field "City" {
     type = "string"
   }
 
-  property "Region" {
+  field "Region" {
     type = "string"
   }
 
-  property "PostalCode" {
+  field "PostalCode" {
     type = "string"
   }
 
-  property "Country" {
+  field "Country" {
     type = "string"
   }
 
-  property "Phone" {
+  field "Phone" {
     type = "string"
   }
 
-  property "Fax" {
+  field "Fax" {
     type = "string"
   }
 }
 
-entity "EmployeeTerritories" {
+record "EmployeeTerritories" {
   key = ["EmployeeID", "TerritoryID"]
 
-  property "EmployeeID" {
+  field "EmployeeID" {
     required = true
-    entity = "Employees"
+    record = "Employees"
   }
 
-  property "TerritoryID" {
+  field "TerritoryID" {
     required = true
-    entity = "Territories"
+    record = "Territories"
   }
 }
 
-entity "Employees" {
+record "Employees" {
   key = ["EmployeeID"]
 
-  property "EmployeeID" {
+  field "EmployeeID" {
     required = true
     type = "int"
   }
 
-  property "LastName" {
+  field "LastName" {
     type = "string"
   }
 
-  property "FirstName" {
+  field "FirstName" {
     type = "string"
   }
 
-  property "Title" {
+  field "Title" {
     type = "string"
   }
 
-  property "TitleOfCourtesy" {
+  field "TitleOfCourtesy" {
     type = "string"
   }
 
-  property "BirthDate" {
+  field "BirthDate" {
     type = "date"
   }
 
-  property "HireDate" {
+  field "HireDate" {
     type = "date"
   }
 
-  property "Address" {
+  field "Address" {
     type = "string"
   }
 
-  property "City" {
+  field "City" {
     type = "string"
   }
 
-  property "Region" {
+  field "Region" {
     type = "string"
   }
 
-  property "PostalCode" {
+  field "PostalCode" {
     type = "string"
   }
 
-  property "Country" {
+  field "Country" {
     type = "string"
   }
 
-  property "HomePhone" {
+  field "HomePhone" {
     type = "string"
   }
 
-  property "Extension" {
+  field "Extension" {
     type = "string"
   }
 
-  property "Photo" {
+  field "Photo" {
     type = "document"
   }
 
-  property "Notes" {
+  field "Notes" {
     type = "string"
   }
 
-  property "ReportsTo" {
-    entity = "Employees"
+  field "ReportsTo" {
+    record = "Employees"
   }
 
-  property "PhotoPath" {
+  field "PhotoPath" {
     type = "string"
   }
 }
 
-entity "OrderDetails" {
+record "OrderDetails" {
   key = ["OrderID", "ProductID"]
 
-  property "OrderID" {
+  field "OrderID" {
     required = true
-    entity = "Orders"
+    record = "Orders"
   }
 
-  property "ProductID" {
+  field "ProductID" {
     required = true
-    entity = "Products"
+    record = "Products"
   }
 
-  property "UnitPrice" {
+  field "UnitPrice" {
     required = true
     type = "decimal"
   }
 
-  property "Quantity" {
+  field "Quantity" {
     required = true
     type = "int"
   }
 
-  property "Discount" {
+  field "Discount" {
     required = true
     type = "decimal"
   }
 }
 
-entity "Orders" {
+record "Orders" {
   key = ["OrderID"]
 
-  property "OrderID" {
+  field "OrderID" {
     required = true
     type = "int"
   }
 
-  property "CustomerID" {
-    entity = "Customers"
+  field "CustomerID" {
+    record = "Customers"
   }
 
-  property "EmployeeID" {
-    entity = "Employees"
+  field "EmployeeID" {
+    record = "Employees"
   }
 
-  property "OrderDate" {
+  field "OrderDate" {
     type = "datetime"
   }
 
-  property "RequiredDate" {
+  field "RequiredDate" {
     type = "datetime"
   }
 
-  property "ShippedDate" {
+  field "ShippedDate" {
     type = "datetime"
   }
 
-  property "ShipVia" {
-    entity = "Shippers"
+  field "ShipVia" {
+    record = "Shippers"
   }
 
-  property "Freight" {
+  field "Freight" {
     type = "decimal"
   }
 
-  property "ShipName" {
+  field "ShipName" {
     type = "string"
   }
 
-  property "ShipAddress" {
+  field "ShipAddress" {
     type = "string"
   }
 
-  property "ShipCity" {
+  field "ShipCity" {
     type = "string"
   }
 
-  property "ShipRegion" {
+  field "ShipRegion" {
     type = "string"
   }
 
-  property "ShipPostalCode" {
+  field "ShipPostalCode" {
     type = "string"
   }
 
-  property "ShipCountry" {
+  field "ShipCountry" {
     type = "string"
   }
 }
 
-entity "Products" {
+record "Products" {
   key = ["ProductID"]
 
-  property "ProductID" {
+  field "ProductID" {
     required = true
     type = "int"
   }
 
-  property "ProductName" {
+  field "ProductName" {
     required = true
     type = "string"
   }
 
-  property "SupplierID" {
-    entity = "Suppliers"
+  field "SupplierID" {
+    record = "Suppliers"
   }
 
-  property "CategoryID" {
-    entity = "Categories"
+  field "CategoryID" {
+    record = "Categories"
   }
 
-  property "QuantityPerUnit" {
+  field "QuantityPerUnit" {
     type = "string"
   }
 
-  property "UnitPrice" {
+  field "UnitPrice" {
     type = "decimal"
   }
 
-  property "UnitsInStock" {
+  field "UnitsInStock" {
     type = "int"
   }
 
-  property "UnitsOnOrder" {
+  field "UnitsOnOrder" {
     type = "int"
   }
 
-  property "ReorderLevel" {
+  field "ReorderLevel" {
     type = "int"
   }
 
-  property "Discontinued" {
+  field "Discontinued" {
     required = true
     type = "string"
   }
 }
 
-entity "Regions" {
+record "Regions" {
   key = ["RegionID"]
 
-  property "RegionID" {
+  field "RegionID" {
     required = true
     type = "int"
   }
 
-  property "RegionDescription" {
+  field "RegionDescription" {
     required = true
     type = "string"
   }
 }
 
-entity "Shippers" {
+record "Shippers" {
   key = ["ShipperID"]
 
-  property "ShipperID" {
+  field "ShipperID" {
     required = true
     type = "int"
   }
 
-  property "CompanyName" {
+  field "CompanyName" {
     required = true
     type = "string"
   }
 
-  property "Phone" {
+  field "Phone" {
     type = "string"
   }
 }
 
-entity "Suppliers" {
+record "Suppliers" {
   key = ["SupplierID"]
 
-  property "SupplierID" {
+  field "SupplierID" {
     required = true
     type = "int"
   }
 
-  property "CompanyName" {
+  field "CompanyName" {
     required = true
     type = "string"
   }
 
-  property "ContactName" {
+  field "ContactName" {
     type = "string"
   }
 
-  property "ContactTitle" {
+  field "ContactTitle" {
     type = "string"
   }
 
-  property "Address" {
+  field "Address" {
     type = "string"
   }
 
-  property "City" {
+  field "City" {
     type = "string"
   }
 
-  property "Region" {
+  field "Region" {
     type = "string"
   }
 
-  property "PostalCode" {
+  field "PostalCode" {
     type = "string"
   }
 
-  property "Country" {
+  field "Country" {
     type = "string"
   }
 
-  property "Phone" {
+  field "Phone" {
     type = "string"
   }
 
-  property "Fax" {
+  field "Fax" {
     type = "string"
   }
 
-  property "HomePage" {
+  field "HomePage" {
     type = "string"
   }
 }
 
-entity "Territories" {
+record "Territories" {
   key = ["TerritoryID"]
 
-  property "TerritoryID" {
+  field "TerritoryID" {
     required = true
     type = "string"
   }
 
-  property "TerritoryDescription" {
+  field "TerritoryDescription" {
     required = true
     type = "string"
   }
 
-  property "RegionID" {
+  field "RegionID" {
     required = true
-    entity = "Regions"
+    record = "Regions"
   }
 }

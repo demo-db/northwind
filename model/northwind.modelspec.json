@@ -1,16 +1,16 @@
 {
-  "modelspec": "1.0-draft",
+  "modelspec": "1.0-draft-2",
   "module": {
     "id": "github.com/demo-db/northwind/northwind",
     "name": "northwind",
     "version": "0.1.0"
   },
-  "entities": {
+  "records": {
     "Categories": {
       "key": [
         "CategoryID"
       ],
-      "properties": {
+      "fields": {
         "CategoryID": {
           "required": true,
           "type": "int"
@@ -31,14 +31,14 @@
         "CustomerID",
         "CustomerTypeID"
       ],
-      "properties": {
+      "fields": {
         "CustomerID": {
           "required": true,
-          "entity": "Customers"
+          "record": "Customers"
         },
         "CustomerTypeID": {
           "required": true,
-          "entity": "CustomerDemographics"
+          "record": "CustomerDemographics"
         }
       }
     },
@@ -46,7 +46,7 @@
       "key": [
         "CustomerTypeID"
       ],
-      "properties": {
+      "fields": {
         "CustomerTypeID": {
           "required": true,
           "type": "string"
@@ -60,7 +60,7 @@
       "key": [
         "CustomerID"
       ],
-      "properties": {
+      "fields": {
         "CustomerID": {
           "required": true,
           "type": "string"
@@ -102,14 +102,14 @@
         "EmployeeID",
         "TerritoryID"
       ],
-      "properties": {
+      "fields": {
         "EmployeeID": {
           "required": true,
-          "entity": "Employees"
+          "record": "Employees"
         },
         "TerritoryID": {
           "required": true,
-          "entity": "Territories"
+          "record": "Territories"
         }
       }
     },
@@ -117,7 +117,7 @@
       "key": [
         "EmployeeID"
       ],
-      "properties": {
+      "fields": {
         "EmployeeID": {
           "required": true,
           "type": "int"
@@ -168,7 +168,7 @@
           "type": "string"
         },
         "ReportsTo": {
-          "entity": "Employees"
+          "record": "Employees"
         },
         "PhotoPath": {
           "type": "string"
@@ -180,14 +180,14 @@
         "OrderID",
         "ProductID"
       ],
-      "properties": {
+      "fields": {
         "OrderID": {
           "required": true,
-          "entity": "Orders"
+          "record": "Orders"
         },
         "ProductID": {
           "required": true,
-          "entity": "Products"
+          "record": "Products"
         },
         "UnitPrice": {
           "required": true,
@@ -207,16 +207,16 @@
       "key": [
         "OrderID"
       ],
-      "properties": {
+      "fields": {
         "OrderID": {
           "required": true,
           "type": "int"
         },
         "CustomerID": {
-          "entity": "Customers"
+          "record": "Customers"
         },
         "EmployeeID": {
-          "entity": "Employees"
+          "record": "Employees"
         },
         "OrderDate": {
           "type": "datetime"
@@ -228,7 +228,7 @@
           "type": "datetime"
         },
         "ShipVia": {
-          "entity": "Shippers"
+          "record": "Shippers"
         },
         "Freight": {
           "type": "decimal"
@@ -257,7 +257,7 @@
       "key": [
         "ProductID"
       ],
-      "properties": {
+      "fields": {
         "ProductID": {
           "required": true,
           "type": "int"
@@ -267,10 +267,10 @@
           "type": "string"
         },
         "SupplierID": {
-          "entity": "Suppliers"
+          "record": "Suppliers"
         },
         "CategoryID": {
-          "entity": "Categories"
+          "record": "Categories"
         },
         "QuantityPerUnit": {
           "type": "string"
@@ -297,7 +297,7 @@
       "key": [
         "RegionID"
       ],
-      "properties": {
+      "fields": {
         "RegionID": {
           "required": true,
           "type": "int"
@@ -312,7 +312,7 @@
       "key": [
         "ShipperID"
       ],
-      "properties": {
+      "fields": {
         "ShipperID": {
           "required": true,
           "type": "int"
@@ -330,7 +330,7 @@
       "key": [
         "SupplierID"
       ],
-      "properties": {
+      "fields": {
         "SupplierID": {
           "required": true,
           "type": "int"
@@ -375,7 +375,7 @@
       "key": [
         "TerritoryID"
       ],
-      "properties": {
+      "fields": {
         "TerritoryID": {
           "required": true,
           "type": "string"
@@ -386,7 +386,7 @@
         },
         "RegionID": {
           "required": true,
-          "entity": "Regions"
+          "record": "Regions"
         }
       }
     }

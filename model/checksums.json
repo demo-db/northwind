@@ -11,12 +11,12 @@
       "bytes": 2493
     },
     "northwind.modelspec.hcl": {
-      "sha256": "729838187142c71c3f5ccfb37f50641df2c9af4d9940b403794eebc8fd8df6b0",
-      "bytes": 5891
+      "sha256": "829b356c7c587d7e7ffa88256cf0dc2857a07ebc6ae0316e7111c720eb5ed604",
+      "bytes": 5634
     },
     "northwind.modelspec.json": {
-      "sha256": "a6d1c33ad1b52a2486bc5f8cdd9ba5216d9e6d59404c4b8f32799fcec9e1151f",
-      "bytes": 7731
+      "sha256": "093adb9b0ce3b12ad35c85d38f5a439bdd92bd30db4a14114228fb323eb00b52",
+      "bytes": 7680
     }
   }
 }
