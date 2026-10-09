@@ -32,6 +32,7 @@ jobs:
       - run: pnpm check:model-twin
       - run: pnpm check:meaning
       - run: pnpm check:schema
+      - run: pnpm test:modelspec
       - run: pnpm test:tools
       - name: Generated files are committed
         run: git diff --exit-code -- data-source/source.sqlite metadata model artifacts
