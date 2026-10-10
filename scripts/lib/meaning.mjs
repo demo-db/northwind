@@ -271,6 +271,12 @@ export function createResolver({ root, sources = meaningSources, cacheDir = defa
 // Binding roles whose stored values name the concept's known values.
 const valueRoles = ['value', 'display-name'];
 
+// The two formats of a meaning file and the binding key that names a field in each: `property:` in
+// meaning/draft-1, `field:` in meaning/draft-2 (decision 0002 of github.com/meaninggraph/core). The key
+// belongs to the file's format, so a file is read by its own key and the other format's key is not read.
+export const meaningFieldKeys = { 'meaning/draft-1': 'property', 'meaning/draft-2': 'field' };
+const knownFormat = (doc) => typeof doc?.format === 'string' && Object.hasOwn(meaningFieldKeys, doc.format);
+
 // Resolves `ref` as written inside `repo` (a repository index from
 // loadMeaningDir or indexConcepts): bare ids resolve in that repository, and so
 // does a meaning:// reference to the repository's own address (no ?ref=), the
@@ -327,20 +333,32 @@ export function matchValues(values, stored, match = 'labels') {
 // Checks that every distinct value stored in a column bound with role value
 // or display-name names exactly one of the concept's known values (see
 // effectiveValues), matched as the binding's `match` says. `data` is rows
-// keyed by entity name.
+// keyed by record type name. A file of `local` reads by its own format: the bound column is
+// `property:` in meaning/draft-1 and `field:` in meaning/draft-2. A file whose `format` is neither is
+// reported, once, and none of its concepts is checked: a file of an unknown format is not silently
+// passed. The rule itself is the same for both formats and is not changed for a value set: whether
+// a check that requires every stored value to match keeps that rule once the list is open is not
+// decided (decision 0003 of github.com/meaninggraph/core, N57), so a stored value that matches no
+// known value is still a problem here, and `complete` and `retired` are not read.
 export function valueCoverageProblems({ local, resolve, data }) {
   const problems = [];
-  for (const { concept, path } of local.concepts.values()) {
+  for (const file of local.files ?? []) {
+    if (!knownFormat(file.doc)) problems.push(`${file.path}: format must be ${Object.keys(meaningFieldKeys).join(' or ')}, got ${JSON.stringify(file.doc?.format) ?? 'no format'}; its bindings are not checked`);
+  }
+  for (const { concept, path, doc } of local.concepts.values()) {
+    if (!knownFormat(doc)) continue;
+    const fieldKey = meaningFieldKeys[doc.format];
     const values = effectiveValues(concept, local, resolve);
     if (values.length === 0) continue;
     for (const binding of concept.bindings ?? []) {
-      if (!binding.property || !valueRoles.includes(binding.role)) continue;
+      const field = binding[fieldKey];
+      if (!field || !valueRoles.includes(binding.role)) continue;
       const match = binding.match ?? 'labels';
       const entity = parseModelRef(binding.model)?.name;
-      const stored = new Set((data[entity] ?? []).map((row) => row[binding.property]).filter((value) => value !== null && value !== undefined));
+      const stored = new Set((data[entity] ?? []).map((row) => row[field]).filter((value) => value !== null && value !== undefined));
       for (const value of stored) {
         const matches = matchValues(values, value, match);
-        if (matches.length !== 1) problems.push(`${path}: concept ${concept.id}: ${entity}.${binding.property} value "${value}" matches ${matches.length === 0 ? 'no value' : `${matches.length} values (${matches.map((m) => m.id).join(', ')})`}${match === 'labels' ? '' : ` by ${match}`}`);
+        if (matches.length !== 1) problems.push(`${path}: concept ${concept.id}: ${entity}.${field} value "${value}" matches ${matches.length === 0 ? 'no value' : `${matches.length} values (${matches.map((m) => m.id).join(', ')})`}${match === 'labels' ? '' : ` by ${match}`}`);
       }
     }
   }

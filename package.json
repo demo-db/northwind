@@ -17,6 +17,7 @@
     "check:meaning": "node scripts/check-meaning.mjs",
     "check:schema": "node scripts/check-schema.mjs",
     "test:modelspec": "node --test scripts/test-modelspec.mjs",
+    "test:meaning": "node --test scripts/test-meaning.mjs",
     "test:tools": "node --test scripts/test-tools.mjs"
   },
   "dependencies": { "ajv": "8.20.0", "yaml": "2.8.1" }
