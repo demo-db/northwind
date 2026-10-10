@@ -4,6 +4,7 @@ import { basename, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { parse as parseYaml } from 'yaml';
+import { formatOf, formatProblem, mapItemUnderOldFormat, newFormProblems, normalisedMapping } from './lib/manifest-mapping.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const schemaPath = resolve(root, 'schemas/ovdb-database-draft-1.schema.json');
@@ -39,12 +40,23 @@ if (capabilities.canonicalUrl !== expectedIdentity || capabilities.serverId !== 
 }
 if (host !== `${localId}.demodb.dev`) throw new Error(`${localId}: siteHost must match the provider's approved DemoDB hostname`);
 if (schemaMetadata.database?.id !== localId || !Array.isArray(schemaMetadata.tables)) throw new Error(`${localId}: invalid generated schema metadata`);
+// The manifest is read in its own format (ovdb-manifest/draft-1 or draft-2, decision 0012 of openvaultdb/openvaultdb): an unknown
+// format, a map item under draft-1, or recordset_entities beside a map item stops the generator instead of being half read.
+const formatProblems = formatProblem(provider) ? [formatProblem(provider)]
+  : formatOf(provider) === 'new' ? newFormProblems(provider)
+    : [mapItemUnderOldFormat(provider)].filter(Boolean);
+if (formatProblems.length > 0) throw new Error(`${localId}: ovdb.yaml: ${formatProblems.join('; ')}`);
 if (!Array.isArray(provider.recordsets) || provider.recordsets.length === 0) throw new Error(`${localId}: ovdb.yaml must list served recordsets`);
 if (provider.deployment?.discovery !== 'https://demodb.dev/.well-known/openvaultdb') throw new Error(`${localId}: deployment.discovery must point to the shared DemoDB discovery document`);
 if (!provider.title || !provider.description || !provider.homepage || !provider.deployment?.engine || !provider.deployment?.url) throw new Error(`${localId}: ovdb.yaml is missing public database metadata`);
 
 const schemaByName = new Map(schemaMetadata.tables.map((table) => [table.name, table]));
-const recordsets = provider.recordsets.map((name) => {
+// The normalised mapping holds each recordset's own name and record type whichever form wrote them. The column mapping
+// (`columns:` of draft-2) is checked by newFormProblems above and read by nothing here: the descriptor has no place for it.
+const isNewForm = formatOf(provider) === 'new';
+const isMap = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const entities = !isNewForm && isMap(provider.recordset_entities) ? provider.recordset_entities : {};
+const recordsets = normalisedMapping(provider).map(({ name, recordType }) => {
   const table = schemaByName.get(name);
   if (!table || table.kind !== 'table') throw new Error(`${localId}: served recordset ${JSON.stringify(name)} is not a generated table`);
   const columns = table.columns.map((column) => ({
@@ -75,7 +87,9 @@ const recordsets = provider.recordsets.map((name) => {
     primaryKey,
     foreignKeys,
   };
-  const modelEntity = provider.recordset_entities?.[name] ?? table.modelEntity;
+  // Draft-2 states the record type of every recordset. In draft-1 only recordset_entities does; a recordset it does not
+  // list keeps the record type the generated schema metadata gives it.
+  const modelEntity = (isNewForm || Object.hasOwn(entities, name) ? recordType : undefined) ?? table.modelEntity;
   if (modelEntity) recordset.modelEntity = modelEntity;
   return recordset;
 });
