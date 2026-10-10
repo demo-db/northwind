@@ -1,6 +1,6 @@
 // The stored-value check of scripts/lib/meaning.mjs (valueCoverageProblems) reads a meaning file by its own format:
 // the bound column is `property:` in meaning/draft-1 and `field:` in meaning/draft-2, and a file of any other
-// format is reported instead of being passed unread. The graphs here are made in memory.
+// format is reported instead of being passed unread. The graphs are made in memory, except in the last test, which reads this repository's own meaning file.
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
