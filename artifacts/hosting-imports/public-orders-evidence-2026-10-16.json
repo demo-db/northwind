@@ -1,0 +1,145 @@
+{
+  "format": "demodb-public-orders-evidence/v1",
+  "observedAtUtc": "2026-10-16T12:46:09.629987+00:00",
+  "scope": "Complete projected Orders rows only, at observation time; not all database objects or a signed live API rights assertion.",
+  "provider": {
+    "repository": "https://github.com/demo-db/northwind",
+    "sourcePath": "data-source/source.sqlite",
+    "sourceSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+    "importManifestPath": "artifacts/hosting-imports/manifest.json",
+    "ordersRows": 830,
+    "ordersSha256": "8c35e5cf83673ba9cc782fb0c3e2a6b9875b011a841e147db5b7393ef4afa636",
+    "rights": {
+      "origin": "provider-declared-upstream-MIT",
+      "upstreamRepository": "https://github.com/jpwhite3/northwind-SQLite3",
+      "upstreamRevision": "4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+      "recipePath": "src/create.sql + src/update.sql",
+      "license": "MIT",
+      "noticePath": "data-source/LICENSE.md",
+      "noticeSha256": "c28e204be6418b87ae1c83127096aad9c9e1a218c365f8f4d630e84d8ba96c47"
+    }
+  },
+  "sources": {
+    "sqlite": {
+      "endpoint": "https://demodb.dev/ovdb/v1/databases/northwind/dtql",
+      "expectedDatabase": "northwind",
+      "expectedCollection": "Orders",
+      "query": "from: {name: Orders}\norderBy: [{field: OrderID}]\ncolumns: [{field: OrderID}, {field: CustomerID}, {field: EmployeeID}, {field: OrderDate}, {field: RequiredDate}, {field: ShippedDate}, {field: ShipVia}, {field: Freight}, {field: ShipName}, {field: ShipAddress}, {field: ShipCity}, {field: ShipRegion}, {field: ShipPostalCode}, {field: ShipCountry}]\nlimit: 1000\n",
+      "querySha256": "ba8e43a239489bfb17761990658909b969c9d4939dd8aa008615c867671b2c52",
+      "complete": true,
+      "rows": 830,
+      "fields": [
+        "OrderID",
+        "CustomerID",
+        "EmployeeID",
+        "OrderDate",
+        "RequiredDate",
+        "ShippedDate",
+        "ShipVia",
+        "Freight",
+        "ShipName",
+        "ShipAddress",
+        "ShipCity",
+        "ShipRegion",
+        "ShipPostalCode",
+        "ShipCountry"
+      ],
+      "canonicalRowsSha256": "69e054b6e952a3c1df7b549fdf7b474a353f18edd9f968560ad1d4bfb6894f0a",
+      "providerOrdersSha256": "8c35e5cf83673ba9cc782fb0c3e2a6b9875b011a841e147db5b7393ef4afa636",
+      "responseKeys": [
+        "complete",
+        "records"
+      ],
+      "executionSourcesPresent": false,
+      "executionRowsReturned": null,
+      "executionSources": null,
+      "rawResponseSha256": "617a88c814428245c7b96b2877f63bc0b9a0bb7bc7c59769a81c369d15546a44",
+      "responseBytes": 322967,
+      "cors": {
+        "https://datatug.app": {
+          "preflightStatus": 204,
+          "preflightAllowOrigin": "*",
+          "preflightAllowsPostContentType": true,
+          "postStatus": 200,
+          "postAllowOrigin": "*",
+          "browserAllowed": true
+        },
+        "http://localhost:4200": {
+          "preflightStatus": 204,
+          "preflightAllowOrigin": "*",
+          "preflightAllowsPostContentType": true,
+          "postStatus": 200,
+          "postAllowOrigin": "*",
+          "browserAllowed": true
+        }
+      }
+    },
+    "postgresql": {
+      "endpoint": "https://cloud.openvaultdb.com/v1/databases/northwind-postgresql/dtql",
+      "expectedDatabase": "northwind-postgresql",
+      "expectedCollection": "pg1_AAAACW5vcnRod2luZAAAAAZPcmRlcnM",
+      "query": "from: {schema: northwind, name: Orders}\norderBy: [{field: OrderID}]\ncolumns: [{field: OrderID}, {field: CustomerID}, {field: EmployeeID}, {field: OrderDate}, {field: RequiredDate}, {field: ShippedDate}, {field: ShipVia}, {field: Freight}, {field: ShipName}, {field: ShipAddress}, {field: ShipCity}, {field: ShipRegion}, {field: ShipPostalCode}, {field: ShipCountry}]\nlimit: 1000\n",
+      "querySha256": "6b870f416b90abfa49abced0928b6e65c5304260505801ee1bc13c8976e0ffb7",
+      "complete": true,
+      "rows": 830,
+      "fields": [
+        "OrderID",
+        "CustomerID",
+        "EmployeeID",
+        "OrderDate",
+        "RequiredDate",
+        "ShippedDate",
+        "ShipVia",
+        "Freight",
+        "ShipName",
+        "ShipAddress",
+        "ShipCity",
+        "ShipRegion",
+        "ShipPostalCode",
+        "ShipCountry"
+      ],
+      "canonicalRowsSha256": "69e054b6e952a3c1df7b549fdf7b474a353f18edd9f968560ad1d4bfb6894f0a",
+      "providerOrdersSha256": "8c35e5cf83673ba9cc782fb0c3e2a6b9875b011a841e147db5b7393ef4afa636",
+      "responseKeys": [
+        "columns",
+        "complete",
+        "execution",
+        "records"
+      ],
+      "executionSourcesPresent": true,
+      "executionRowsReturned": 830,
+      "executionSources": [
+        {
+          "database": "northwind-postgresql",
+          "collection": "pg1_AAAACW5vcnRod2luZAAAAAZPcmRlcnM"
+        }
+      ],
+      "rawResponseSha256": "13adcfcf14e4e1ff71a86965c538572663fc516c14b4b4ac03adbebef75c58e5",
+      "responseBytes": 282863,
+      "cors": {
+        "https://datatug.app": {
+          "preflightStatus": 204,
+          "preflightAllowOrigin": "https://datatug.app",
+          "preflightAllowsPostContentType": true,
+          "postStatus": 200,
+          "postAllowOrigin": "https://datatug.app",
+          "browserAllowed": true
+        },
+        "http://localhost:4200": {
+          "preflightStatus": 204,
+          "preflightAllowOrigin": null,
+          "preflightAllowsPostContentType": false,
+          "postStatus": 200,
+          "postAllowOrigin": null,
+          "browserAllowed": false
+        }
+      }
+    }
+  },
+  "equivalentToPinnedOrders": true,
+  "limitations": [
+    "The public API does not sign or return a source-rights declaration or the PostgreSQL import manifest.",
+    "SQLite full-projection execution.sources may be absent; this verifier uses endpoint identity plus complete row equivalence.",
+    "Public row equivalence cannot prove private hosting configuration, future immutability, or tables other than Orders."
+  ]
+}
