@@ -105,6 +105,10 @@
       "sha256": "9f7e921c4be09588a1c8a76e9ad55751f8c4bad28d008543a009fe71db1ac128",
       "bytes": 5070
     },
+    "artifacts/hosting-imports/README-public-orders-evidence.md": {
+      "sha256": "1f0328834e5fcca3749527797e99becb40836b5736acf00f2d8c033e482b35c4",
+      "bytes": 2184
+    },
     "artifacts/hosting-imports/d1.sql": {
       "sha256": "fea7d05421f0297adc18c41196f22b498c669abf78c2392b50343091df8810d7",
       "bytes": 644996
@@ -116,6 +120,10 @@
     "artifacts/hosting-imports/postgres.sql": {
       "sha256": "b6efe271401eba9d4738a2bbea294cc205dd6e02f47864bd3f21e195310afbee",
       "bytes": 1089450
+    },
+    "artifacts/hosting-imports/public-orders-evidence-2026-10-16.json": {
+      "sha256": "2f3bf872421d645d8c3f4274b52b2ed8da64a490f1f69dd6812b01157fb61010",
+      "bytes": 5940
     },
     "artifacts/northwind.sql": {
       "sha256": "3eb61fb8a7706e322d6682157dcbbd6b7a454f734c5dad23a9f270464b58bc02",
