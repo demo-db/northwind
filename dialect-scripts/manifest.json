@@ -1,0 +1,60 @@
+{
+  "attribution": "Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+  "format": "demodb-dialect-scripts/v1",
+  "id": "northwind",
+  "scripts": {
+    "mysql": {
+      "inputs": {
+        "attribution": "Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+        "dialect": "mysql",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "19d91f8ded312b945095bc14e5bda6fad667f0913580c3d0903c582300a4d8db",
+          "tag": "v0.100.0"
+        },
+        "license": "MIT",
+        "name": "northwind",
+        "noticeSha256": "d791d4a4a39dcc3c7d00701f5d78099799fc5a4bfd704b08958ddaddd80114ba",
+        "sqliteSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20"
+      },
+      "inputsSha256": "6a8dae884a2f7b5fafdce7a7b62e60e76c857e9fd20e074b33060e521dabbd17",
+      "report": {
+        "bytes": 8134,
+        "path": "dialect-scripts/northwind.mysql.report.json",
+        "sha256": "6e1007d5ee99281dd3cd19ba05736d01e773cdfa9374ba8685f33a83be1809bf",
+        "warnings": {
+          "key-type-bounded": 7,
+          "type-widened": 4,
+          "values-normalized": 3,
+          "view-not-carried": 17
+        }
+      },
+      "stored": {
+        "decodedBytes": 630119,
+        "decodedSha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc",
+        "files": [
+          {
+            "bytes": 630119,
+            "path": "dialect-scripts/northwind.mysql.sql",
+            "sha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "date": "2026-10-16",
+        "differences": 0,
+        "engine": "MySQL 8.4.11 (official mysql:8.4 image)",
+        "image": "mysql:8.4@sha256:24989179f58856db763f418010c1169fecc944e3ec1ea7e921572d83eb070f70",
+        "loadedWith": "--default-character-set=utf8mb4 --skip-commands --skip-system-command, stop at first error",
+        "rows": 3310,
+        "scriptSha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tables": 13,
+        "valuesCompared": 25004,
+        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.100.0, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifierWarnings": 31
+      }
+    }
+  }
+}
