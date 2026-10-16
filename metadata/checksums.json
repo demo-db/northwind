@@ -125,6 +125,10 @@
       "sha256": "2f3bf872421d645d8c3f4274b52b2ed8da64a490f1f69dd6812b01157fb61010",
       "bytes": 5940
     },
+    "artifacts/hosting-imports/shipping-country-count-rights.json": {
+      "sha256": "fd88fdf5a029e94ee2566cb9196cec09fa3b7dbe0cd074fbc1f1baadb878f823",
+      "bytes": 4899
+    },
     "artifacts/hosting-imports/source-rights.json": {
       "sha256": "50454d5f30db615178fcd0c6a846854f9434f4f93bb44835cc75fdad4af52e30",
       "bytes": 4447

@@ -1,0 +1,109 @@
+{
+  "format": "demodb-observed-aggregate-rights/v1",
+  "scope": "DemoDB publisher declaration for its Northwind SQLite Orders recordset, applied only to this complete shipping-country aggregate query after a fresh result digest check; no PostgreSQL or future-state rights assertion.",
+  "observedAtUtc": "2026-10-16T13:26:25.180598+00:00",
+  "savedQuery": {
+    "id": "northwind-shipping-country-count-sqlite",
+    "repository": "https://github.com/datatug/datatug-demo-project",
+    "revision": "d65384f3fbd99047e2955d92636a134f4b01e851",
+    "path": "demo-project-1/queries/demodb/northwind-shipping-country-count-sqlite.query.dtql",
+    "sha256": "2e320d487d7bbe7dbfc53abc55c08d12eb80a2e79b34cfe15a2148fa362acc9a",
+    "bytes": 194
+  },
+  "rightsPin": {
+    "repository": "https://github.com/demo-db/northwind",
+    "revision": "83ea600a7eae8b35ad33bf4c53bab6440d697850",
+    "path": "artifacts/hosting-imports/source-rights.json",
+    "sha256": "50454d5f30db615178fcd0c6a846854f9434f4f93bb44835cc75fdad4af52e30",
+    "bytes": 4447
+  },
+  "admission": {
+    "endpoint": "https://demodb.dev/ovdb/v1/databases/northwind/dtql",
+    "query": "from: {name: Orders}\ngroupBy: [{field: ShipCountry}]\norderBy: [{field: ShipCountry}]\ncolumns: [{field: ShipCountry}, {aggregate: {function: count, args: [{star: true}]}, as: orders}]\nlimit: 100\n",
+    "querySha256": "2e320d487d7bbe7dbfc53abc55c08d12eb80a2e79b34cfe15a2148fa362acc9a",
+    "complete": true,
+    "rows": 21,
+    "fields": [
+      "ShipCountry",
+      "orders"
+    ],
+    "totalOrders": 830,
+    "canonicalRowsSha256": "10180147a7752d4006c28d438d7deed96461336b865156036c2c017f5c82b235",
+    "canonicalization": "UTF-8 JSON array of [ShipCountry, orders] pairs in ascending ShipCountry order, without whitespace; orders are positive safe integers.",
+    "executionSource": {
+      "database": "northwind",
+      "collection": "Orders"
+    }
+  },
+  "observation": {
+    "origin": "https://datatug.app",
+    "corsAllowOrigin": "*"
+  },
+  "sourceRights": [
+    {
+      "sourceId": "ovdb:https%3A%2F%2Fdemodb.dev%2Fovdb/northwind/Orders",
+      "source": {
+        "serverId": "https://demodb.dev/ovdb",
+        "databaseId": "northwind",
+        "recordset": "Orders"
+      },
+      "declaration": {
+        "spdx": "MIT",
+        "url": "https://github.com/demo-db/northwind/blob/de7f81c591abccc30fb9a0a58f44be9fd7265cd6/data-source/LICENSE.md"
+      },
+      "declarationScope": "recordset",
+      "declaredAt": {
+        "serverId": "https://demodb.dev/ovdb",
+        "databaseId": "northwind",
+        "recordset": "Orders"
+      },
+      "evidenceOrigin": "publisher-verified",
+      "pins": [
+        {
+          "role": "provider",
+          "repository": "https://github.com/demo-db/northwind",
+          "revision": "de7f81c591abccc30fb9a0a58f44be9fd7265cd6",
+          "path": "data-source/source.sqlite",
+          "sha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20",
+          "bytes": 602112
+        },
+        {
+          "role": "declaration",
+          "repository": "https://github.com/demo-db/northwind",
+          "revision": "de7f81c591abccc30fb9a0a58f44be9fd7265cd6",
+          "path": "data-source/LICENSE.md",
+          "sha256": "c28e204be6418b87ae1c83127096aad9c9e1a218c365f8f4d630e84d8ba96c47",
+          "bytes": 1075
+        },
+        {
+          "role": "provenance",
+          "repository": "https://github.com/demo-db/northwind",
+          "revision": "de7f81c591abccc30fb9a0a58f44be9fd7265cd6",
+          "path": "artifacts/hosting-imports/manifest.json",
+          "sha256": "02732c6e3792dad31ddf298602c36c9188267b58a59f2a1b2e554f24e85cbf6a",
+          "bytes": 2633
+        },
+        {
+          "role": "input",
+          "repository": "https://github.com/demo-db/northwind",
+          "revision": "de7f81c591abccc30fb9a0a58f44be9fd7265cd6",
+          "path": "artifacts/hosting-imports/public-orders-evidence-2026-10-16.json",
+          "sha256": "2f3bf872421d645d8c3f4274b52b2ed8da64a490f1f69dd6812b01157fb61010",
+          "bytes": 5940
+        }
+      ],
+      "attribution": {
+        "text": "Northwind source data derived from jpwhite3/northwind-SQLite3, copyright (c) 2016 JP White; preserve the MIT copyright and permission notice.",
+        "url": "https://github.com/jpwhite3/northwind-SQLite3/tree/4f56e7f5906dfd23b25244c5bfe8fb5da6402efd"
+      },
+      "transformations": []
+    }
+  ],
+  "usedSourceIds": [
+    "ovdb:https%3A%2F%2Fdemodb.dev%2Fovdb/northwind/Orders"
+  ],
+  "limitations": [
+    "The live SQLite aggregate must be rechecked for complete=true, its exact 21 groups, safe integer counts summing to 830, source identity, and canonical digest before admitting the publisher declaration.",
+    "This declaration does not cover the separately owned PostgreSQL API or an incomplete, truncated, limited, changed, or differently sourced future response."
+  ]
+}
