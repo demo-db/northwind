@@ -39,7 +39,8 @@ the receipt was made; anonymous command-line requests and
 `https://datatug.app` browser requests were admitted.
 
 The [DemoDB SQLite Orders rights declaration](source-rights.json) covers only
-`ovdb:demodb.dev/northwind/Orders`. It binds the MIT notice and pinned provider
+`ovdb:https%3A%2F%2Fdemodb.dev%2Fovdb/northwind/Orders`, using the server ID
+in the published OVDB descriptor. It binds the MIT notice and pinned provider
 files to the receipt's complete 830-row digest. A browser must independently
 verify a fresh, complete SQLite response against that digest and exact query
 before using the declaration. The SQLite response does not provide

@@ -106,8 +106,8 @@
       "bytes": 5070
     },
     "artifacts/hosting-imports/README-public-orders-evidence.md": {
-      "sha256": "3ec1f5f72e3a4aaa823aa217ed9581e18782c175e0ccf40c9127c2da517d6483",
-      "bytes": 2838
+      "sha256": "9a2993d0f9463747cff2817d51ed8f7a805adac3dba910ee5362df19c836b8a7",
+      "bytes": 2913
     },
     "artifacts/hosting-imports/d1.sql": {
       "sha256": "fea7d05421f0297adc18c41196f22b498c669abf78c2392b50343091df8810d7",
@@ -126,8 +126,8 @@
       "bytes": 5940
     },
     "artifacts/hosting-imports/source-rights.json": {
-      "sha256": "b51b2cc489f267bd049e3302ff05587851caac00ee8715f194d6fd7b9a064773",
-      "bytes": 4379
+      "sha256": "50454d5f30db615178fcd0c6a846854f9434f4f93bb44835cc75fdad4af52e30",
+      "bytes": 4447
     },
     "artifacts/northwind.sql": {
       "sha256": "3eb61fb8a7706e322d6682157dcbbd6b7a454f734c5dad23a9f270464b58bc02",

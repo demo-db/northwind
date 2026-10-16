@@ -36,9 +36,9 @@
   },
   "sourceRights": [
     {
-      "sourceId": "ovdb:demodb.dev/northwind/Orders",
+      "sourceId": "ovdb:https%3A%2F%2Fdemodb.dev%2Fovdb/northwind/Orders",
       "source": {
-        "serverId": "demodb.dev",
+        "serverId": "https://demodb.dev/ovdb",
         "databaseId": "northwind",
         "recordset": "Orders"
       },
@@ -48,7 +48,7 @@
       },
       "declarationScope": "recordset",
       "declaredAt": {
-        "serverId": "demodb.dev",
+        "serverId": "https://demodb.dev/ovdb",
         "databaseId": "northwind",
         "recordset": "Orders"
       },
@@ -95,7 +95,7 @@
     }
   ],
   "usedSourceIds": [
-    "ovdb:demodb.dev/northwind/Orders"
+    "ovdb:https%3A%2F%2Fdemodb.dev%2Fovdb/northwind/Orders"
   ],
   "limitations": [
     "The SQLite DTQL response did not provide execution.sources; this publisher identifies its own endpoint and recordset through the exact query and full result digest.",

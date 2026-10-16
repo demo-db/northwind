@@ -6,6 +6,7 @@ import json
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import quote
 
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
@@ -90,6 +91,7 @@ class PublicOrdersTests(unittest.TestCase):
         root = SCRIPTS.parent
         receipt = json.loads((root / "artifacts/hosting-imports/public-orders-evidence-2026-10-16.json").read_text())
         rights = json.loads((root / "artifacts/hosting-imports/source-rights.json").read_text())
+        descriptor = json.loads((root / "ovdb-database.json").read_text())
         observed = receipt["sources"]["sqlite"]
         admission = rights["admission"]
         self.assertEqual(rights["observedAtUtc"], receipt["observedAtUtc"])
@@ -99,9 +101,12 @@ class PublicOrdersTests(unittest.TestCase):
                               ("executionSourcesPresent", False)):
             with self.subTest(key=key):
                 self.assertEqual(admission[key], expected)
-        self.assertEqual(rights["usedSourceIds"], ["ovdb:demodb.dev/northwind/Orders"])
+        self.assertIn("Orders", {recordset["name"] for recordset in descriptor["recordsets"]})
+        expected_source = {"serverId": descriptor["serverId"], "databaseId": descriptor["localId"], "recordset": "Orders"}
+        expected_id = f"ovdb:{quote(descriptor['serverId'], safe='')}/{quote(descriptor['localId'], safe='')}/Orders"
+        self.assertEqual(rights["usedSourceIds"], [expected_id])
         source_right, = rights["sourceRights"]
-        self.assertEqual(source_right["source"], {"serverId": "demodb.dev", "databaseId": "northwind", "recordset": "Orders"})
+        self.assertEqual(source_right["source"], expected_source)
         self.assertEqual(source_right["sourceId"], rights["usedSourceIds"][0])
         self.assertEqual(source_right["declaredAt"], source_right["source"])
         self.assertEqual(source_right["declarationScope"], "recordset")
