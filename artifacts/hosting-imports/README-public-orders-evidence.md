@@ -38,7 +38,16 @@ PostgreSQL browser origin `http://localhost:4200` lacked CORS admission when
 the receipt was made; anonymous command-line requests and
 `https://datatug.app` browser requests were admitted.
 
+The [DemoDB SQLite Orders rights declaration](source-rights.json) covers only
+`ovdb:demodb.dev/northwind/Orders`. It binds the MIT notice and pinned provider
+files to the receipt's complete 830-row digest. A browser must independently
+verify a fresh, complete SQLite response against that digest and exact query
+before using the declaration. The SQLite response does not provide
+`execution.sources`; the declaration identifies DemoDB's own endpoint and
+recordset. It does not declare rights for the separately owned PostgreSQL API.
+
 This provider repository stores the reproducible evidence. The matching DemoDB
-website build publishes byte-verified copies of this README and its receipt at
+website build publishes byte-verified copies of this README, its receipt, and
+the SQLite declaration at
 `https://northwind.demodb.dev/evidence/public-orders/` when that build is
 deployed. The provider repository remains the source of the pinned files.

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Admission checks for the bounded public Orders receipt verifier."""
 import importlib.util
+import hashlib
 import json
 import sys
 import unittest
@@ -84,6 +85,34 @@ class PublicOrdersTests(unittest.TestCase):
             self.assertIn("orderBy: [{field: OrderID}]", query)
             self.assertIn("limit: 1000", query)
             self.assertEqual(query.count("{field:"), 15)
+
+    def test_sqlite_rights_declaration_is_bound_to_observed_complete_result(self):
+        root = SCRIPTS.parent
+        receipt = json.loads((root / "artifacts/hosting-imports/public-orders-evidence-2026-10-16.json").read_text())
+        rights = json.loads((root / "artifacts/hosting-imports/source-rights.json").read_text())
+        observed = receipt["sources"]["sqlite"]
+        admission = rights["admission"]
+        self.assertEqual(rights["observedAtUtc"], receipt["observedAtUtc"])
+        for key, expected in (("endpoint", observed["endpoint"]), ("querySha256", observed["querySha256"]),
+                              ("complete", True), ("rows", observed["rows"]), ("fields", observed["fields"]),
+                              ("canonicalRowsSha256", observed["canonicalRowsSha256"]),
+                              ("executionSourcesPresent", False)):
+            with self.subTest(key=key):
+                self.assertEqual(admission[key], expected)
+        self.assertEqual(rights["usedSourceIds"], ["ovdb:demodb.dev/northwind/Orders"])
+        source_right, = rights["sourceRights"]
+        self.assertEqual(source_right["source"], {"serverId": "demodb.dev", "databaseId": "northwind", "recordset": "Orders"})
+        self.assertEqual(source_right["sourceId"], rights["usedSourceIds"][0])
+        self.assertEqual(source_right["declaredAt"], source_right["source"])
+        self.assertEqual(source_right["declarationScope"], "recordset")
+        self.assertEqual(source_right["declaration"]["spdx"], receipt["provider"]["rights"]["license"])
+        self.assertEqual(source_right["evidenceOrigin"], "publisher-verified")
+        self.assertNotIn("cloud.openvaultdb.com", json.dumps(rights["usedSourceIds"]))
+        for pin in source_right["pins"]:
+            content = (root / pin["path"]).read_bytes()
+            self.assertEqual(pin["bytes"], len(content), pin["path"])
+            self.assertEqual(pin["sha256"], hashlib.sha256(content).hexdigest(), pin["path"])
+        self.assertEqual(rights["receipt"]["sha256"], next(pin["sha256"] for pin in source_right["pins"] if pin["role"] == "input"))
 
 
 if __name__ == "__main__":
