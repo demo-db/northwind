@@ -3,7 +3,7 @@
 The [timestamped receipt](public-orders-evidence-2026-10-16.json) records a
 bounded read-only comparison of all 830 `Orders` rows and all 14 fields from
 the public SQLite and PostgreSQL DTQL endpoints against this provider's pinned
-`data-source/source.sqlite`. The [verifier](../../scripts/verify-public-orders.py)
+`data-source/source.sqlite`. The [verifier](https://github.com/demo-db/northwind/blob/de7f81c591abccc30fb9a0a58f44be9fd7265cd6/scripts/verify-public-orders.py)
 builds and records both exact queries, compares every normalized value, checks
 the published provider `Orders` checksum and the PostgreSQL execution source,
 and probes CORS for DataTug production and local browser origins.
@@ -38,7 +38,7 @@ PostgreSQL browser origin `http://localhost:4200` lacked CORS admission when
 the receipt was made; anonymous command-line requests and
 `https://datatug.app` browser requests were admitted.
 
-This provider repository stores the reproducible evidence. A stable public
-DemoDB URL requires the website build to explicitly publish this receipt and
-pin the provider revision; the website currently publishes only the SQLite
-OVDB descriptor at `/ovdb/db/northwind/ovdb-database.json`.
+This provider repository stores the reproducible evidence. The matching DemoDB
+website build publishes byte-verified copies of this README and its receipt at
+`https://northwind.demodb.dev/evidence/public-orders/` when that build is
+deployed. The provider repository remains the source of the pinned files.
