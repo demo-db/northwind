@@ -2,7 +2,7 @@
   "dataset": "northwind",
   "dialect": "mysql",
   "format": "demodb-dialect-report/v1",
-  "generator": "v0.97.1",
+  "generator": "v0.100.0",
   "tables": [
     {
       "columns": 4,

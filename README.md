@@ -87,7 +87,7 @@ The source primary keys, foreign keys, UNIQUE and CHECK constraints, defaults, c
 ## MySQL script (`dialect-scripts/`)
 
 `dialect-scripts/northwind.mysql.sql` is a MySQL 8 script that creates and fills this database. It is written by the DataTug SQL-script exporter
-(`datatug db copy --to sqlscript:///<file>?dialect=mysql`, release v0.97.1, pinned by SHA-256 in `demo-db/websites` `config/dialect-scripts.json`) from the pinned
+(`datatug db copy --to sqlscript:///<file>?dialect=mysql`, release v0.100.0, pinned by SHA-256 in `demo-db/websites` `config/dialect-scripts.json`) from the pinned
 SQLite fixture, loaded into a real MySQL 8.4 and compared with the fixture. It is labelled "DemoDB contract edition, identical to the SQLite/CSV/JSON": the same tables and
 rows, with everything MySQL cannot carry exactly (for example views) listed in the script header and in `dialect-scripts/northwind.mysql.report.json`.
 `dialect-scripts/manifest.json` records the inputs (the SQLite SHA-256, the exporter pin, the label, the licence from `manifest.json` and the attribution below), the stored and
@@ -98,4 +98,4 @@ mysql --default-character-set=utf8mb4 --skip-commands --skip-system-command --da
 node websites/scripts/dialect-scripts.mjs check --provider .   # no datatug binary and no Docker needed
 ```
 
-The licence (MIT) and this attribution are in the script header: Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd
+The licence (MIT), the full licence notice (verbatim from the upstream licence files, kept in `demo-db/websites` `config/dialect-notices/northwind.txt`) and this attribution are in the script header: Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd
