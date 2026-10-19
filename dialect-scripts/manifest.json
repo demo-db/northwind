@@ -3,25 +3,96 @@
   "format": "demodb-dialect-scripts/v1",
   "id": "northwind",
   "scripts": {
-    "mysql": {
+    "mssql": {
       "inputs": {
         "attribution": "Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
-        "dialect": "mysql",
+        "dialect": "mssql",
         "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
         "generator": {
-          "checksumsSha256": "19d91f8ded312b945095bc14e5bda6fad667f0913580c3d0903c582300a4d8db",
-          "tag": "v0.100.0"
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
         },
         "license": "MIT",
         "name": "northwind",
         "noticeSha256": "d791d4a4a39dcc3c7d00701f5d78099799fc5a4bfd704b08958ddaddd80114ba",
         "sqliteSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20"
       },
-      "inputsSha256": "6a8dae884a2f7b5fafdce7a7b62e60e76c857e9fd20e074b33060e521dabbd17",
+      "inputsSha256": "a77c7614b1c1ef16b7d6fc3cdd9e9ce476fa51067440100b68f9ed1961e40e72",
+      "report": {
+        "bytes": 8740,
+        "path": "dialect-scripts/northwind.mssql.report.json",
+        "sha256": "0e3f301b255b94bb199a049f93df494925fcb9370b63a719b0f3f33ce514d924",
+        "warnings": {
+          "key-type-bounded": 7,
+          "type-widened": 6,
+          "values-normalized": 3,
+          "view-not-carried": 17
+        }
+      },
+      "stored": {
+        "decodedBytes": 645254,
+        "decodedSha256": "6f44c25b257edf8f6132c915a9b160d810621d0b04e1b595c6f58a5ce4132cc0",
+        "files": [
+          {
+            "bytes": 645254,
+            "path": "dialect-scripts/northwind.sqlserver.sql",
+            "sha256": "6f44c25b257edf8f6132c915a9b160d810621d0b04e1b595c6f58a5ce4132cc0"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "clientVersion": "Version 18.7.0001.1 Linux",
+        "date": "2026-10-19",
+        "differences": 0,
+        "engine": "Microsoft SQL Server 2022 (RTM-CU27-GDR) (KB5126934) - 16.0.4305.5 (X64) / collation SQL_Latin1_General_CP1_CI_AS",
+        "image": "mcr.microsoft.com/mssql/server:2022-latest@sha256:cf8f0ab2ebe61feec2eed2629061a07d247f791c2a8ddda74a4ac9f06a291718",
+        "loadSeconds": 0.8,
+        "loadedWith": "-X -x -b -f 65001 -i, stop at first error",
+        "rows": 3310,
+        "scriptSha256": "6f44c25b257edf8f6132c915a9b160d810621d0b04e1b595c6f58a5ce4132cc0",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "Categories": 8,
+          "CustomerCustomerDemo": 0,
+          "CustomerDemographics": 0,
+          "Customers": 93,
+          "EmployeeTerritories": 49,
+          "Employees": 9,
+          "Order Details": 2155,
+          "Orders": 830,
+          "Products": 77,
+          "Regions": 4,
+          "Shippers": 3,
+          "Suppliers": 29,
+          "Territories": 53
+        },
+        "tables": 13,
+        "valuesCompared": 25004,
+        "verifier": "datatug-cli internal/crossverify TestJourneyMSSQL at v0.103.4, run locally over this exact script, loaded with sqlcmd -X -x -b -f 65001 -i from the file inside the server container; reads source and target through Go drivers",
+        "verifierSeconds": 1,
+        "verifierWarnings": 33
+      }
+    },
+    "mysql": {
+      "inputs": {
+        "attribution": "Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+        "dialect": "mysql",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
+        },
+        "license": "MIT",
+        "name": "northwind",
+        "noticeSha256": "d791d4a4a39dcc3c7d00701f5d78099799fc5a4bfd704b08958ddaddd80114ba",
+        "sqliteSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20"
+      },
+      "inputsSha256": "7655ab1a1da21277ff6aaeaab6b516f8f43480cf927b5441fa7a99d920fb5923",
       "report": {
         "bytes": 8134,
         "path": "dialect-scripts/northwind.mysql.report.json",
-        "sha256": "6e1007d5ee99281dd3cd19ba05736d01e773cdfa9374ba8685f33a83be1809bf",
+        "sha256": "6f3732fde61ec981647edbea85823f9d08b20e47bdb98e8e9b75ea2de621c7d4",
         "warnings": {
           "key-type-bounded": 7,
           "type-widened": 4,
@@ -31,29 +102,118 @@
       },
       "stored": {
         "decodedBytes": 630119,
-        "decodedSha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc",
+        "decodedSha256": "56b9178a14240ed71e06268652cc566caa16e7c06c46360b892a034d0a0e38a9",
         "files": [
           {
             "bytes": 630119,
             "path": "dialect-scripts/northwind.mysql.sql",
-            "sha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc"
+            "sha256": "56b9178a14240ed71e06268652cc566caa16e7c06c46360b892a034d0a0e38a9"
           }
         ],
         "mode": "plain"
       },
       "verification": {
-        "date": "2026-10-16",
+        "clientVersion": "mysql  Ver 8.4.11 for Linux on aarch64 (MySQL Community Server - GPL)",
+        "date": "2026-10-19",
         "differences": 0,
-        "engine": "MySQL 8.4.11 (official mysql:8.4 image)",
+        "engine": "MySQL 8.4.11",
         "image": "mysql:8.4@sha256:24989179f58856db763f418010c1169fecc944e3ec1ea7e921572d83eb070f70",
+        "loadSeconds": 0.2,
         "loadedWith": "--default-character-set=utf8mb4 --skip-commands --skip-system-command, stop at first error",
         "rows": 3310,
-        "scriptSha256": "030039f4a9448f996ce6da25ad98173f5b9ba4ea4b64bf0f616f9ce2fa3c24cc",
+        "scriptSha256": "56b9178a14240ed71e06268652cc566caa16e7c06c46360b892a034d0a0e38a9",
         "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "Categories": 8,
+          "CustomerCustomerDemo": 0,
+          "CustomerDemographics": 0,
+          "Customers": 93,
+          "EmployeeTerritories": 49,
+          "Employees": 9,
+          "Order Details": 2155,
+          "Orders": 830,
+          "Products": 77,
+          "Regions": 4,
+          "Shippers": 3,
+          "Suppliers": 29,
+          "Territories": 53
+        },
         "tables": 13,
         "valuesCompared": 25004,
-        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.100.0, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifier": "datatug-cli internal/crossverify TestJourneyMySQL at v0.103.4, run locally over this exact script, loaded with the header's client flags and again with the plain client; reads source and target through Go drivers",
+        "verifierSeconds": 0.7,
         "verifierWarnings": 31
+      }
+    },
+    "oracle": {
+      "inputs": {
+        "attribution": "Northwind sample (Microsoft Access 2000 edition) converted to SQLite by JP White, Copyright (c) 2016 JP White, MIT licence, https://github.com/jpwhite3/northwind-SQLite3 at revision 4f56e7f5906dfd23b25244c5bfe8fb5da6402efd",
+        "dialect": "oracle",
+        "edition": "DemoDB contract edition, identical to the SQLite/CSV/JSON",
+        "generator": {
+          "checksumsSha256": "32c36126ec6c8961a7b493c21f18b63ecb0146faff84089d89566a659fd975fd",
+          "tag": "v0.103.4"
+        },
+        "license": "MIT",
+        "name": "northwind",
+        "noticeSha256": "d791d4a4a39dcc3c7d00701f5d78099799fc5a4bfd704b08958ddaddd80114ba",
+        "sqliteSha256": "279b34136771aee75d802094b3329515a2b01da65d2a20a4a9e3b58c29b4fd20"
+      },
+      "inputsSha256": "c46af9aeeb70ee28bf7086f8ab8515d2508de815e6f77e2e57e77e0546d80f17",
+      "report": {
+        "bytes": 9942,
+        "path": "dialect-scripts/northwind.oracle.report.json",
+        "sha256": "6764f6cd50d6724bf103ef56ca1b0014c8ccb2659b05e1aaa774990e57080e35",
+        "warnings": {
+          "key-type-bounded": 7,
+          "type-widened": 10,
+          "values-normalized": 3,
+          "view-not-carried": 17
+        }
+      },
+      "stored": {
+        "decodedBytes": 658395,
+        "decodedSha256": "8ad55ba3b955ce65ec823501e902129e9a57f69c14a985afd441acbb084399b2",
+        "files": [
+          {
+            "bytes": 658395,
+            "path": "dialect-scripts/northwind.oracle.sql",
+            "sha256": "8ad55ba3b955ce65ec823501e902129e9a57f69c14a985afd441acbb084399b2"
+          }
+        ],
+        "mode": "plain"
+      },
+      "verification": {
+        "clientVersion": "SQL*Plus: Release 23.26.3.0.0 - Production Version 23.26.3.0.0",
+        "date": "2026-10-19",
+        "differences": 0,
+        "engine": "Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free / compatible 23.6.0 / AL32UTF8 / MAX_STRING_SIZE STANDARD",
+        "image": "gvenzl/oracle-free:23-slim@sha256:6d61d267a3b978c24c5ac1790e62e927416a0aec446bd86e4b3a1527562757bd",
+        "loadSeconds": 2.6,
+        "loadedWith": "NLS_LANG=.AL32UTF8 sqlplus -L -S, stop at first error",
+        "rows": 3310,
+        "scriptSha256": "8ad55ba3b955ce65ec823501e902129e9a57f69c14a985afd441acbb084399b2",
+        "secondLoadRefusedAtMarkerTable": true,
+        "tableRows": {
+          "Categories": 8,
+          "CustomerCustomerDemo": 0,
+          "CustomerDemographics": 0,
+          "Customers": 93,
+          "EmployeeTerritories": 49,
+          "Employees": 9,
+          "Order Details": 2155,
+          "Orders": 830,
+          "Products": 77,
+          "Regions": 4,
+          "Shippers": 3,
+          "Suppliers": 29,
+          "Territories": 53
+        },
+        "tables": 13,
+        "valuesCompared": 25004,
+        "verifier": "datatug-cli internal/crossverify TestJourneyOracle at v0.103.4, run locally over this exact script, loaded with NLS_LANG=.AL32UTF8 sqlplus -L -S from the file inside the server container; reads source and target through Go drivers",
+        "verifierSeconds": 0.8,
+        "verifierWarnings": 37
       }
     }
   }

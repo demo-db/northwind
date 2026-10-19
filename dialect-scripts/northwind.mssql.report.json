@@ -1,0 +1,250 @@
+{
+  "dataset": "northwind",
+  "dialect": "mssql",
+  "format": "demodb-dialect-report/v1",
+  "generator": "v0.103.4",
+  "tables": [
+    {
+      "columns": 4,
+      "name": "Categories",
+      "rows": 8
+    },
+    {
+      "columns": 2,
+      "name": "CustomerCustomerDemo",
+      "rows": 0
+    },
+    {
+      "columns": 2,
+      "name": "CustomerDemographics",
+      "rows": 0
+    },
+    {
+      "columns": 11,
+      "name": "Customers",
+      "rows": 93
+    },
+    {
+      "columns": 18,
+      "name": "Employees",
+      "rows": 9
+    },
+    {
+      "columns": 2,
+      "name": "EmployeeTerritories",
+      "rows": 49
+    },
+    {
+      "columns": 5,
+      "name": "Order Details",
+      "rows": 2155
+    },
+    {
+      "columns": 14,
+      "name": "Orders",
+      "rows": 830
+    },
+    {
+      "columns": 10,
+      "name": "Products",
+      "rows": 77
+    },
+    {
+      "columns": 2,
+      "name": "Regions",
+      "rows": 4
+    },
+    {
+      "columns": 3,
+      "name": "Shippers",
+      "rows": 3
+    },
+    {
+      "columns": 12,
+      "name": "Suppliers",
+      "rows": 29
+    },
+    {
+      "columns": 3,
+      "name": "Territories",
+      "rows": 53
+    }
+  ],
+  "totals": {
+    "checkConstraints": 7,
+    "columns": 88,
+    "foreignKeys": 13,
+    "indexes": 0,
+    "primaryKeys": 13,
+    "rows": 3310,
+    "tables": 13,
+    "uniqueConstraints": 0
+  },
+  "warnings": [
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Alphabetical list of products"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Category Sales for 1997"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Current Product List"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Customer and Suppliers by City"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(5) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 0",
+      "object": "CustomerCustomerDemo.CustomerID"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"TEXT\" and carried as NVARCHAR(1), but it joins the columns of its foreign keys, which SQL Server requires to have one type: carried as NVARCHAR(5)",
+      "object": "CustomerCustomerDemo.CustomerID"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(1) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 0",
+      "object": "CustomerCustomerDemo.CustomerTypeID"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(1) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 0",
+      "object": "CustomerDemographics.CustomerTypeID"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(5) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 5",
+      "object": "Customers.CustomerID"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(255) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 5",
+      "object": "EmployeeTerritories.TerritoryID"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"TEXT\" and carried as NVARCHAR(5), but it joins the columns of its foreign keys, which SQL Server requires to have one type: carried as NVARCHAR(255)",
+      "object": "EmployeeTerritories.TerritoryID"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Invoices"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Order Details Extended"
+    },
+    {
+      "kind": "values-normalized",
+      "message": "1212 REAL and 943 INTEGER value(s) share one DECIMAL(5,2) column: SQLite keeps them apart (5 and 5.0), DECIMAL(5,2) does not; each REAL is written as the exact decimal of its shortest spelling, for example 9.8",
+      "object": "Order Details.UnitPrice"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Order Subtotals"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Orders Qry"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(5) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 5",
+      "object": "Orders.CustomerID"
+    },
+    {
+      "kind": "values-normalized",
+      "message": "824 REAL and 6 INTEGER value(s) share one DECIMAL(6,2) column: SQLite keeps them apart (5 and 5.0), DECIMAL(6,2) does not; each REAL is written as the exact decimal of its shortest spelling, for example 32.38",
+      "object": "Orders.Freight"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"DATETIME\" but its values are not all of that type: carried as NVARCHAR(MAX)",
+      "object": "Orders.OrderDate"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"DATETIME\" but its values are not all of that type: carried as NVARCHAR(MAX)",
+      "object": "Orders.RequiredDate"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"DATETIME\" but its values are not all of that type: carried as NVARCHAR(MAX)",
+      "object": "Orders.ShippedDate"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Product Sales for 1997"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "ProductDetails_V"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Products Above Average Price"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Products by Category"
+    },
+    {
+      "kind": "values-normalized",
+      "message": "35 REAL and 42 INTEGER value(s) share one DECIMAL(5,2) column: SQLite keeps them apart (5 and 5.0), DECIMAL(5,2) does not; each REAL is written as the exact decimal of its shortest spelling, for example 21.35",
+      "object": "Products.UnitPrice"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Quarterly Orders"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Sales Totals by Amount"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Sales by Category"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Summary of Sales by Quarter"
+    },
+    {
+      "kind": "view-not-carried",
+      "message": "views are written in the SQL dialect of their engine and are not translated across engines",
+      "object": "Summary of Sales by Year"
+    },
+    {
+      "kind": "key-type-bounded",
+      "message": "a key column is carried as NVARCHAR(255) (declared \"TEXT\"): SQL Server cannot index an unbounded type; its longest value is 5",
+      "object": "Territories.TerritoryID"
+    },
+    {
+      "kind": "type-widened",
+      "message": "declared \"TEXT\" and carried as NVARCHAR(5), but it joins the columns of its foreign keys, which SQL Server requires to have one type: carried as NVARCHAR(255)",
+      "object": "Territories.TerritoryID"
+    }
+  ]
+}
